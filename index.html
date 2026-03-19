@@ -1968,6 +1968,7 @@
 
         function applyConfig() {
             var c = CFG;
+            if (c.appsScriptWebAppUrl && c.appsScriptWebAppUrl.indexOf("http") === 0) { SCRIPT_URL = c.appsScriptWebAppUrl; }
             if (c.siteTitle) { document.title = c.siteTitle; var p = c.siteTitle.split(" "); var last = p.pop(); $("site-logo").innerHTML = p.join(" ") + " <em>" + last + "</em>"; }
             if (c.bannerText) $("banner-text").textContent = c.bannerText;
             if (c.bannerActive === "No") $("promo-banner").style.display = "none";
