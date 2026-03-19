@@ -11,7 +11,6 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
-        /* ─── RESET ────────────────────────────────────────────────── */
         *,
         *::before,
         *::after {
@@ -37,12 +36,19 @@
             --green-l: #F0FDF4;
             --red: #DC2626;
             --red-l: #FEF2F2;
+            --blue: #1D4ED8;
+            --blue-l: #EFF6FF;
+            --teal: #0D9488;
+            --teal-l: #F0FDFA;
+            --amber: #D97706;
+            --amber-l: #FFFBEB;
+            --purple: #7C3AED;
+            --purple-l: #F5F3FF;
             --ff-serif: 'Cormorant Garamond', Georgia, serif;
             --ff-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
             --r: 12px;
             --r-lg: 20px;
             --r-xl: 28px;
-            --sh: 0 1px 3px rgba(0, 0, 0, .06), 0 4px 16px rgba(0, 0, 0, .08);
             --sh-lg: 0 8px 32px rgba(0, 0, 0, .12), 0 2px 8px rgba(0, 0, 0, .06);
             --sh-rose: 0 8px 32px rgba(225, 29, 72, .22);
             --tr: all .2s cubic-bezier(.4, 0, .2, 1);
@@ -96,24 +102,24 @@
             border-radius: 10px
         }
 
-        /* ─── PROMO BANNER ──────────────────────────────────────────── */
+        /* BANNER */
         #promo-banner {
             background: var(--rose-d);
-            color: var(--white);
+            color: #fff;
             font-size: 12.5px;
             font-weight: 500;
             padding: 10px 48px;
             text-align: center;
             position: relative;
             letter-spacing: .3px;
-            overflow: hidden;
+            overflow: hidden
         }
 
         #promo-banner::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255, 255, 255, .04) 80px, rgba(255, 255, 255, .04) 81px);
+            background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255, 255, 255, .04) 80px, rgba(255, 255, 255, .04) 81px)
         }
 
         .banner-close {
@@ -123,7 +129,7 @@
             transform: translateY(-50%);
             background: rgba(255, 255, 255, .15);
             border: none;
-            color: var(--white);
+            color: #fff;
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -131,21 +137,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--tr);
+            transition: var(--tr)
         }
 
         .banner-close:hover {
             background: rgba(255, 255, 255, .3)
         }
 
-        /* ─── NAVBAR ─────────────────────────────────────────────────── */
+        /* NAVBAR */
         #navbar {
             position: sticky;
             top: 0;
             z-index: 200;
             background: rgba(253, 252, 250, .96);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--bdr);
+            border-bottom: 1px solid var(--bdr)
         }
 
         .nav-main {
@@ -165,7 +171,7 @@
             color: var(--rose-d);
             letter-spacing: .5px;
             white-space: nowrap;
-            flex-shrink: 0;
+            flex-shrink: 0
         }
 
         .nav-logo em {
@@ -187,12 +193,12 @@
             font-size: 13.5px;
             background: var(--mist);
             transition: var(--tr);
-            color: var(--ink);
+            color: var(--ink)
         }
 
         .search-wrap input:focus {
             border-color: var(--rose);
-            background: var(--white);
+            background: #fff;
             box-shadow: 0 0 0 3px var(--rose-s)
         }
 
@@ -225,7 +231,7 @@
             align-items: center;
             justify-content: center;
             transition: var(--tr);
-            text-decoration: none;
+            text-decoration: none
         }
 
         .nav-icon-btn:hover {
@@ -238,7 +244,7 @@
             top: 3px;
             right: 3px;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             font-size: 9.5px;
             font-weight: 700;
             min-width: 17px;
@@ -248,10 +254,29 @@
             align-items: center;
             justify-content: center;
             border: 2px solid var(--chalk);
-            line-height: 1;
+            line-height: 1
         }
 
-        /* category pills */
+        .nav-track-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 99px;
+            background: var(--blue-l);
+            color: var(--blue);
+            font-size: 12.5px;
+            font-weight: 600;
+            border: 1.5px solid #BFDBFE;
+            transition: var(--tr);
+            white-space: nowrap
+        }
+
+        .nav-track-btn:hover {
+            background: var(--blue);
+            color: #fff
+        }
+
         .nav-cats {
             max-width: 1320px;
             margin: 0 auto;
@@ -259,7 +284,7 @@
             display: flex;
             gap: 6px;
             overflow-x: auto;
-            scrollbar-width: none;
+            scrollbar-width: none
         }
 
         .nav-cats::-webkit-scrollbar {
@@ -276,7 +301,7 @@
             background: none;
             color: var(--slate);
             transition: var(--tr);
-            white-space: nowrap;
+            white-space: nowrap
         }
 
         .pill:hover,
@@ -287,12 +312,12 @@
             font-weight: 600
         }
 
-        /* ─── HERO ───────────────────────────────────────────────────── */
+        /* HERO */
         #hero {
             position: relative;
             overflow: hidden;
             background: linear-gradient(140deg, #1C0508 0%, #9F1239 45%, #E11D48 80%, #FB7185 100%);
-            padding: 96px 28px 108px;
+            padding: 96px 28px 108px
         }
 
         #hero::after {
@@ -300,16 +325,15 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse 60% 70% at 85% 60%, rgba(255, 200, 200, .15), transparent);
-            pointer-events: none;
+            pointer-events: none
         }
 
-        /* decorative petal shapes */
         .hero-petal {
             position: absolute;
             border-radius: 50%;
             opacity: .06;
-            background: var(--white);
-            pointer-events: none;
+            background: #fff;
+            pointer-events: none
         }
 
         .hero-petal-1 {
@@ -354,16 +378,16 @@
             font-weight: 600;
             letter-spacing: .6px;
             margin-bottom: 24px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px)
         }
 
         .hero-title {
             font-family: var(--ff-serif);
             font-size: clamp(36px, 6vw, 68px);
             font-weight: 600;
-            color: var(--white);
+            color: #fff;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
 
         .hero-title em {
@@ -383,7 +407,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--white);
+            background: #fff;
             color: var(--rose-d);
             font-size: 14px;
             font-weight: 700;
@@ -391,7 +415,7 @@
             border-radius: 99px;
             transition: var(--tr);
             box-shadow: 0 10px 40px rgba(0, 0, 0, .25);
-            letter-spacing: .2px;
+            letter-spacing: .2px
         }
 
         .hero-btn:hover {
@@ -405,7 +429,7 @@
             gap: 52px;
             margin-top: 60px;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, .15);
+            border-top: 1px solid rgba(255, 255, 255, .15)
         }
 
         .hero-stat strong {
@@ -413,7 +437,7 @@
             font-family: var(--ff-serif);
             font-size: 34px;
             font-weight: 700;
-            color: var(--white)
+            color: #fff
         }
 
         .hero-stat span {
@@ -422,7 +446,7 @@
             letter-spacing: .4px
         }
 
-        /* ─── PAGE WRAP ──────────────────────────────────────────────── */
+        /* PAGE */
         .page {
             max-width: 1320px;
             margin: 0 auto;
@@ -454,7 +478,7 @@
             color: var(--slate)
         }
 
-        /* ─── STATES ─────────────────────────────────────────────────── */
+        /* STATES */
         .loading-box {
             text-align: center;
             padding: 80px 24px
@@ -500,7 +524,7 @@
 
         .btn-retry {
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             padding: 10px 26px;
             border-radius: 99px;
             font-size: 13.5px;
@@ -512,16 +536,15 @@
             background: var(--rose-d)
         }
 
-        /* ─── PRODUCT GRID ───────────────────────────────────────────── */
+        /* PRODUCT GRID */
         #product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(222px, 1fr));
             gap: 22px
         }
 
-        /* ─── PRODUCT CARD ───────────────────────────────────────────── */
         .card {
-            background: var(--white);
+            background: #fff;
             border-radius: var(--r-lg);
             border: 1px solid var(--bdr);
             overflow: hidden;
@@ -529,7 +552,7 @@
             flex-direction: column;
             cursor: pointer;
             transition: var(--tr);
-            position: relative;
+            position: relative
         }
 
         .card:hover {
@@ -577,12 +600,12 @@
 
         .badge-sale {
             background: var(--rose);
-            color: var(--white)
+            color: #fff
         }
 
         .badge-oos {
             background: rgba(28, 25, 23, .65);
-            color: var(--white);
+            color: #fff;
             backdrop-filter: blur(4px)
         }
 
@@ -604,7 +627,7 @@
             transform: scale(.8);
             transition: var(--tr);
             box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px)
         }
 
         .card:hover .card-quick {
@@ -614,7 +637,7 @@
 
         .card-quick:hover {
             background: var(--rose);
-            color: var(--white)
+            color: #fff
         }
 
         .card-body {
@@ -699,14 +722,14 @@
             height: 36px;
             border-radius: 50%;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             border: none;
             font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--tr);
-            flex-shrink: 0;
+            flex-shrink: 0
         }
 
         .add-btn:hover:not(:disabled) {
@@ -719,7 +742,7 @@
             cursor: not-allowed
         }
 
-        /* ─── CART DRAWER ─────────────────────────────────────────────── */
+        /* CART */
         #cart-veil {
             position: fixed;
             inset: 0;
@@ -748,7 +771,7 @@
             flex-direction: column;
             transform: translateX(100%);
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-            box-shadow: -12px 0 48px rgba(0, 0, 0, .14);
+            box-shadow: -12px 0 48px rgba(0, 0, 0, .14)
         }
 
         #cart.on {
@@ -760,7 +783,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 22px 24px;
-            border-bottom: 1px solid var(--bdr);
+            border-bottom: 1px solid var(--bdr)
         }
 
         .cart-head h3 {
@@ -781,7 +804,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--tr);
+            transition: var(--tr)
         }
 
         .icon-btn:hover {
@@ -831,10 +854,9 @@
 
         .btn-shop:hover {
             background: var(--rose);
-            color: var(--white)
+            color: #fff
         }
 
-        /* cart item */
         .ci {
             display: flex;
             gap: 14px;
@@ -893,7 +915,7 @@
             height: 28px;
             border-radius: 50%;
             border: 1.5px solid var(--bdr);
-            background: var(--white);
+            background: #fff;
             font-size: 15px;
             display: flex;
             align-items: center;
@@ -937,7 +959,6 @@
             flex-shrink: 0
         }
 
-        /* cart footer */
         .cart-foot {
             padding: 18px 24px 26px;
             border-top: 1px solid var(--bdr)
@@ -963,7 +984,7 @@
         .btn-checkout {
             width: 100%;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             font-size: 15px;
             font-weight: 700;
             padding: 16px;
@@ -973,8 +994,7 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
-            transition: var(--tr);
-            letter-spacing: .2px;
+            transition: var(--tr)
         }
 
         .btn-checkout:hover {
@@ -987,7 +1007,7 @@
             cursor: not-allowed
         }
 
-        /* ─── PRODUCT MODAL ───────────────────────────────────────────── */
+        /* PRODUCT MODAL */
         #modal-veil {
             position: fixed;
             inset: 0;
@@ -1009,7 +1029,7 @@
         }
 
         #modal {
-            background: var(--white);
+            background: #fff;
             border-radius: var(--r-xl);
             width: 100%;
             max-width: 760px;
@@ -1018,7 +1038,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             transform: scale(.94) translateY(12px);
-            transition: transform .3s;
+            transition: transform .3s
         }
 
         #modal-veil.on #modal {
@@ -1114,7 +1134,7 @@
 
         .modal-disc {
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             padding: 3px 11px;
             border-radius: 99px;
             font-size: 12px;
@@ -1176,7 +1196,7 @@
         .btn-add-modal {
             flex: 1;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             font-size: 14px;
             font-weight: 700;
             padding: 13px;
@@ -1185,7 +1205,7 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
-            transition: var(--tr);
+            transition: var(--tr)
         }
 
         .btn-add-modal:hover:not(:disabled) {
@@ -1198,7 +1218,7 @@
             cursor: not-allowed
         }
 
-        /* ─── CHECKOUT MODAL ──────────────────────────────────────────── */
+        /* CHECKOUT */
         #checkout-veil {
             position: fixed;
             inset: 0;
@@ -1220,7 +1240,7 @@
         }
 
         #checkout-box {
-            background: var(--white);
+            background: #fff;
             border-radius: var(--r-xl);
             width: 100%;
             max-width: 520px;
@@ -1228,7 +1248,7 @@
             overflow-y: auto;
             padding: 32px 30px;
             transform: scale(.94) translateY(12px);
-            transition: transform .3s;
+            transition: transform .3s
         }
 
         #checkout-veil.on #checkout-box {
@@ -1249,7 +1269,7 @@
             margin-bottom: 22px
         }
 
-        .order-summary-mini {
+        .order-mini {
             background: var(--mist);
             border-radius: var(--r-lg);
             padding: 16px 18px;
@@ -1298,7 +1318,7 @@
             font-size: 14px;
             color: var(--ink);
             transition: var(--tr);
-            background: var(--white)
+            background: #fff
         }
 
         .form-group input:focus,
@@ -1347,7 +1367,7 @@
         .btn-place {
             width: 100%;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             font-size: 15px;
             font-weight: 700;
             padding: 16px;
@@ -1357,8 +1377,7 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
-            transition: var(--tr);
-            letter-spacing: .2px;
+            transition: var(--tr)
         }
 
         .btn-place:hover:not(:disabled) {
@@ -1372,13 +1391,505 @@
             transform: none
         }
 
-        /* ─── INVOICE MODAL ───────────────────────────────────────────── */
-        #inv-veil {
+        /* ORDER SUCCESS MODAL */
+        #success-veil {
             position: fixed;
             inset: 0;
             background: rgba(28, 25, 23, .6);
             backdrop-filter: blur(8px);
             z-index: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        #success-veil.on {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        #success-box {
+            background: #fff;
+            border-radius: var(--r-xl);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px 36px;
+            text-align: center;
+            transform: scale(.94) translateY(12px);
+            transition: transform .3s
+        }
+
+        #success-veil.on #success-box {
+            transform: scale(1) translateY(0)
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--green-l);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: var(--green)
+        }
+
+        .success-title {
+            font-family: var(--ff-serif);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px
+        }
+
+        .success-sub {
+            font-size: 14px;
+            color: var(--slate);
+            margin-bottom: 24px;
+            line-height: 1.6
+        }
+
+        .order-id-box {
+            background: var(--blue-l);
+            border: 1px solid #BFDBFE;
+            border-radius: var(--r-lg);
+            padding: 18px 20px;
+            margin-bottom: 16px
+        }
+
+        .order-id-lbl {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .order-id-val {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink)
+        }
+
+        .tracking-box {
+            background: var(--purple-l);
+            border: 1px solid #DDD6FE;
+            border-radius: var(--r-lg);
+            padding: 18px 20px;
+            margin-bottom: 24px
+        }
+
+        .tracking-lbl {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .tracking-val {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--purple);
+            letter-spacing: 2px
+        }
+
+        .tracking-hint {
+            font-size: 12px;
+            color: var(--slate);
+            margin-top: 6px
+        }
+
+        .btn-done {
+            width: 100%;
+            background: var(--rose);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 15px;
+            border-radius: var(--r-lg);
+            transition: var(--tr)
+        }
+
+        .btn-done:hover {
+            background: var(--rose-d)
+        }
+
+        .btn-track-order {
+            width: 100%;
+            background: var(--purple-l);
+            color: var(--purple);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 13px;
+            border-radius: var(--r-lg);
+            transition: var(--tr);
+            margin-bottom: 12px;
+            border: 1.5px solid #DDD6FE
+        }
+
+        .btn-track-order:hover {
+            background: var(--purple);
+            color: #fff
+        }
+
+        /* ORDER TRACKING MODAL */
+        #track-veil {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 25, 23, .55);
+            backdrop-filter: blur(8px);
+            z-index: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        #track-veil.on {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        #track-box {
+            background: #fff;
+            border-radius: var(--r-xl);
+            width: 100%;
+            max-width: 540px;
+            max-height: 92vh;
+            overflow-y: auto;
+            padding: 32px 30px;
+            transform: scale(.94) translateY(12px);
+            transition: transform .3s
+        }
+
+        #track-veil.on #track-box {
+            transform: scale(1) translateY(0)
+        }
+
+        .track-title {
+            font-family: var(--ff-serif);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px
+        }
+
+        .track-sub {
+            font-size: 13px;
+            color: var(--slate);
+            margin-bottom: 22px
+        }
+
+        .track-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .track-input-row input {
+            flex: 1;
+            border: 1.5px solid var(--bdr);
+            border-radius: var(--r);
+            padding: 12px 15px;
+            font-size: 14px;
+            color: var(--ink);
+            transition: var(--tr);
+            background: #fff
+        }
+
+        .track-input-row input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-l)
+        }
+
+        .btn-search {
+            background: var(--blue);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 22px;
+            border-radius: var(--r);
+            transition: var(--tr);
+            white-space: nowrap
+        }
+
+        .btn-search:hover {
+            background: #1e40af
+        }
+
+        .btn-search:disabled {
+            opacity: .6;
+            cursor: not-allowed
+        }
+
+        .track-err {
+            background: var(--red-l);
+            color: var(--red);
+            font-size: 13px;
+            padding: 11px 14px;
+            border-radius: var(--r);
+            margin-bottom: 14px;
+            display: none
+        }
+
+        .track-err.on {
+            display: block
+        }
+
+        .track-result {
+            display: none
+        }
+
+        .track-result.on {
+            display: block
+        }
+
+        /* Status timeline */
+        .status-bar {
+            background: var(--blue-l);
+            border: 1px solid #BFDBFE;
+            border-radius: var(--r-lg);
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            text-align: center
+        }
+
+        .status-bar .sl {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 8px
+        }
+
+        .status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 99px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .sc-processing {
+            background: var(--amber-l);
+            color: var(--amber)
+        }
+
+        .sc-confirmed {
+            background: var(--blue-l);
+            color: var(--blue)
+        }
+
+        .sc-packed {
+            background: var(--purple-l);
+            color: var(--purple)
+        }
+
+        .sc-shipped {
+            background: var(--blue-l);
+            color: var(--blue)
+        }
+
+        .sc-outfordelivery {
+            background: var(--teal-l);
+            color: var(--teal)
+        }
+
+        .sc-delivered {
+            background: var(--green-l);
+            color: var(--green)
+        }
+
+        .sc-cancelled {
+            background: var(--red-l);
+            color: var(--red)
+        }
+
+        /* Steps */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--bdr);
+            z-index: 0
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+            position: relative;
+            z-index: 1
+        }
+
+        .step-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2.5px solid var(--bdr);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--slate);
+            transition: var(--tr)
+        }
+
+        .step-dot.done {
+            background: var(--rose);
+            border-color: var(--rose);
+            color: #fff
+        }
+
+        .step-dot.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff;
+            box-shadow: 0 0 0 4px var(--blue-l)
+        }
+
+        .step-lbl {
+            font-size: 10px;
+            color: var(--slate);
+            text-align: center;
+            line-height: 1.3;
+            font-weight: 500
+        }
+
+        .step-lbl.done {
+            color: var(--rose);
+            font-weight: 600
+        }
+
+        .step-lbl.active {
+            color: var(--blue);
+            font-weight: 700
+        }
+
+        /* Order detail cards */
+        .tr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px
+        }
+
+        .tr-box {
+            background: var(--mist);
+            border-radius: var(--r);
+            padding: 12px 14px
+        }
+
+        .tr-box .tbl {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            color: var(--slate);
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .tr-box p {
+            font-size: 12px;
+            color: var(--ink);
+            line-height: 1.7
+        }
+
+        .tr-items {
+            background: var(--rose-s);
+            border-radius: var(--r);
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: var(--ink);
+            line-height: 1.8
+        }
+
+        .tr-items .tbl {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            color: var(--rose);
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .tr-totals {
+            background: var(--mist);
+            border-radius: var(--r);
+            padding: 12px 14px;
+            font-size: 13px
+        }
+
+        .tr-totals .line {
+            display: flex;
+            justify-content: space-between;
+            color: var(--slate);
+            margin-bottom: 5px
+        }
+
+        .tr-totals .grand {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ink);
+            padding-top: 8px;
+            border-top: 1.5px dashed var(--bdr);
+            margin-top: 6px
+        }
+
+        .btn-close-track {
+            width: 100%;
+            background: var(--mist);
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 13px;
+            border-radius: var(--r-lg);
+            margin-top: 16px;
+            transition: var(--tr)
+        }
+
+        .btn-close-track:hover {
+            background: var(--bdr)
+        }
+
+        /* INVOICE MODAL */
+        #inv-veil {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 25, 23, .6);
+            backdrop-filter: blur(8px);
+            z-index: 650;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1394,7 +1905,7 @@
         }
 
         #inv-box {
-            background: var(--white);
+            background: #fff;
             border-radius: var(--r-xl);
             width: 100%;
             max-width: 600px;
@@ -1429,13 +1940,44 @@
         .inv-badge {
             display: inline-block;
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             font-size: 11px;
             font-weight: 700;
             padding: 4px 18px;
             border-radius: 99px;
             margin-top: 10px;
             letter-spacing: 1px
+        }
+
+        .inv-track {
+            background: var(--blue-l);
+            border: 1px solid #BFDBFE;
+            border-radius: var(--r);
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            text-align: center
+        }
+
+        .inv-track .itl {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .inv-track .itc {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: 2px
+        }
+
+        .inv-track .its {
+            font-size: 10px;
+            color: var(--slate);
+            margin-top: 3px
         }
 
         .inv-grid {
@@ -1486,7 +2028,7 @@
 
         #inv-table th {
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             padding: 9px 12px;
             text-align: left;
             font-size: 10.5px
@@ -1566,7 +2108,7 @@
         .btn-inv-out {
             border: 2px solid var(--rose);
             color: var(--rose-d);
-            background: var(--white)
+            background: #fff
         }
 
         .btn-inv-out:hover {
@@ -1575,7 +2117,7 @@
 
         .btn-inv-fill {
             background: var(--rose);
-            color: var(--white);
+            color: #fff;
             border: 2px solid var(--rose)
         }
 
@@ -1583,19 +2125,19 @@
             background: var(--rose-d)
         }
 
-        /* ─── TOAST ───────────────────────────────────────────────────── */
+        /* TOAST */
         #toast {
             position: fixed;
             bottom: 26px;
             left: 50%;
             transform: translateX(-50%) translateY(12px);
             background: var(--ink);
-            color: var(--white);
+            color: #fff;
             font-size: 13.5px;
             font-weight: 500;
             padding: 13px 24px;
             border-radius: 99px;
-            z-index: 700;
+            z-index: 800;
             white-space: nowrap;
             box-shadow: 0 8px 32px rgba(0, 0, 0, .28);
             opacity: 0;
@@ -1603,7 +2145,7 @@
             transition: all .3s;
             display: flex;
             align-items: center;
-            gap: 9px;
+            gap: 9px
         }
 
         #toast.on {
@@ -1611,7 +2153,7 @@
             transform: translateX(-50%) translateY(0)
         }
 
-        /* ─── FOOTER ──────────────────────────────────────────────────── */
+        /* FOOTER */
         footer {
             background: var(--ink);
             color: rgba(255, 255, 255, .6);
@@ -1636,7 +2178,7 @@
             color: var(--rose-m)
         }
 
-        /* ─── UTILS ───────────────────────────────────────────────────── */
+        /* UTILS */
         .hidden {
             display: none !important
         }
@@ -1676,11 +2218,23 @@
                 grid-template-columns: 1fr
             }
 
+            .tr-grid {
+                grid-template-columns: 1fr
+            }
+
             .hero-stats {
                 gap: 28px
             }
 
             .search-wrap {
+                display: none
+            }
+
+            .nav-track-btn span {
+                display: none
+            }
+
+            .steps {
                 display: none
             }
         }
@@ -1700,15 +2254,14 @@
 
 <body>
 
-    <!-- ══════════════════════ PROMO BANNER -->
+    <!-- BANNER -->
     <div id="promo-banner">
         <span id="banner-text">🌸 Free Delivery on Orders over ৳2000 Inside Dhaka!</span>
-        <button class="banner-close" onclick="document.getElementById('promo-banner').style.display='none'">
-            <i class="fa fa-xmark"></i>
-        </button>
+        <button class="banner-close" onclick="document.getElementById('promo-banner').style.display='none'"><i
+                class="fa fa-xmark"></i></button>
     </div>
 
-    <!-- ══════════════════════ NAVBAR -->
+    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-main">
             <div class="nav-logo" id="site-logo">Shalik <em>Glow</em></div>
@@ -1717,6 +2270,8 @@
                 <input type="text" id="search-inp" placeholder="Search products, brands…" oninput="onSearch()" />
             </div>
             <div class="nav-actions">
+                <button class="nav-track-btn" onclick="openTrack()"><i class="fa fa-location-dot"></i><span>Track
+                        Order</span></button>
                 <button class="nav-icon-btn" onclick="toggleCart()" title="Cart">
                     <i class="fa fa-bag-shopping"></i>
                     <span class="cart-count hidden" id="cart-cnt">0</span>
@@ -1729,7 +2284,7 @@
         <div class="nav-cats" id="cat-pills"></div>
     </nav>
 
-    <!-- ══════════════════════ HERO -->
+    <!-- HERO -->
     <section id="hero">
         <div class="hero-petal hero-petal-1"></div>
         <div class="hero-petal hero-petal-2"></div>
@@ -1737,8 +2292,7 @@
         <div class="hero-inner">
             <div class="hero-eyebrow"><i class="fa fa-star"></i> Authentic Korean Beauty</div>
             <h1 class="hero-title">Discover Your<br /><em>Radiant Glow</em></h1>
-            <p class="hero-sub">Curated Korean skincare & cosmetics, live from our inventory — prices and stock update
-                instantly.</p>
+            <p class="hero-sub">Curated Korean skincare &amp; cosmetics — live prices, real stock, instant orders.</p>
             <a href="#shop" class="hero-btn"><i class="fa fa-arrow-down"></i> Explore the Collection</a>
             <div class="hero-stats">
                 <div class="hero-stat"><strong id="s-products">13</strong><span>Products</span></div>
@@ -1748,22 +2302,21 @@
         </div>
     </section>
 
-    <!-- ══════════════════════ PRODUCTS -->
+    <!-- PRODUCTS -->
     <div class="page" id="shop">
         <div class="section-head">
             <h2 class="section-title">The <span>Collection</span></h2>
             <span class="section-count" id="prod-count"></span>
         </div>
-
         <div id="loading-state" class="loading-box">
             <div class="spin"></div>
-            <p style="color:var(--slate);font-size:14px">Loading live products from our store…</p>
+            <p style="color:var(--slate);font-size:14px">Loading live products…</p>
         </div>
         <div id="error-state" class="loading-box hidden">
             <div class="state-icon">⚠️</div>
             <p class="state-title">Could not load products</p>
-            <p class="state-sub" id="err-msg">Please check the Apps Script URL and try again.</p>
-            <button class="btn-retry" onclick="loadData()">Retry</button>
+            <p class="state-sub" id="err-msg">Please check the Apps Script URL.</p><button class="btn-retry"
+                onclick="loadData()">Retry</button>
         </div>
         <div id="empty-state" class="loading-box hidden">
             <div class="state-icon">🔍</div>
@@ -1773,31 +2326,26 @@
         <div id="product-grid" class="hidden"></div>
     </div>
 
-    <!-- ══════════════════════ CART DRAWER -->
+    <!-- CART -->
     <div id="cart-veil" onclick="toggleCart()"></div>
     <aside id="cart">
         <div class="cart-head">
-            <h3>Shopping Bag</h3>
-            <button class="icon-btn" onclick="toggleCart()"><i class="fa fa-xmark"></i></button>
+            <h3>Shopping Bag</h3><button class="icon-btn" onclick="toggleCart()"><i class="fa fa-xmark"></i></button>
         </div>
         <div class="cart-body" id="cart-body"></div>
         <div class="cart-foot" id="cart-foot" style="display:none">
             <div class="cart-line"><span>Subtotal</span><span id="cf-sub">৳0</span></div>
             <div class="cart-line"><span>Delivery</span><span id="cf-del">Calculated at checkout</span></div>
             <div class="cart-line big"><span>Total</span><span id="cf-tot">৳0</span></div>
-            <button class="btn-checkout" onclick="openCheckout()">
-                <i class="fa fa-lock"></i> Secure Checkout
-            </button>
+            <button class="btn-checkout" onclick="openCheckout()"><i class="fa fa-lock"></i> Secure Checkout</button>
         </div>
     </aside>
 
-    <!-- ══════════════════════ PRODUCT MODAL -->
+    <!-- PRODUCT MODAL -->
     <div id="modal-veil" onclick="onModalVeilClick(event)">
         <div id="modal">
-            <div class="modal-img">
-                <img id="m-img" src="" alt="" />
-                <button class="modal-x" onclick="closeModal()"><i class="fa fa-xmark"></i></button>
-            </div>
+            <div class="modal-img"><img id="m-img" src="" alt="" /><button class="modal-x" onclick="closeModal()"><i
+                        class="fa fa-xmark"></i></button></div>
             <div class="modal-info">
                 <p class="modal-brand" id="m-brand"></p>
                 <h2 class="modal-name" id="m-name"></h2>
@@ -1810,20 +2358,16 @@
                 </div>
                 <p class="modal-stock" id="m-stock"></p>
                 <div class="qty-row">
-                    <div class="qty-ctrl">
-                        <button onclick="mQty(-1)">−</button>
-                        <span id="m-qty">1</span>
-                        <button onclick="mQty(1)">+</button>
-                    </div>
-                    <button class="btn-add-modal" id="m-add" onclick="addFromModal()">
-                        <i class="fa fa-bag-shopping"></i> Add to Bag
-                    </button>
+                    <div class="qty-ctrl"><button onclick="mQty(-1)">−</button><span id="m-qty">1</span><button
+                            onclick="mQty(1)">+</button></div>
+                    <button class="btn-add-modal" id="m-add" onclick="addFromModal()"><i class="fa fa-bag-shopping"></i>
+                        Add to Bag</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ══════════════════════ CHECKOUT MODAL -->
+    <!-- CHECKOUT MODAL -->
     <div id="checkout-veil" onclick="onCoVeilClick(event)">
         <div id="checkout-box">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
@@ -1831,13 +2375,11 @@
                 <button class="icon-btn" onclick="closeCheckout()"><i class="fa fa-xmark"></i></button>
             </div>
             <p class="co-sub">Complete your order below</p>
-
-            <div class="order-summary-mini">
+            <div class="order-mini">
                 <div class="osm-line"><span>Subtotal</span><span id="co-sub">৳0</span></div>
                 <div class="osm-line"><span id="co-del-lbl">Delivery</span><span id="co-del">৳0</span></div>
                 <div class="osm-line big"><span>Total</span><span id="co-tot">৳0</span></div>
             </div>
-
             <div class="form-row">
                 <div class="form-group"><label>First Name *</label><input type="text" id="co-fn" placeholder="Nargis" />
                 </div>
@@ -1846,11 +2388,8 @@
             </div>
             <div class="form-group"><label>Contact Number *</label><input type="tel" id="co-phone"
                     placeholder="01XXXXXXXXX" /></div>
-            <div class="form-group">
-                <label>Delivery Address *</label>
-                <textarea id="co-addr" rows="2" placeholder="House No, Road, Area, City…"
-                    style="resize:none"></textarea>
-            </div>
+            <div class="form-group"><label>Delivery Address *</label><textarea id="co-addr" rows="2"
+                    placeholder="House No, Road, Area, City…" style="resize:none"></textarea></div>
             <div class="form-group">
                 <label>Delivery Location *</label>
                 <select id="co-loc" onchange="onLocChange()">
@@ -1868,9 +2407,8 @@
                     <option value="Nagad">Nagad</option>
                 </select>
             </div>
-
             <div class="pay-info hidden" id="pay-info">
-                <strong id="pi-title">📱 bKash</strong>
+                <strong id="pi-title">bKash Payment</strong>
                 Send to: <strong id="pi-num">01XXXXXXXXX</strong><br />
                 Then fill your account number and transaction ID below.
             </div>
@@ -1880,15 +2418,114 @@
                 <div class="form-group"><label>Transaction ID</label><input type="text" id="co-txn"
                         placeholder="TXN123456" /></div>
             </div>
-
             <p class="form-err" id="co-err"></p>
-            <button class="btn-place" id="btn-place" onclick="placeOrder()">
-                <i class="fa fa-check-circle"></i> Place Order
-            </button>
+            <button class="btn-place" id="btn-place" onclick="placeOrder()"><i class="fa fa-check-circle"></i> Place
+                Order</button>
         </div>
     </div>
 
-    <!-- ══════════════════════ INVOICE MODAL -->
+    <!-- ORDER SUCCESS MODAL -->
+    <div id="success-veil">
+        <div id="success-box">
+            <div class="success-icon"><i class="fa fa-check"></i></div>
+            <h2 class="success-title">Order Placed!</h2>
+            <p class="success-sub">Your order has been received. Use your tracking code below to check delivery status
+                anytime.</p>
+            <div class="order-id-box">
+                <div class="order-id-lbl">Order ID</div>
+                <div class="order-id-val" id="succ-order-id"></div>
+            </div>
+            <div class="tracking-box">
+                <div class="tracking-lbl">Your Tracking Code</div>
+                <div class="tracking-val" id="succ-tracking"></div>
+                <div class="tracking-hint">Save this code to track your shipment</div>
+            </div>
+            <button class="btn-track-order" onclick="openTrackFromSuccess()"><i class="fa fa-location-dot"></i> Track My
+                Order</button>
+            <button class="btn-done" onclick="closeSuccess()"><i class="fa fa-check"></i> Done</button>
+        </div>
+    </div>
+
+    <!-- ORDER TRACKING MODAL -->
+    <div id="track-veil" onclick="onTrackVeilClick(event)">
+        <div id="track-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                <h2 class="track-title">Track Your Order</h2>
+                <button class="icon-btn" onclick="closeTrack()"><i class="fa fa-xmark"></i></button>
+            </div>
+            <p class="track-sub">Enter your Order ID (e.g. #ORD-...) or Tracking Code (e.g. SGC-...)</p>
+            <div class="track-input-row">
+                <input type="text" id="track-inp" placeholder="SGC-260319-1234 or #ORD-..."
+                    onkeydown="if(event.key==='Enter')doTrack()" />
+                <button class="btn-search" id="btn-search" onclick="doTrack()"><i class="fa fa-magnifying-glass"></i>
+                    Search</button>
+            </div>
+            <p class="track-err" id="track-err"></p>
+
+            <div class="track-result" id="track-result">
+                <!-- Status bar -->
+                <div class="status-bar">
+                    <div class="sl">Current Status</div>
+                    <div class="status-chip" id="tr-status-chip"></div>
+                </div>
+
+                <!-- Steps timeline -->
+                <div class="steps" id="tr-steps">
+                    <div class="step" id="step-processing">
+                        <div class="step-dot"><i class="fa fa-clock"></i></div>
+                        <div class="step-lbl">Processing</div>
+                    </div>
+                    <div class="step" id="step-confirmed">
+                        <div class="step-dot"><i class="fa fa-check"></i></div>
+                        <div class="step-lbl">Confirmed</div>
+                    </div>
+                    <div class="step" id="step-packed">
+                        <div class="step-dot"><i class="fa fa-box"></i></div>
+                        <div class="step-lbl">Packed</div>
+                    </div>
+                    <div class="step" id="step-shipped">
+                        <div class="step-dot"><i class="fa fa-truck"></i></div>
+                        <div class="step-lbl">Shipped</div>
+                    </div>
+                    <div class="step" id="step-outfordelivery">
+                        <div class="step-dot"><i class="fa fa-motorcycle"></i></div>
+                        <div class="step-lbl">Out for Delivery</div>
+                    </div>
+                    <div class="step" id="step-delivered">
+                        <div class="step-dot"><i class="fa fa-house"></i></div>
+                        <div class="step-lbl">Delivered</div>
+                    </div>
+                </div>
+
+                <!-- Order info -->
+                <div class="tr-grid">
+                    <div class="tr-box">
+                        <div class="tbl">Order Info</div>
+                        <p id="tr-order-info"></p>
+                    </div>
+                    <div class="tr-box">
+                        <div class="tbl">Delivery Info</div>
+                        <p id="tr-delivery-info"></p>
+                    </div>
+                </div>
+
+                <div class="tr-items">
+                    <div class="tbl">Items Ordered</div>
+                    <div id="tr-items-list"></div>
+                </div>
+
+                <div class="tr-totals">
+                    <div class="line"><span>Subtotal</span><span id="tr-sub"></span></div>
+                    <div class="line"><span>Delivery</span><span id="tr-del"></span></div>
+                    <div class="grand"><span>Total</span><span id="tr-tot"></span></div>
+                </div>
+            </div>
+
+            <button class="btn-close-track" onclick="closeTrack()">Close</button>
+        </div>
+    </div>
+
+    <!-- INVOICE MODAL -->
     <div id="inv-veil">
         <div id="inv-box">
             <div id="inv-content">
@@ -1896,6 +2533,11 @@
                     <div class="inv-logo">✿ Shalik Glow Corner ✿</div>
                     <div class="inv-tagline">Your Glow, Our Pride</div>
                     <div class="inv-badge">INVOICE</div>
+                </div>
+                <div class="inv-track">
+                    <div class="itl">Tracking Code</div>
+                    <div class="itc" id="inv-tracking"></div>
+                    <div class="its">Track your order anytime on our website</div>
                 </div>
                 <div class="inv-grid">
                     <div class="inv-box">
@@ -1925,10 +2567,8 @@
                     <div class="inv-grand"><span>Grand Total</span><span id="inv-tot"></span></div>
                 </div>
                 <p class="inv-thanks">🌸 Thank you for shopping with us!</p>
-                <div class="inv-footer">
-                    <strong style="color:var(--rose-d)">Shalik Glow Corner</strong><br />
-                    shalikbeauty@gmail.com &nbsp;·&nbsp; © 2025 All Rights Reserved
-                </div>
+                <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow
+                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2025 All Rights Reserved</div>
             </div>
             <div class="inv-actions">
                 <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
@@ -1937,10 +2577,10 @@
         </div>
     </div>
 
-    <!-- ══════════════════════ TOAST -->
+    <!-- TOAST -->
     <div id="toast"><i class="fa fa-check-circle" id="toast-ic"></i><span id="toast-msg"></span></div>
 
-    <!-- ══════════════════════ FOOTER -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-logo">✿ Shalik Glow Corner ✿</div>
         <p>Your Glow, Our Pride — Authentic Korean Beauty</p>
@@ -1948,13 +2588,13 @@
         <p style="margin-top:6px;font-size:11px;opacity:.4">© 2025 Shalik Glow Corner. All Rights Reserved.</p>
     </footer>
 
-    <!-- ══════════════════════════════════════════ JAVASCRIPT -->
     <script>
-        var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXRiOIm4_XfzGne4aCD7N0g8gYuoeuSydNPpvuoz-O6Adohvi7Mks3xqlAn8vMvCTD/exec";
-        var ALL = [], FILTERED = [], CFG = {}, CART = JSON.parse(localStorage.getItem("sgc_cart") || "[]"), ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, ORDER = null;
+        var URL = "https://script.google.com/macros/s/AKfycbxJw7QZxVHGTvyhEZLge-hDQHucjeipycFyIz2PDmUEjNNlMN_RB7bVkJwyYLhd2yuNIQ/exec";
+        var ALL = [], FILTERED = [], CFG = {}, CART = JSON.parse(localStorage.getItem("sgc_cart") || "[]"), ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, LAST_ORDER = null;
         var IMGS = { d: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format", s: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format", c: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=500&auto=format", cl: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&auto=format", t: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=500&auto=format", sun: "https://images.unsplash.com/photo-1556228852-6d35a585d566?w=500&auto=format", bb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format" };
+
         function getImg(p) { if (p.imageUrl && p.imageUrl.indexOf("http") === 0) return p.imageUrl; var t = (p.title + " " + p.category).toLowerCase(); if (t.indexOf("serum") !== -1) return IMGS.s; if (t.indexOf("cream") !== -1) return IMGS.c; if (t.indexOf("cleanser") !== -1) return IMGS.cl; if (t.indexOf("toner") !== -1) return IMGS.t; if (t.indexOf("sunscreen") !== -1 || t.indexOf("sunblock") !== -1) return IMGS.sun; if (t.indexOf("bb") !== -1 || t.indexOf("boomer") !== -1) return IMGS.bb; if (t.indexOf("essence") !== -1) return IMGS.s; return IMGS.d; }
-        function fmt(n) { var sym = CFG.currencySymbol || "৳"; return sym + (Number(n) || 0).toLocaleString("en-BD"); }
+        function fmt(n) { var sym = CFG.currencySymbol || "\u09F3"; return sym + (Number(n) || 0).toLocaleString("en-BD"); }
         function $(i) { return document.getElementById(i); }
         function show(i) { $(i).classList.remove("hidden"); }
         function hide(i) { $(i).classList.add("hidden"); }
@@ -1963,7 +2603,7 @@
 
         function loadData() {
             show("loading-state"); hide("error-state"); hide("empty-state"); hide("product-grid");
-            fetch(SCRIPT_URL + "?action=getAll").then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }).then(function (d) { if (d.error) throw new Error(d.error); ALL = d.products || []; CFG = d.config || {}; applyConfig(); buildPills(); applyFilters(); hide("loading-state"); }).catch(function (e) { hide("loading-state"); $("err-msg").textContent = e.message; show("error-state"); });
+            fetch(URL + "?action=getAll", { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { var d = JSON.parse(t); if (d.error) throw new Error(d.error); return d; }).then(function (d) { ALL = d.products || []; CFG = d.config || {}; applyConfig(); buildPills(); applyFilters(); hide("loading-state"); }).catch(function (e) { hide("loading-state"); $("err-msg").textContent = e.message || "Connection failed."; show("error-state"); });
         }
 
         function applyConfig() {
@@ -1979,10 +2619,9 @@
         function buildPills() {
             var cats = ["All"], seen = {};
             ALL.forEach(function (p) { if (p.category && !seen[p.category]) { cats.push(p.category); seen[p.category] = 1; } });
-            var h = ""; cats.forEach(function (c) { h += "<button class=\"pill" + (c === "All" ? " on" : "") + "\" data-cat=\"" + c + "\" onclick=\"setCat('" + c + "')\" >" + c + "</button>"; });
+            var h = ""; cats.forEach(function (c) { h += "<button class=\"pill" + (c === "All" ? " on" : "") + "\" data-cat=\"" + c + "\" onclick=\"setCat('" + c + "')\">" + c + "</button>"; });
             $("cat-pills").innerHTML = h;
         }
-
         function setCat(cat) { ACTIVE_CAT = cat; document.querySelectorAll(".pill").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-cat") === cat); }); applyFilters(); }
         function onSearch() { SEARCH = $("search-inp").value.toLowerCase().trim(); applyFilters(); }
         function applyFilters() { FILTERED = ALL.filter(function (p) { var mc = ACTIVE_CAT === "All" || p.category === ACTIVE_CAT; var ms = !SEARCH || p.title.toLowerCase().indexOf(SEARCH) !== -1 || p.brand.toLowerCase().indexOf(SEARCH) !== -1; return mc && ms; }); renderGrid(); }
@@ -1996,23 +2635,17 @@
                 var px = p.displayPrice || p.offerPrice || p.oldPrice;
                 var dis = p.inStock ? "" : "disabled";
                 h += "<div class=\"card fadein\" onclick=\"openModal(" + p.id + ")\">";
-                h += "<div class=\"card-img\">";
-                h += "<img src=\"" + getImg(p) + "\" alt=\"" + (p.title || "").replace(/\"/g, "&quot;") + "\" loading=\"lazy\" onerror=\"this.src='" + IMGS.d + "'\" />";
+                h += "<div class=\"card-img\"><img src=\"" + getImg(p) + "\" alt=\"" + (p.title || "").replace(/\"/g, "&quot;") + "\" loading=\"lazy\" onerror=\"this.src='" + IMGS.d + "'\"/>";
                 h += "<div class=\"card-badges\">";
                 if (p.hasDiscount) h += "<span class=\"badge badge-sale\">-" + p.discountPct + "%</span>";
                 if (!p.inStock) h += "<span class=\"badge badge-oos\">Out of Stock</span>";
                 h += "</div>";
-                h += "<button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button>";
-                h += "</div><div class=\"card-body\">";
-                h += "<span class=\"card-brand\">" + p.brand + "</span>";
-                h += "<p class=\"card-name\">" + p.title + "</p>";
-                h += "<p class=\"card-size\">" + p.size + "</p>";
+                h += "<button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button></div>";
+                h += "<div class=\"card-body\"><span class=\"card-brand\">" + p.brand + "</span><p class=\"card-name\">" + p.title + "</p><p class=\"card-size\">" + p.size + "</p>";
                 h += "<div class=\"card-pricing\"><span class=\"p-new\">" + fmt(px) + "</span>";
                 if (p.hasDiscount) h += "<span class=\"p-old\">" + fmt(p.oldPrice) + "</span>";
-                h += "</div><div class=\"card-foot\">";
-                h += "<span class=\"stock-tag " + (p.inStock ? "in" : "out") + "\">" + (p.inStock ? "In Stock" : "Out of Stock") + "</span>";
-                h += "<button class=\"add-btn\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button>";
-                h += "</div></div></div>";
+                h += "</div><div class=\"card-foot\"><span class=\"stock-tag " + (p.inStock ? "in" : "out") + "\">" + (p.inStock ? "In Stock" : "Out of Stock") + "</span>";
+                h += "<button class=\"add-btn\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button></div></div></div>";
             });
             $("product-grid").innerHTML = h;
         }
@@ -2022,13 +2655,13 @@
             if (!MOD_PROD) return; MOD_QTY = 1; var p = MOD_PROD;
             var px = p.displayPrice || p.offerPrice || p.oldPrice;
             $("m-img").src = getImg(p); $("m-img").alt = p.title;
-            $("m-brand").textContent = p.brand + " · " + p.category;
+            $("m-brand").textContent = p.brand + " \xb7 " + p.category;
             $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
-            $("m-desc").textContent = p.size + " — " + p.brand + " | Authentic Korean beauty.";
+            $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean beauty product.";
             $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
             $("m-qty").textContent = 1;
             var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
-            var st = $("m-stock"); st.textContent = p.inStock ? "✓ In Stock (" + p.stockQty + " units)" : "✕ Out of Stock"; st.className = "modal-stock " + (p.inStock ? "in" : "out");
+            var st = $("m-stock"); st.textContent = p.inStock ? "\u2713 In Stock (" + p.stockQty + " units)" : "\u2715 Out of Stock"; st.className = "modal-stock " + (p.inStock ? "in" : "out");
             $("m-add").disabled = !p.inStock; $("modal-veil").classList.add("on");
         }
         function closeModal() { $("modal-veil").classList.remove("on"); }
@@ -2038,8 +2671,7 @@
 
         function quickAdd(id) { addToCart(id, 1); }
         function addToCart(id, qty) {
-            qty = qty || 1; var p = null;
-            for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { p = ALL[i]; break; } }
+            qty = qty || 1; var p = null; for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { p = ALL[i]; break; } }
             if (!p || !p.inStock) { showToast("Out of stock!", true); return; }
             var ex = null; for (var j = 0; j < CART.length; j++) { if (CART[j].id === id) { ex = CART[j]; break; } }
             var nq = (ex ? ex.qty : 0) + qty;
@@ -2066,16 +2698,11 @@
             if (!CART.length) { body.innerHTML = "<div class=\"cart-empty\"><i class=\"fa fa-bag-shopping\"></i><p>Your bag is empty</p><button class=\"btn-shop\" onclick=\"toggleCart()\">Continue Shopping</button></div>"; foot.style.display = "none"; return; }
             var h = "";
             CART.forEach(function (i) {
-                h += "<div class=\"ci\">";
-                h += "<img class=\"ci-img\" src=\"" + i.imageUrl + "\" alt=\"" + i.title.replace(/\"/g, "&quot;") + "\" onerror=\"this.src='" + IMGS.d + "'\" />";
+                h += "<div class=\"ci\"><img class=\"ci-img\" src=\"" + i.imageUrl + "\" alt=\"" + i.title.replace(/\"/g, "&quot;") + "\" onerror=\"this.src='" + IMGS.d + "'\"/>";
                 h += "<div class=\"ci-info\"><p class=\"ci-name\">" + i.title + "</p><p><span class=\"ci-price\">" + fmt(i.offerPrice) + "</span>";
                 if (i.hasDiscount) h += "<span class=\"ci-price-old\">" + fmt(i.oldPrice) + "</span>";
-                h += "</p><div class=\"ci-row\">";
-                h += "<button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",-1)\">−</button>";
-                h += "<span class=\"q-n\">" + i.qty + "</span>";
-                h += "<button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",1)\">+</button>";
-                h += "<button class=\"ci-rm\" onclick=\"removeItem(" + i.id + ")\">Remove</button>";
-                h += "</div></div><span class=\"ci-tot\">" + fmt(i.offerPrice * i.qty) + "</span></div>";
+                h += "</p><div class=\"ci-row\"><button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",-1)\">\u2212</button><span class=\"q-n\">" + i.qty + "</span><button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",1)\">+</button><button class=\"ci-rm\" onclick=\"removeItem(" + i.id + ")\">Remove</button></div></div>";
+                h += "<span class=\"ci-tot\">" + fmt(i.offerPrice * i.qty) + "</span></div>";
             });
             body.innerHTML = h;
             var t = getTotals(); $("cf-sub").textContent = fmt(t.sub); $("cf-del").textContent = "Calculated at checkout"; $("cf-tot").textContent = fmt(t.sub); foot.style.display = "";
@@ -2094,18 +2721,109 @@
             var fn = $("co-fn").value.trim(), ln = $("co-ln").value.trim(), ph = $("co-phone").value.trim(), addr = $("co-addr").value.trim(), loc = $("co-loc").value, pay = $("co-pay").value;
             var errEl = $("co-err"); errEl.classList.remove("on");
             if (!fn || !ln || !ph || !addr || !loc || !pay) { errEl.textContent = "Please fill in all required fields."; errEl.classList.add("on"); return; }
-            var t = getTotals(loc); var sym = CFG.currencySymbol || "৳"; var fullname = fn + " " + ln;
+            var t = getTotals(loc); var sym = CFG.currencySymbol || "\u09F3"; var fullname = fn + " " + ln;
             var productsArr = [], quantities = [], qtyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], totalItems = 0;
             CART.forEach(function (item, x) { productsArr.push((x + 1) + ". " + item.title + " - " + sym + item.offerPrice.toLocaleString() + " TK"); quantities.push("Q-" + item.qty); if (item.id >= 1 && item.id <= 13) qtyArr[item.id - 1] = item.qty; totalItems += item.qty; });
-            var payload = { action: "submitOrder", firstname: fn, lastname: ln, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: $("co-acc").value.trim() || "", transaction_id: $("co-txn").value.trim() || "", subtotal: sym + t.sub.toLocaleString() + "৳", delivery_charge: sym + t.del.toLocaleString() + "৳", total: sym + t.tot.toLocaleString() + "৳", subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot, products: productsArr.join(", "), quantities: quantities, quantitiesArray: qtyArr, totalItems: totalItems, offerSubtotal: t.sub, formattedData: CART.map(function (i) { return i.qty; }).join(", ") };
+            var payload = { action: "submitOrder", firstname: fn, lastname: ln, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: $("co-acc").value.trim() || "", transaction_id: $("co-txn").value.trim() || "", subtotal: sym + t.sub.toLocaleString() + "\u09F3", delivery_charge: sym + t.del.toLocaleString() + "\u09F3", total: sym + t.tot.toLocaleString() + "\u09F3", subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot, products: productsArr.join(", "), quantities: quantities, quantitiesArray: qtyArr, totalItems: totalItems, offerSubtotal: t.sub, formattedData: CART.map(function (i) { return i.qty; }).join(", ") };
             var btn = $("btn-place"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i> Placing Order...";
             var snap = CART.slice();
-            fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).then(function (r) { return r.json(); }).then(function (d) { if (d.error) throw new Error(d.error); ORDER = { orderNumber: d.orderNumber, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: payload.account_number, transaction_id: payload.transaction_id, sub: t.sub, del: t.del, tot: t.tot, snap: snap }; closeCheckout(); showInvoice(ORDER); CART = []; saveCart(); renderCartUI(); }).catch(function (e) { errEl.textContent = e.message || "Something went wrong. Please try again."; errEl.classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-check-circle\"></i> Place Order"; });
+            fetch(URL, { method: "POST", body: JSON.stringify(payload), redirect: "follow" }).then(function (r) { return r.json(); }).then(function (d) {
+                if (d.error) throw new Error(d.error);
+                LAST_ORDER = { orderNumber: d.orderNumber, trackingCode: d.trackingCode, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: payload.account_number, transaction_id: payload.transaction_id, sub: t.sub, del: t.del, tot: t.tot, snap: snap };
+                closeCheckout();
+                showSuccess(d.orderNumber, d.trackingCode);
+                CART = []; saveCart(); renderCartUI();
+            }).catch(function (e) { errEl.textContent = e.message || "Could not place order. Please try again."; errEl.classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-check-circle\"></i> Place Order"; });
         }
 
+        /* ── ORDER SUCCESS ─────────────────────────────── */
+        function showSuccess(orderNum, tracking) {
+            $("succ-order-id").textContent = orderNum;
+            $("succ-tracking").textContent = tracking;
+            $("success-veil").classList.add("on");
+        }
+        function closeSuccess() { $("success-veil").classList.remove("on"); }
+        function openTrackFromSuccess() {
+            closeSuccess();
+            var trk = LAST_ORDER ? LAST_ORDER.trackingCode : "";
+            openTrack(trk);
+        }
+
+        /* ── ORDER TRACKING ────────────────────────────── */
+        var STATUS_ORDER = ["Processing", "Confirmed", "Packed", "Shipped", "Out for Delivery", "Delivered"];
+
+        function openTrack(prefill) {
+            $("track-err").classList.remove("on");
+            $("track-result").classList.remove("on");
+            $("track-inp").value = prefill || "";
+            $("track-veil").classList.add("on");
+            if (prefill) doTrack();
+        }
+        function closeTrack() { $("track-veil").classList.remove("on"); }
+        function onTrackVeilClick(e) { if (e.target === $("track-veil")) closeTrack(); }
+
+        function doTrack() {
+            var id = $("track-inp").value.trim();
+            $("track-err").classList.remove("on");
+            $("track-result").classList.remove("on");
+            if (!id) { $("track-err").textContent = "Please enter an Order ID or Tracking Code."; $("track-err").classList.add("on"); return; }
+            var btn = $("btn-search"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i>";
+            fetch(URL + "?action=trackOrder&id=" + encodeURIComponent(id), { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { return JSON.parse(t); }).then(function (d) {
+                if (d.error || !d.found) {
+                    $("track-err").textContent = d.error || "Order not found.";
+                    $("track-err").classList.add("on");
+                } else {
+                    renderTrackResult(d);
+                }
+            }).catch(function (e) { $("track-err").textContent = "Could not connect. Please try again."; $("track-err").classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-magnifying-glass\"></i> Search"; });
+        }
+
+        function renderTrackResult(d) {
+            var status = d.shippingStatus || "Processing";
+            var statusKey = status.toLowerCase().replace(/\s+/g, "");
+
+            // Status chip
+            var chip = $("tr-status-chip");
+            chip.textContent = status;
+            chip.className = "status-chip sc-" + statusKey;
+
+            // Steps timeline
+            var statusIdx = STATUS_ORDER.indexOf(status);
+            if (statusIdx === -1) statusIdx = 0;
+            STATUS_ORDER.forEach(function (s, i) {
+                var key = "step-" + s.toLowerCase().replace(/\s+/g, "");
+                var el = $(key);
+                if (!el) return;
+                var dot = el.querySelector(".step-dot");
+                var lbl = el.querySelector(".step-lbl");
+                if (i < statusIdx) { dot.className = "step-dot done"; lbl.className = "step-lbl done"; }
+                else if (i === statusIdx) { dot.className = "step-dot active"; lbl.className = "step-lbl active"; }
+                else { dot.className = "step-dot"; lbl.className = "step-lbl"; }
+            });
+
+            // Order info
+            $("tr-order-info").innerHTML = "<strong>" + d.orderNumber + "</strong><br/>" + d.date + "<br/>Payment: " + d.payment + (d.trackingCode ? "<br/>Tracking: <strong>" + d.trackingCode + "</strong>" : "");
+            $("tr-delivery-info").innerHTML = "<strong>" + d.fullName + "</strong><br/>" + d.contact + "<br/>" + d.address + "<br/>" + d.delivery;
+
+            // Items
+            var items = String(d.items || "").split(", ");
+            var iHtml = "";
+            items.forEach(function (item) { iHtml += "\u2022 " + item + "<br/>"; });
+            $("tr-items-list").innerHTML = iHtml;
+
+            // Totals
+            $("tr-sub").textContent = d.subtotal;
+            $("tr-del").textContent = d.deliveryCharge;
+            $("tr-tot").textContent = d.total;
+
+            $("track-result").classList.add("on");
+        }
+
+        /* ── INVOICE ───────────────────────────────────── */
         function showInvoice(o) {
-            var sym = CFG.currencySymbol || "৳";
+            var sym = CFG.currencySymbol || "\u09F3";
             var now = new Date().toLocaleDateString("en-BD", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+            $("inv-tracking").textContent = o.trackingCode || "";
             var oh = "<strong>" + o.orderNumber + "</strong><br/>" + now + "<br/>Payment: " + o.services;
             if (o.account_number) oh += "<br/>Account: " + o.account_number;
             if (o.transaction_id) oh += "<br/>Txn: " + o.transaction_id;
