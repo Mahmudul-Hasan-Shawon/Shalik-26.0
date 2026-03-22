@@ -10,7 +10,6 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="shortcut icon"type="image/png"href="https://cdn-icons-png.flaticon.com/512/346/346167.png" />
     <style>
         *,
         *::before,
@@ -103,7 +102,6 @@
             border-radius: 10px
         }
 
-        /* BANNER */
         #promo-banner {
             background: var(--rose-d);
             color: #fff;
@@ -145,7 +143,6 @@
             background: rgba(255, 255, 255, .3)
         }
 
-        /* NAVBAR */
         #navbar {
             position: sticky;
             top: 0;
@@ -226,7 +223,7 @@
             border-radius: var(--r);
             background: none;
             border: none;
-            color: var(--rose-m);
+            color: var(--ink);
             font-size: 18px;
             display: flex;
             align-items: center;
@@ -313,7 +310,6 @@
             font-weight: 600
         }
 
-        /* HERO */
         #hero {
             position: relative;
             overflow: hidden;
@@ -435,7 +431,7 @@
 
         .hero-stat strong {
             display: block;
-            /* font-family: var(--ff-serif); */
+            font-family: var(--ff-serif);
             font-size: 34px;
             font-weight: 700;
             color: #fff
@@ -447,7 +443,6 @@
             letter-spacing: .4px
         }
 
-        /* PAGE */
         .page {
             max-width: 1320px;
             margin: 0 auto;
@@ -479,7 +474,6 @@
             color: var(--slate)
         }
 
-        /* STATES */
         .loading-box {
             text-align: center;
             padding: 80px 24px
@@ -537,7 +531,6 @@
             background: var(--rose-d)
         }
 
-        /* PRODUCT GRID */
         #product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(222px, 1fr));
@@ -632,7 +625,6 @@
         }
 
         .card:hover .card-quick {
-            display: none;
             opacity: 1;
             transform: scale(1)
         }
@@ -744,7 +736,6 @@
             cursor: not-allowed
         }
 
-        /* CART */
         #cart-veil {
             position: fixed;
             inset: 0;
@@ -1009,7 +1000,6 @@
             cursor: not-allowed
         }
 
-        /* PRODUCT MODAL */
         #modal-veil {
             position: fixed;
             inset: 0;
@@ -1202,7 +1192,7 @@
             font-size: 14px;
             font-weight: 700;
             padding: 13px;
-            border-radius: 50px;
+            border-radius: var(--r-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1220,7 +1210,6 @@
             cursor: not-allowed
         }
 
-        /* CHECKOUT */
         #checkout-veil {
             position: fixed;
             inset: 0;
@@ -1393,7 +1382,6 @@
             transform: none
         }
 
-        /* ORDER SUCCESS MODAL */
         #success-veil {
             position: fixed;
             inset: 0;
@@ -1543,7 +1531,6 @@
             color: #fff
         }
 
-        /* ORDER TRACKING MODAL */
         #track-veil {
             position: fixed;
             inset: 0;
@@ -1658,7 +1645,6 @@
             display: block
         }
 
-        /* Status timeline */
         .status-bar {
             background: var(--blue-l);
             border: 1px solid #BFDBFE;
@@ -1722,7 +1708,6 @@
             color: var(--red)
         }
 
-        /* Steps */
         .steps {
             display: flex;
             justify-content: space-between;
@@ -1796,7 +1781,6 @@
             font-weight: 700
         }
 
-        /* Order detail cards */
         .tr-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1885,7 +1869,6 @@
             background: var(--bdr)
         }
 
-        /* INVOICE MODAL */
         #inv-veil {
             position: fixed;
             inset: 0;
@@ -2127,7 +2110,6 @@
             background: var(--rose-d)
         }
 
-        /* TOAST */
         #toast {
             position: fixed;
             bottom: 26px;
@@ -2155,7 +2137,6 @@
             transform: translateX(-50%) translateY(0)
         }
 
-        /* FOOTER */
         footer {
             background: var(--ink);
             color: rgba(255, 255, 255, .6);
@@ -2180,7 +2161,6 @@
             color: var(--rose-m)
         }
 
-        /* UTILS */
         .hidden {
             display: none !important
         }
@@ -2256,14 +2236,12 @@
 
 <body>
 
-    <!-- BANNER -->
     <div id="promo-banner">
         <span id="banner-text">🌸 Free Delivery on Orders over ৳2000 Inside Dhaka!</span>
         <button class="banner-close" onclick="document.getElementById('promo-banner').style.display='none'"><i
                 class="fa fa-xmark"></i></button>
     </div>
 
-    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-main">
             <div class="nav-logo" id="site-logo">Shalik <em>Glow</em></div>
@@ -2286,7 +2264,6 @@
         <div class="nav-cats" id="cat-pills"></div>
     </nav>
 
-    <!-- HERO -->
     <section id="hero">
         <div class="hero-petal hero-petal-1"></div>
         <div class="hero-petal hero-petal-2"></div>
@@ -2304,7 +2281,6 @@
         </div>
     </section>
 
-    <!-- PRODUCTS -->
     <div class="page" id="shop">
         <div class="section-head">
             <h2 class="section-title">The <span>Collection</span></h2>
@@ -2328,7 +2304,6 @@
         <div id="product-grid" class="hidden"></div>
     </div>
 
-    <!-- CART -->
     <div id="cart-veil" onclick="toggleCart()"></div>
     <aside id="cart">
         <div class="cart-head">
@@ -2343,7 +2318,6 @@
         </div>
     </aside>
 
-    <!-- PRODUCT MODAL -->
     <div id="modal-veil" onclick="onModalVeilClick(event)">
         <div id="modal">
             <div class="modal-img"><img id="m-img" src="" alt="" /><button class="modal-x" onclick="closeModal()"><i
@@ -2369,7 +2343,6 @@
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL -->
     <div id="checkout-veil" onclick="onCoVeilClick(event)">
         <div id="checkout-box">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
@@ -2426,12 +2399,11 @@
         </div>
     </div>
 
-    <!-- ORDER SUCCESS MODAL -->
     <div id="success-veil">
         <div id="success-box">
             <div class="success-icon"><i class="fa fa-check"></i></div>
             <h2 class="success-title">Order Placed!</h2>
-            <p class="success-sub">Your order has been received. Use your tracking code below to check delivery status
+            <p class="success-sub">Your order has been received. Save your tracking code to check delivery status
                 anytime.</p>
             <div class="order-id-box">
                 <div class="order-id-lbl">Order ID</div>
@@ -2440,7 +2412,7 @@
             <div class="tracking-box">
                 <div class="tracking-lbl">Your Tracking Code</div>
                 <div class="tracking-val" id="succ-tracking"></div>
-                <div class="tracking-hint">Save this code to track your shipment</div>
+                <div class="tracking-hint">Use this code to track your shipment</div>
             </div>
             <button class="btn-track-order" onclick="openTrackFromSuccess()"><i class="fa fa-location-dot"></i> Track My
                 Order</button>
@@ -2448,7 +2420,6 @@
         </div>
     </div>
 
-    <!-- ORDER TRACKING MODAL -->
     <div id="track-veil" onclick="onTrackVeilClick(event)">
         <div id="track-box">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
@@ -2463,15 +2434,11 @@
                     Search</button>
             </div>
             <p class="track-err" id="track-err"></p>
-
             <div class="track-result" id="track-result">
-                <!-- Status bar -->
                 <div class="status-bar">
                     <div class="sl">Current Status</div>
                     <div class="status-chip" id="tr-status-chip"></div>
                 </div>
-
-                <!-- Steps timeline -->
                 <div class="steps" id="tr-steps">
                     <div class="step" id="step-processing">
                         <div class="step-dot"><i class="fa fa-clock"></i></div>
@@ -2498,8 +2465,6 @@
                         <div class="step-lbl">Delivered</div>
                     </div>
                 </div>
-
-                <!-- Order info -->
                 <div class="tr-grid">
                     <div class="tr-box">
                         <div class="tbl">Order Info</div>
@@ -2510,24 +2475,20 @@
                         <p id="tr-delivery-info"></p>
                     </div>
                 </div>
-
                 <div class="tr-items">
                     <div class="tbl">Items Ordered</div>
                     <div id="tr-items-list"></div>
                 </div>
-
                 <div class="tr-totals">
                     <div class="line"><span>Subtotal</span><span id="tr-sub"></span></div>
                     <div class="line"><span>Delivery</span><span id="tr-del"></span></div>
                     <div class="grand"><span>Total</span><span id="tr-tot"></span></div>
                 </div>
             </div>
-
             <button class="btn-close-track" onclick="closeTrack()">Close</button>
         </div>
     </div>
 
-    <!-- INVOICE MODAL -->
     <div id="inv-veil">
         <div id="inv-box">
             <div id="inv-content">
@@ -2579,10 +2540,8 @@
         </div>
     </div>
 
-    <!-- TOAST -->
     <div id="toast"><i class="fa fa-check-circle" id="toast-ic"></i><span id="toast-msg"></span></div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo">✿ Shalik Glow Corner ✿</div>
         <p>Your Glow, Our Pride — Authentic Korean Beauty</p>
@@ -2591,10 +2550,12 @@
     </footer>
 
     <script>
-        var URL = "https://script.google.com/macros/s/AKfycbyD0zrV-zN8KXi4O5hTGbrsNJoPXiuxaK1p7XCAI7iM9LkyFE5qqMWYAyjSlRJDbtUW/exec";
-        var ALL = [], FILTERED = [], CFG = {}, CART = JSON.parse(localStorage.getItem("sgc_cart") || "[]"), ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, LAST_ORDER = null;
-        var IMGS = { d: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format", s: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format", c: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=500&auto=format", cl: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&auto=format", t: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=500&auto=format", sun: "https://images.unsplash.com/photo-1556228852-6d35a585d566?w=500&auto=format", bb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format" };
+        var URL = "https://script.google.com/macros/s/AKfycbz76HVNA9EoMtvOoPKo1kQ3YCgi-BTAVCfxkpiwrqImuZ16acrW_vi3nFOiyhmdRQDyBg/exec";
 
+        // totalProducts is read from CFG.totalProducts (which Code.gs reads from B31)
+        // Default 13 until config loads — then auto-updates
+        var ALL = [], FILTERED = [], CFG = { totalProducts: 13 }, CART = JSON.parse(localStorage.getItem("sgc_cart") || "[]"), ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, LAST_ORDER = null;
+        var IMGS = { d: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format", s: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format", c: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=500&auto=format", cl: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&auto=format", t: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=500&auto=format", sun: "https://images.unsplash.com/photo-1556228852-6d35a585d566?w=500&auto=format", bb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format" };
         function getImg(p) { if (p.imageUrl && p.imageUrl.indexOf("http") === 0) return p.imageUrl; var t = (p.title + " " + p.category).toLowerCase(); if (t.indexOf("serum") !== -1) return IMGS.s; if (t.indexOf("cream") !== -1) return IMGS.c; if (t.indexOf("cleanser") !== -1) return IMGS.cl; if (t.indexOf("toner") !== -1) return IMGS.t; if (t.indexOf("sunscreen") !== -1 || t.indexOf("sunblock") !== -1) return IMGS.sun; if (t.indexOf("bb") !== -1 || t.indexOf("boomer") !== -1) return IMGS.bb; if (t.indexOf("essence") !== -1) return IMGS.s; return IMGS.d; }
         function fmt(n) { var sym = CFG.currencySymbol || "\u09F3"; return sym + (Number(n) || 0).toLocaleString("en-BD"); }
         function $(i) { return document.getElementById(i); }
@@ -2605,7 +2566,13 @@
 
         function loadData() {
             show("loading-state"); hide("error-state"); hide("empty-state"); hide("product-grid");
-            fetch(URL + "?action=getAll", { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { var d = JSON.parse(t); if (d.error) throw new Error(d.error); return d; }).then(function (d) { ALL = d.products || []; CFG = d.config || {}; applyConfig(); buildPills(); applyFilters(); hide("loading-state"); }).catch(function (e) { hide("loading-state"); $("err-msg").textContent = e.message || "Connection failed."; show("error-state"); });
+            fetch(URL + "?action=getAll", { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { var d = JSON.parse(t); if (d.error) throw new Error(d.error); return d; }).then(function (d) {
+                ALL = d.products || [];
+                CFG = d.config || { totalProducts: 13 };
+                // Ensure totalProducts is a valid number
+                if (!CFG.totalProducts || CFG.totalProducts < 1) CFG.totalProducts = 13;
+                applyConfig(); buildPills(); applyFilters(); hide("loading-state");
+            }).catch(function (e) { hide("loading-state"); $("err-msg").textContent = e.message || "Connection failed."; show("error-state"); });
         }
 
         function applyConfig() {
@@ -2641,8 +2608,7 @@
                 h += "<div class=\"card-badges\">";
                 if (p.hasDiscount) h += "<span class=\"badge badge-sale\">-" + p.discountPct + "%</span>";
                 if (!p.inStock) h += "<span class=\"badge badge-oos\">Out of Stock</span>";
-                h += "</div>";
-                h += "<button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button></div>";
+                h += "</div><button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa fa-plus\"></i></button></div>";
                 h += "<div class=\"card-body\"><span class=\"card-brand\">" + p.brand + "</span><p class=\"card-name\">" + p.title + "</p><p class=\"card-size\">" + p.size + "</p>";
                 h += "<div class=\"card-pricing\"><span class=\"p-new\">" + fmt(px) + "</span>";
                 if (p.hasDiscount) h += "<span class=\"p-old\">" + fmt(p.oldPrice) + "</span>";
@@ -2659,7 +2625,7 @@
             $("m-img").src = getImg(p); $("m-img").alt = p.title;
             $("m-brand").textContent = p.brand + " \xb7 " + p.category;
             $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
-            $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean beauty product.";
+            $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean beauty.";
             $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
             $("m-qty").textContent = 1;
             var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
@@ -2723,12 +2689,44 @@
             var fn = $("co-fn").value.trim(), ln = $("co-ln").value.trim(), ph = $("co-phone").value.trim(), addr = $("co-addr").value.trim(), loc = $("co-loc").value, pay = $("co-pay").value;
             var errEl = $("co-err"); errEl.classList.remove("on");
             if (!fn || !ln || !ph || !addr || !loc || !pay) { errEl.textContent = "Please fill in all required fields."; errEl.classList.add("on"); return; }
+
+            // ── Read totalProducts from CFG (pulled from Website Config B31) ──
+            var totalProds = parseInt(CFG.totalProducts) || 13;
+
             var t = getTotals(loc); var sym = CFG.currencySymbol || "\u09F3"; var fullname = fn + " " + ln;
-            var productsArr = [], quantities = [], qtyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], totalItems = 0;
-            CART.forEach(function (item, x) { productsArr.push((x + 1) + ". " + item.title + " - " + sym + item.offerPrice.toLocaleString() + " TK"); quantities.push("Q-" + item.qty); if (item.id >= 1 && item.id <= 13) qtyArr[item.id - 1] = item.qty; totalItems += item.qty; });
-            var payload = { action: "submitOrder", firstname: fn, lastname: ln, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: $("co-acc").value.trim() || "", transaction_id: $("co-txn").value.trim() || "", subtotal: sym + t.sub.toLocaleString() + "\u09F3", delivery_charge: sym + t.del.toLocaleString() + "\u09F3", total: sym + t.tot.toLocaleString() + "\u09F3", subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot, products: productsArr.join(", "), quantities: quantities, quantitiesArray: qtyArr, totalItems: totalItems, offerSubtotal: t.sub, formattedData: CART.map(function (i) { return i.qty; }).join(", ") };
+            var productsArr = [], quantities = [], totalItems = 0;
+
+            // Build zero-filled array sized to totalProducts from B31
+            var qtyArr = [];
+            for (var z = 0; z < totalProds; z++) { qtyArr.push(0); }
+
+            CART.forEach(function (item, x) {
+                productsArr.push((x + 1) + ". " + item.title + " - " + sym + item.offerPrice.toLocaleString() + " TK");
+                quantities.push("Q-" + item.qty);
+                // Map product id to correct index (id is 1-based)
+                if (item.id >= 1 && item.id <= totalProds) { qtyArr[item.id - 1] = item.qty; }
+                totalItems += item.qty;
+            });
+
+            var payload = {
+                action: "submitOrder", firstname: fn, lastname: ln, fullname: fullname,
+                contactnumber: ph, address: addr, delivery_location: loc, services: pay,
+                account_number: $("co-acc").value.trim() || "",
+                transaction_id: $("co-txn").value.trim() || "",
+                subtotal: sym + t.sub.toLocaleString() + "\u09F3",
+                delivery_charge: sym + t.del.toLocaleString() + "\u09F3",
+                total: sym + t.tot.toLocaleString() + "\u09F3",
+                subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot,
+                products: productsArr.join(", "), quantities: quantities,
+                // quantitiesArray is sized to totalProducts (B31) automatically
+                quantitiesArray: qtyArr,
+                totalItems: totalItems, offerSubtotal: t.sub,
+                formattedData: CART.map(function (i) { return i.qty; }).join(", ")
+            };
+
             var btn = $("btn-place"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i> Placing Order...";
             var snap = CART.slice();
+
             fetch(URL, { method: "POST", body: JSON.stringify(payload), redirect: "follow" }).then(function (r) { return r.json(); }).then(function (d) {
                 if (d.error) throw new Error(d.error);
                 LAST_ORDER = { orderNumber: d.orderNumber, trackingCode: d.trackingCode, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: payload.account_number, transaction_id: payload.transaction_id, sub: t.sub, del: t.del, tot: t.tot, snap: snap };
@@ -2738,90 +2736,45 @@
             }).catch(function (e) { errEl.textContent = e.message || "Could not place order. Please try again."; errEl.classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-check-circle\"></i> Place Order"; });
         }
 
-        /* ── ORDER SUCCESS ─────────────────────────────── */
-        function showSuccess(orderNum, tracking) {
-            $("succ-order-id").textContent = orderNum;
-            $("succ-tracking").textContent = tracking;
-            $("success-veil").classList.add("on");
-        }
+        function showSuccess(orderNum, tracking) { $("succ-order-id").textContent = orderNum; $("succ-tracking").textContent = tracking; $("success-veil").classList.add("on"); }
         function closeSuccess() { $("success-veil").classList.remove("on"); }
-        function openTrackFromSuccess() {
-            closeSuccess();
-            var trk = LAST_ORDER ? LAST_ORDER.trackingCode : "";
-            openTrack(trk);
-        }
+        function openTrackFromSuccess() { closeSuccess(); openTrack(LAST_ORDER ? LAST_ORDER.trackingCode : ""); }
 
-        /* ── ORDER TRACKING ────────────────────────────── */
         var STATUS_ORDER = ["Processing", "Confirmed", "Packed", "Shipped", "Out for Delivery", "Delivered"];
-
-        function openTrack(prefill) {
-            $("track-err").classList.remove("on");
-            $("track-result").classList.remove("on");
-            $("track-inp").value = prefill || "";
-            $("track-veil").classList.add("on");
-            if (prefill) doTrack();
-        }
+        function openTrack(prefill) { $("track-err").classList.remove("on"); $("track-result").classList.remove("on"); $("track-inp").value = prefill || ""; $("track-veil").classList.add("on"); if (prefill) doTrack(); }
         function closeTrack() { $("track-veil").classList.remove("on"); }
         function onTrackVeilClick(e) { if (e.target === $("track-veil")) closeTrack(); }
 
         function doTrack() {
             var id = $("track-inp").value.trim();
-            $("track-err").classList.remove("on");
-            $("track-result").classList.remove("on");
+            $("track-err").classList.remove("on"); $("track-result").classList.remove("on");
             if (!id) { $("track-err").textContent = "Please enter an Order ID or Tracking Code."; $("track-err").classList.add("on"); return; }
             var btn = $("btn-search"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i>";
             fetch(URL + "?action=trackOrder&id=" + encodeURIComponent(id), { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { return JSON.parse(t); }).then(function (d) {
-                if (d.error || !d.found) {
-                    $("track-err").textContent = d.error || "Order not found.";
-                    $("track-err").classList.add("on");
-                } else {
-                    renderTrackResult(d);
-                }
+                if (d.error || !d.found) { $("track-err").textContent = d.error || "Order not found."; $("track-err").classList.add("on"); }
+                else { renderTrackResult(d); }
             }).catch(function (e) { $("track-err").textContent = "Could not connect. Please try again."; $("track-err").classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-magnifying-glass\"></i> Search"; });
         }
 
         function renderTrackResult(d) {
             var status = d.shippingStatus || "Processing";
             var statusKey = status.toLowerCase().replace(/\s+/g, "");
-
-            // Status chip
-            var chip = $("tr-status-chip");
-            chip.textContent = status;
-            chip.className = "status-chip sc-" + statusKey;
-
-            // Steps timeline
-            var statusIdx = STATUS_ORDER.indexOf(status);
-            if (statusIdx === -1) statusIdx = 0;
+            var chip = $("tr-status-chip"); chip.textContent = status; chip.className = "status-chip sc-" + statusKey;
+            var statusIdx = STATUS_ORDER.indexOf(status); if (statusIdx === -1) statusIdx = 0;
             STATUS_ORDER.forEach(function (s, i) {
-                var key = "step-" + s.toLowerCase().replace(/\s+/g, "");
-                var el = $(key);
-                if (!el) return;
-                var dot = el.querySelector(".step-dot");
-                var lbl = el.querySelector(".step-lbl");
+                var key = "step-" + s.toLowerCase().replace(/\s+/g, ""); var el = $(key); if (!el) return;
+                var dot = el.querySelector(".step-dot"), lbl = el.querySelector(".step-lbl");
                 if (i < statusIdx) { dot.className = "step-dot done"; lbl.className = "step-lbl done"; }
                 else if (i === statusIdx) { dot.className = "step-dot active"; lbl.className = "step-lbl active"; }
                 else { dot.className = "step-dot"; lbl.className = "step-lbl"; }
             });
-
-            // Order info
             $("tr-order-info").innerHTML = "<strong>" + d.orderNumber + "</strong><br/>" + d.date + "<br/>Payment: " + d.payment + (d.trackingCode ? "<br/>Tracking: <strong>" + d.trackingCode + "</strong>" : "");
             $("tr-delivery-info").innerHTML = "<strong>" + d.fullName + "</strong><br/>" + d.contact + "<br/>" + d.address + "<br/>" + d.delivery;
-
-            // Items
-            var items = String(d.items || "").split(", ");
-            var iHtml = "";
-            items.forEach(function (item) { iHtml += "\u2022 " + item + "<br/>"; });
-            $("tr-items-list").innerHTML = iHtml;
-
-            // Totals
-            $("tr-sub").textContent = d.subtotal;
-            $("tr-del").textContent = d.deliveryCharge;
-            $("tr-tot").textContent = d.total;
-
+            var items = String(d.items || "").split(", "); var iHtml = ""; items.forEach(function (item) { iHtml += "\u2022 " + item + "<br/>"; }); $("tr-items-list").innerHTML = iHtml;
+            $("tr-sub").textContent = d.subtotal; $("tr-del").textContent = d.deliveryCharge; $("tr-tot").textContent = d.total;
             $("track-result").classList.add("on");
         }
 
-        /* ── INVOICE ───────────────────────────────────── */
         function showInvoice(o) {
             var sym = CFG.currencySymbol || "\u09F3";
             var now = new Date().toLocaleDateString("en-BD", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
