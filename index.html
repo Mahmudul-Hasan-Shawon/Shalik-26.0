@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
+        <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/346/346167.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
         *,
@@ -223,7 +224,7 @@
             border-radius: var(--r);
             background: none;
             border: none;
-            color: var(--ink);
+            color: var(--rose-m);
             font-size: 18px;
             display: flex;
             align-items: center;
@@ -431,7 +432,7 @@
 
         .hero-stat strong {
             display: block;
-            font-family: var(--ff-serif);
+            /* font-family: var(--ff-serif); */
             font-size: 34px;
             font-weight: 700;
             color: #fff
@@ -598,7 +599,7 @@
         }
 
         .badge-oos {
-            background: rgba(28, 25, 23, .65);
+            background: var(--slate);
             color: #fff;
             backdrop-filter: blur(4px)
         }
@@ -614,7 +615,8 @@
             color: var(--rose);
             border: none;
             font-size: 15px;
-            display: flex;
+            /* display: flex; */
+            display: none;
             align-items: center;
             justify-content: center;
             opacity: 0;
@@ -1192,7 +1194,7 @@
             font-size: 14px;
             font-weight: 700;
             padding: 13px;
-            border-radius: var(--r-lg);
+            border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2625,7 +2627,13 @@
             $("m-img").src = getImg(p); $("m-img").alt = p.title;
             $("m-brand").textContent = p.brand + " \xb7 " + p.category;
             $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
-            $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean beauty.";
+            // $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean Products.";
+            $("m-desc").innerHTML = `
+            ${p.size} — ${p.brand} | 
+            <img src="https://cdn-icons-png.flaticon.com/512/8921/8921439.png" 
+                style="height: 2em; width: 2em; vertical-align: middle; margin-right: 2px;">
+            Authentic Korean Products.
+            `;
             $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
             $("m-qty").textContent = 1;
             var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
