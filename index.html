@@ -2429,8 +2429,8 @@
             .hero-title { font-size: 28px }
             .hero-stats { flex-direction: column; gap: 20px; align-items: center }
             .hero-stat { text-align: center }
-            #product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px }
-            .card-size, .stock-tag { display: none }
+            #product-grid { grid-template-columns: 1fr; gap: 10px }
+            .stock-tag { display: none }
             .card-body { padding: 10px; gap: 3px }
             .card-brand { font-size: 9px }
             .card-name { font-size: 12px; -webkit-line-clamp: 1 }
@@ -2501,7 +2501,7 @@
 
         @media(max-width:520px) {
             #product-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 gap: 14px
             }
 
