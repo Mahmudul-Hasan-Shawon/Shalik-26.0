@@ -11,6 +11,9 @@
         rel="stylesheet" />
         <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/346/346167.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *,
         *::before,
@@ -256,7 +259,7 @@
             line-height: 1
         }
 
-.nav-track-btn {
+        .nav-track-btn {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -485,7 +488,8 @@
 
         .section-count {
             font-size: 13px;
-            color: var(--slate)
+            color: var(--slate);
+            font-weight: 600;
         }
 
         .loading-box {
@@ -607,7 +611,7 @@
         }
 
         .badge-sale {
-            background: var(--rose);
+            background: black;
             color: #fff
         }
 
@@ -685,7 +689,8 @@
 
         .card-size {
             font-size: 11.5px;
-            color: var(--slate)
+            color: var(--slate);
+            font-weight: 700;
         }
 
         .card-pricing {
@@ -696,8 +701,26 @@
             flex-wrap: wrap
         }
 
-        .p-new {
+        .p-new,
+        .p-old,
+        .ci-price-old,
+        .modal-price,
+        .m-price,
+        .modal-price-old,
+        .ci-price,
+        .ci-tot,
+        .cf-price,
+        .cart-line,
+        .osm-line,
+        .tr-totals,
+        .inv-line,
+        .inv-grand,
+        .order-id-val,
+        .tracking-val {
             font-family: "Hind Siliguri", sans-serif;
+        }
+
+        .p-new {
             font-size: 18px;
             font-weight: 600;
             color: var(--rose)
@@ -724,18 +747,18 @@
         }
 
         .stock-tag.in {
-            background: var(--green-l);
-            color: var(--green)
+            background: #2c9f4f;
+            color: white;
         }
 
         .stock-tag.out {
-            background: var(--red-l);
-            color: var(--red)
+            background: var(--rose-d);
+            color: white;
         }
 
         .stock-tag.low {
-        background: var(--amber-l);
-        color: var(--amber);
+        background: var(--amber);
+        color: var(--amber-l);
         }
 
         .add-btn {
@@ -807,7 +830,7 @@
         }
 
         .cart-head h3 {
-            font-family: var(--ff-sans);
+            font-family: var(--ff-serif);
             font-size: 24px;
             font-weight: 600;
             color: var(--ink)
@@ -1128,7 +1151,8 @@
         .modal-desc {
             font-size: 13.5px;
             color: var(--slate);
-            line-height: 1.75
+            line-height: 1.75;
+            font-weight: 700;
         }
 
         .modal-price-row {
@@ -1142,7 +1166,6 @@
             font-size: 30px;
             font-weight: 700;
             color: var(--rose-d);
-            font-family: var(--ff-sans)
         }
 
         .modal-price-old {
@@ -1635,7 +1658,7 @@
         }
 
         .btn-search {
-            background: var(--blue);
+            background: var(--rose);
             color: #fff;
             font-size: 14px;
             font-weight: 700;
@@ -1646,7 +1669,7 @@
         }
 
         .btn-search:hover {
-            background: #1e40af
+            background: var(--rose-d)
         }
 
         .btn-search:disabled {
@@ -2502,7 +2525,7 @@
                     <i class="fa fa-bag-shopping"></i>
                     <span class="cart-count hidden" id="cart-cnt">0</span>
                 </button>
-                <a href="https://wa.me/821027805480" id="wa-btn" target="_blank" class="nav-icon-btn" title="WhatsApp" style="color:#22C55E">
+                <a href="#" id="wa-btn" target="_blank" class="nav-icon-btn" title="WhatsApp" style="color:#22C55E">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
             </div>
@@ -2525,12 +2548,7 @@
                 <div class="hero-stat"><strong id="s-brands">5</strong><span>Brands</span></div>
             </div>
 
-           <!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<h2 class="price-note">
+           <h2 class="price-note">
     পণ্যের মূল্য পরিবর্তনশীল। প্রদর্শিত মূল্য শুধুমাত্র ধারণার জন্য প্রদান করা হয়েছে; প্রকৃত মূল্য কিছুটা কম বা বেশি হতে পারে। সর্বশেষ মূল্য জানতে অনুগ্রহ করে সরাসরি যোগাযোগ করুন।
 
     <div class="contact-number">
@@ -2717,7 +2735,7 @@
     <div id="track-veil" onclick="onTrackVeilClick(event)">
         <div id="track-box">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <h2 class="track-title">Track Your Order</h2>
+                <h2 class="track-title">Track Your Order <i class="fa-solid fa-truck-fast" style="color: var(--rose);"></i></h2>
                 <button class="icon-btn" onclick="closeTrack()"><i class="fa fa-xmark"></i></button>
             </div>
             <p class="track-sub">Enter your Order ID (e.g. #ORD-...) or Tracking Code (e.g. SGC-...)</p>
@@ -2825,7 +2843,7 @@
                 </div>
                 <p class="inv-thanks">🌸 Thank you for shopping with us!</p>
                 <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow
-                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2026 All Rights Reserved</div>
+                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2025 All Rights Reserved</div>
             </div>
             <div class="inv-actions">
                 <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
@@ -2840,7 +2858,7 @@
         <div class="footer-logo">✿ Shalik Glow Corner ✿</div>
         <p>Your Glow, Our Pride — Authentic Korean Beauty</p>
         <p style="margin-top:8px"><a href="mailto:shalikbeauty@gmail.com">shalikbeauty@gmail.com</a></p>
-        <p style="margin-top:6px;font-size:11px;opacity:.4">© 2026 Shalik Glow Corner. All Rights Reserved.</p>
+        <p style="margin-top:6px;font-size:11px;opacity:.4">© 2025 Shalik Glow Corner. All Rights Reserved.</p>
     </footer> -->
 
     <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -2911,7 +2929,7 @@
     </footer>
 
     <script>
-        var URL = "https://script.google.com/macros/s/AKfycbz76HVNA9EoMtvOoPKo1kQ3YCgi-BTAVCfxkpiwrqImuZ16acrW_vi3nFOiyhmdRQDyBg/exec";
+        var URL = "https://script.google.com/macros/s/AKfycbwCZorT-JnPZtp7uq9d3nCDt89HOOYIwmf-_Gr-8_KDVRbBVIOFl67IjwkBTSSoGdH4Kw/exec";
 
         // totalProducts is read from CFG.totalProducts (which Code.gs reads from B31)
         // Default 13 until config loads — then auto-updates
@@ -2980,7 +2998,7 @@
                 h += "<div class=\"card-img\"><img src=\"" + getImg(p) + "\" alt=\"" + (p.title || "").replace(/\"/g, "&quot;") + "\" loading=\"lazy\" onerror=\"this.src='" + IMGS.d + "'\"/>";
                 h += "<div class=\"card-badges\">";
                 if (p.hasDiscount) h += "<span class=\"badge badge-sale\">-" + p.discountPct + "%</span>";
-                if (si.cls === "out") h += "<span class=\"badge badge-oos\">Out of Stock</span>";
+                // if (si.cls === "out") h += "<span class=\"badge badge-oos\">Out of Stock</span>";
                 else if (si.cls === "low") h += "<span class=\"badge badge-low\">Low Stock</span>";
                 h += "</div><button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ")\" " + dis + "><i class=\"fa-solid fa-cart-plus\"></i></button></div>";
                 h += "<div class=\"card-body\"><span class=\"card-brand\">" + p.brand + "</span><p class=\"card-name\">" + p.title + "</p><p class=\"card-size\">" + p.size + "</p>";
@@ -3001,11 +3019,15 @@
             $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
             // $("m-desc").textContent = p.size + " \u2014 " + p.brand + " | Authentic Korean Products.";
             
+            // $("m-desc").innerHTML = `
+            // ${p.size} 
+            // <img src="https://cdn-icons-png.flaticon.com/512/8921/8921439.png" 
+            //     style="height: 2em; width: 2em; vertical-align: middle; margin-right: 2px;">
+            // Authentic
+            // `;
+
             $("m-desc").innerHTML = `
-            ${p.size} 
-            <img src="https://cdn-icons-png.flaticon.com/512/8921/8921439.png" 
-                style="height: 2em; width: 2em; vertical-align: middle; margin-right: 2px;">
-            Authentic
+            ${p.size}
             `;
             $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
             $("m-qty").textContent = 1;
@@ -3085,7 +3107,7 @@
             for (var z = 0; z < totalProds; z++) { qtyArr.push(0); }
 
             CART.forEach(function (item, x) {
-                productsArr.push((x + 1) + ". " + item.title + " - " + sym + item.offerPrice.toLocaleString() + " TK");
+                productsArr.push((x + 1) + ". " + item.title + " - " + fmt(item.offerPrice));
                 quantities.push("Q-" + item.qty);
                 // Map product id to correct index (id is 1-based)
                 if (item.id >= 1 && item.id <= totalProds) { qtyArr[item.id - 1] = item.qty; }
@@ -3097,9 +3119,9 @@
                 contactnumber: ph, address: addr, delivery_location: loc, services: pay,
                 account_number: $("co-acc").value.trim() || "",
                 transaction_id: $("co-txn").value.trim() || "",
-                subtotal: sym + t.sub.toLocaleString() + "\u09F3",
-                delivery_charge: sym + t.del.toLocaleString() + "\u09F3",
-                total: sym + t.tot.toLocaleString() + "\u09F3",
+                subtotal: fmt(t.sub),
+                delivery_charge: fmt(t.del),
+                total: fmt(t.tot),
                 subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot,
                 products: productsArr.join(", "), quantities: quantities,
                 // quantitiesArray is sized to totalProducts (B31) automatically
