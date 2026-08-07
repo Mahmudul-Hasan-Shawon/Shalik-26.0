@@ -167,7 +167,7 @@
         }
 
         .nav-logo {
-            font-family: var(--ff-sans);
+            font-family: cinzel, Georgia, serif;
             font-size: 24px;
             font-weight: 700;
             color: var(--rose);
@@ -2236,7 +2236,7 @@
         }
 
         .footer-brand-name {
-            font-family: var(--ff);
+            font-family: cinzel, serif;
             font-size: 22px;
             font-weight: 800;
             color: #fff;
@@ -2244,10 +2244,19 @@
             letter-spacing: -.02em
         }
 
-        .footer-brand-name em {
-            color: var(--rose-m);
-            font-style: normal
+        /* Import Cinzel */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
+
+        .brand-logo-text {
+            font-family: "Cinzel", serif;
+            font-weight: 700;
+            font-style: normal; /* Prevent italic */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--rose);
         }
+
+
 
         .footer-about {
             font-size: 13.5px;
@@ -2513,7 +2522,11 @@
 
     <nav id="navbar">
         <div class="nav-main">
-            <div class="nav-logo" id="site-logo">S H A L I K </div>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<div class="nav-logo" id="site-logo">SHALIK</div>
             <div class="search-wrap">
                 <i class="fa fa-magnifying-glass"></i>
                 <input type="text" id="search-inp" placeholder="Search products, brands…" oninput="onSearch()" />
@@ -2843,7 +2856,7 @@
                 </div>
                 <p class="inv-thanks">🌸 Thank you for shopping with us!</p>
                 <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow
-                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2025 All Rights Reserved</div>
+                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2026 All Rights Reserved</div>
             </div>
             <div class="inv-actions">
                 <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
@@ -2858,7 +2871,7 @@
         <div class="footer-logo">✿ Shalik Glow Corner ✿</div>
         <p>Your Glow, Our Pride — Authentic Korean Beauty</p>
         <p style="margin-top:8px"><a href="mailto:shalikbeauty@gmail.com">shalikbeauty@gmail.com</a></p>
-        <p style="margin-top:6px;font-size:11px;opacity:.4">© 2025 Shalik Glow Corner. All Rights Reserved.</p>
+        <p style="margin-top:6px;font-size:11px;opacity:.4">© 2026 Shalik Glow Corner. All Rights Reserved.</p>
     </footer> -->
 
     <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -2867,7 +2880,7 @@
         <div class="footer-main">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand-name"><em>Shalik</em> Glow Corner</div>
+                    <div class="footer-brand-name"> <span class="brand-logo-text">Shalik</span> Glow Corner</div>
                     <p class="footer-about">Your trusted destination for premium skincare and beauty products in Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
                     <div class="footer-socials">
                         <a href="https://www.facebook.com/people/Shalik-Beauty/61553616282600/" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
