@@ -2153,6 +2153,9 @@
             flex-direction: column;
             gap: 16px
         }
+        .modal-info.locked {
+    overflow-y: hidden;
+}
 
         #modal-veil.on .modal-info>* {
             animation: rise .55s var(--e-silk) both
@@ -4725,24 +4728,42 @@
             observeNew(Array.prototype.slice.call($("product-grid").querySelectorAll(".card")));
         }
 
-        function openModal(id) {
-            MOD_PROD = null; for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { MOD_PROD = ALL[i]; break; } }
-            if (!MOD_PROD) return; MOD_QTY = 1; var p = MOD_PROD;
-            var px = p.displayPrice || p.offerPrice || p.oldPrice;
-            $("m-img").src = getImg(p); $("m-img").alt = p.title;
-            $("m-brand").textContent = p.brand + " \xb7 " + p.category;
-            $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
-            $("m-desc").innerHTML = p.size;
-            $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
-            $("m-qty").textContent = 1;
-            var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
-            var si = getStockInfo(p);
-            var st = $("m-stock");
-            st.textContent = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
-            st.className = "modal-stock " + si.cls;
-            $("m-add").disabled = !p.inStock; $("modal-veil").classList.add("on");
-        }
-        function closeModal() { $("modal-veil").classList.remove("on"); }
+var _modalUnlockT;
+
+function openModal(id) {
+    MOD_PROD = null; for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { MOD_PROD = ALL[i]; break; } }
+    if (!MOD_PROD) return; MOD_QTY = 1; var p = MOD_PROD;
+    var px = p.displayPrice || p.offerPrice || p.oldPrice;
+    $("m-img").src = getImg(p); $("m-img").alt = p.title;
+    $("m-brand").textContent = p.brand + " \xb7 " + p.category;
+    $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
+    $("m-desc").innerHTML = p.size;
+    $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
+    $("m-qty").textContent = 1;
+    var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
+    var si = getStockInfo(p);
+    var st = $("m-stock");
+    st.textContent = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
+    st.className = "modal-stock " + si.cls;
+    $("m-add").disabled = !p.inStock;
+
+    // Children animate in from translateY(26px); that transform counts toward
+    // this pane's scroll overflow and flashes a scrollbar. Clip until the
+    // stagger lands (.55s duration + .42s max delay).
+    var info = document.querySelector(".modal-info");
+    info.scrollTop = 0;
+    info.classList.add("locked");
+    clearTimeout(_modalUnlockT);
+    _modalUnlockT = setTimeout(function () { info.classList.remove("locked"); }, REDUCED ? 0 : 1000);
+
+    $("modal-veil").classList.add("on");
+}
+
+function closeModal() {
+    clearTimeout(_modalUnlockT);
+    document.querySelector(".modal-info").classList.remove("locked");
+    $("modal-veil").classList.remove("on");
+}
         function onModalVeilClick(e) { if (e.target === $("modal-veil")) closeModal(); }
         function mQty(d) {
             if (!MOD_PROD) return;
