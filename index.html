@@ -1672,8 +1672,8 @@
             position: fixed;
             right: 0;
             top: 0;
-                height: 100%;
-    height: 100dvh;
+            height: 100%;
+            width: min(432px, 100vw);
             background: var(--chalk);
             z-index: 301;
             display: flex;
@@ -1724,28 +1724,35 @@
             transform: rotate(90deg)
         }
 
- .cart-body {
-    flex: 1 1 auto;
-    min-height: 0;                 /* the actual fix — allows scroll instead of overflow */
+.cart-body {
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior: contain;  /* stops scroll chaining to the page behind */
-    scrollbar-gutter: stable;      /* no width jump when the bar appears */
-    padding: 20px 18px 20px 24px;
+    overscroll-behavior: contain;
+    padding: 20px 24px;
     display: flex;
     flex-direction: column;
     scrollbar-width: thin;
     scrollbar-color: var(--rose-m) transparent;
 }
 
-.cart-body::-webkit-scrollbar { width: 6px }
-.cart-body::-webkit-scrollbar-track { background: transparent }
+.cart-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .cart-body::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, var(--rose-m), var(--rose));
     border-radius: 99px;
 }
-.cart-body::-webkit-scrollbar-thumb:hover { background: var(--rose-d) }
 
+.cart-body::-webkit-scrollbar-thumb:hover {
+    background: var(--rose-d);
+}
         .cart-empty {
             flex: 1;
             display: flex;
@@ -1789,10 +1796,10 @@
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    flex-shrink: 0;                /* rows keep their natural height */
+    flex-shrink: 0;
     margin-bottom: 18px;
     transition: max-height .32s var(--e-silk), margin-bottom .32s var(--e-silk),
-        opacity .26s ease, transform .32s var(--e-silk);
+        opacity .26s ease, transform .32s var(--e-silk)
 }
 
         .cart-body .ci:last-child {
@@ -1811,7 +1818,7 @@
     overflow: hidden;
     transform: translateX(30px);
     animation: none !important;
-    pointer-events: none;
+    pointer-events: none
 }
 
         @keyframes slideIn {
@@ -1975,12 +1982,11 @@
             flex-shrink: 0
         }
 
-.cart-foot {
-    flex-shrink: 0;
-    padding: 20px 24px calc(28px + env(safe-area-inset-bottom));
-    border-top: 1px solid var(--bdr);
-    background: rgba(255, 241, 242, .4);
-}
+        .cart-foot {
+            padding: 20px 24px 28px;
+            border-top: 1px solid var(--bdr);
+            background: rgba(255, 241, 242, .4)
+        }
 
         .cart-line {
             display: flex;
