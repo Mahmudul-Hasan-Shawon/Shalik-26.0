@@ -59,7 +59,8 @@
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
+            overflow-x: clip;
         }
 
         body {
@@ -67,7 +68,7 @@
             background: #f2ddeb;
             color: var(--ink);
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden
+            overflow-x: clip;
         }
 
         a {
@@ -848,12 +849,14 @@
             display: flex;
             flex-direction: column;
             transform: translateX(100%);
-            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            visibility: hidden;
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1), visibility .35s;
             box-shadow: -12px 0 48px rgba(0, 0, 0, .14)
         }
 
         #cart.on {
-            transform: translateX(0)
+            transform: translateX(0);
+            visibility: visible
         }
 
         .cart-head {
@@ -2430,7 +2433,7 @@
         #mobile-bottom-nav { display: none }
 
         @media (max-width: 768px) {
-            body { padding-bottom: 66px }
+            body { padding-bottom: 55px }
 
             #mobile-bottom-nav {
                 display: flex;
@@ -2502,12 +2505,14 @@
             display: flex;
             flex-direction: column;
             transform: translateX(100%);
-            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            visibility: hidden;
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1), visibility .35s;
             box-shadow: -12px 0 48px rgba(0, 0, 0, .14)
         }
 
         #side-panel.on {
-            transform: translateX(0)
+            transform: translateX(0);
+            visibility: visible
         }
 
         .sp-head {
@@ -3047,13 +3052,6 @@
     </div>
 
     <div id="toast"><i class="fa fa-check-circle" id="toast-ic"></i><span id="toast-msg"></span></div>
-
-    <!-- <footer>
-        <div class="footer-logo">✿ Shalik Glow Corner ✿</div>
-        <p>Your Glow, Our Pride — Authentic Korean Beauty</p>
-        <p style="margin-top:8px"><a href="mailto:shalikbeauty@gmail.com">shalikbeauty@gmail.com</a></p>
-        <p style="margin-top:6px;font-size:11px;opacity:.4">© 2026 Shalik Glow Corner. All Rights Reserved.</p>
-    </footer> -->
 
     <!-- ═══════════════ FOOTER ═══════════════ -->
     <footer class="site-footer">
