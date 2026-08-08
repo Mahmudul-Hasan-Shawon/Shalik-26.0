@@ -5,6 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shalik Glow Corner</title>
+    <meta name="description"
+        content="Shalik Glow Corner — authentic Korean skincare and cosmetics in Bangladesh. Live prices, real stock, instant orders and order tracking." />
+    <meta name="theme-color" content="#9F1239" />
+    <meta property="og:title" content="Shalik Glow Corner" />
+    <meta property="og:description" content="Authentic Korean skincare &amp; cosmetics — live prices, real stock, instant orders." />
+    <meta property="og:type" content="website" />
     <base target="_top" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,6 +87,12 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: clip;
             position: relative;
+        }
+
+        /* Background scroll lock while a drawer/modal is open */
+        html.ovl-open,
+        body.ovl-open {
+            overflow: hidden
         }
 
         /* ── Ambient aurora field behind everything ── */
@@ -212,6 +224,16 @@
         ::selection {
             background: var(--rose-m);
             color: #fff
+        }
+
+        /* Keyboard focus ring for buttons and links only. Inputs already have
+           their own focus treatment (border + glow), and a second outline on
+           top of it made the field border look inconsistent. */
+        button:focus-visible,
+        a:focus-visible,
+        [role="button"]:focus-visible {
+            outline: 2px solid var(--rose);
+            outline-offset: 2px
         }
 
         ::-webkit-scrollbar {
@@ -381,6 +403,11 @@
             letter-spacing: 2.5px;
             white-space: nowrap;
             flex-shrink: 0;
+            /* A long Site Title from the config sheet used to crush the search
+               field; clip it instead of pushing the layout around. */
+            max-width: 46%;
+            overflow: hidden;
+            text-overflow: ellipsis;
             background: linear-gradient(100deg, var(--rose-d), var(--rose) 45%, #F472B6);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -444,7 +471,8 @@
             transform: translateY(-50%);
             color: var(--rose-m);
             font-size: 14px;
-            transition: var(--tr)
+            transition: var(--tr);
+            pointer-events: none
         }
 
         .search-input-box input:focus+i,
@@ -1404,7 +1432,8 @@
             inset: 0;
             background: linear-gradient(180deg, transparent 55%, rgba(28, 25, 23, .16));
             opacity: 0;
-            transition: opacity .5s var(--e-silk)
+            transition: opacity .5s var(--e-silk);
+            pointer-events: none
         }
 
         .card:hover .card-img::after {
@@ -1715,7 +1744,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--tr)
+            transition: var(--tr);
+            flex-shrink: 0
         }
 
         .icon-btn:hover {
@@ -1724,35 +1754,36 @@
             transform: rotate(90deg)
         }
 
-.cart-body {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    overscroll-behavior: contain;
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    scrollbar-width: thin;
-    scrollbar-color: var(--rose-m) transparent;
-}
+        .cart-body {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            overscroll-behavior: contain;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            scrollbar-width: thin;
+            scrollbar-color: var(--rose-m) transparent;
+        }
 
-.cart-body::-webkit-scrollbar {
-    width: 6px;
-}
+        .cart-body::-webkit-scrollbar {
+            width: 6px;
+        }
 
-.cart-body::-webkit-scrollbar-track {
-    background: transparent;
-}
+        .cart-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
 
-.cart-body::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--rose-m), var(--rose));
-    border-radius: 99px;
-}
+        .cart-body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--rose-m), var(--rose));
+            border-radius: 99px;
+        }
 
-.cart-body::-webkit-scrollbar-thumb:hover {
-    background: var(--rose-d);
-}
+        .cart-body::-webkit-scrollbar-thumb:hover {
+            background: var(--rose-d);
+        }
+
         .cart-empty {
             flex: 1;
             display: flex;
@@ -1792,15 +1823,15 @@
             box-shadow: var(--sh-rose)
         }
 
-.ci {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    flex-shrink: 0;
-    margin-bottom: 18px;
-    transition: max-height .32s var(--e-silk), margin-bottom .32s var(--e-silk),
-        opacity .26s ease, transform .32s var(--e-silk)
-}
+        .ci {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            flex-shrink: 0;
+            margin-bottom: 18px;
+            transition: max-height .32s var(--e-silk), margin-bottom .32s var(--e-silk),
+                opacity .26s ease, transform .32s var(--e-silk)
+        }
 
         .cart-body .ci:last-child {
             margin-bottom: 0
@@ -1811,15 +1842,15 @@
             animation: slideIn .5s var(--e-silk) both
         }
 
-.ci.removing {
-    max-height: 0;
-    margin-bottom: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateX(30px);
-    animation: none !important;
-    pointer-events: none
-}
+        .ci.removing {
+            max-height: 0;
+            margin-bottom: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateX(30px);
+            animation: none !important;
+            pointer-events: none
+        }
 
         @keyframes slideIn {
             from {
@@ -1917,7 +1948,8 @@
             align-items: center;
             justify-content: center;
             color: var(--ink);
-            transition: var(--tr)
+            transition: var(--tr);
+            flex-shrink: 0
         }
 
         .q-btn:hover {
@@ -1993,7 +2025,8 @@
             justify-content: space-between;
             font-size: 13.5px;
             color: var(--slate);
-            margin-bottom: 9px
+            margin-bottom: 9px;
+            gap: 12px
         }
 
         .cart-line.big {
@@ -2153,9 +2186,10 @@
             flex-direction: column;
             gap: 16px
         }
+
         .modal-info.locked {
-    overflow-y: hidden;
-}
+            overflow-y: hidden;
+        }
 
         #modal-veil.on .modal-info>* {
             animation: rise .55s var(--e-silk) both
@@ -2292,7 +2326,8 @@
             border: 1.5px solid var(--bdr);
             border-radius: 99px;
             overflow: hidden;
-            background: #fff
+            background: #fff;
+            flex-shrink: 0
         }
 
         .qty-ctrl button {
@@ -2456,7 +2491,8 @@
             justify-content: space-between;
             font-size: 13px;
             color: var(--slate);
-            margin-bottom: 8px
+            margin-bottom: 8px;
+            gap: 12px
         }
 
         .osm-line.big {
@@ -2582,6 +2618,8 @@
         /* ── Success ── */
         #success-box {
             max-width: 490px;
+            max-height: 94vh;
+            overflow-y: auto;
             padding: 44px 38px;
             text-align: center
         }
@@ -2648,6 +2686,18 @@
             line-height: 1.7
         }
 
+        .success-note {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #8A6528;
+            background: var(--gold-l);
+            border: 1px solid #F0DFC0;
+            border-radius: var(--r);
+            padding: 11px 14px;
+            margin-bottom: 18px;
+            line-height: 1.6
+        }
+
         .order-id-box {
             background: var(--blue-l);
             border: 1px solid #BFDBFE;
@@ -2672,7 +2722,8 @@
         .order-id-val {
             font-size: 17px;
             font-weight: 800;
-            color: var(--ink)
+            color: var(--ink);
+            word-break: break-all
         }
 
         .tracking-box {
@@ -2691,7 +2742,8 @@
             font-size: 23px;
             font-weight: 800;
             color: var(--purple);
-            letter-spacing: 2.5px
+            letter-spacing: 2.5px;
+            word-break: break-all
         }
 
         .tracking-hint {
@@ -2718,6 +2770,26 @@
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 12px 26px -10px rgba(124, 58, 237, .6)
+        }
+
+        .btn-invoice {
+            width: 100%;
+            background: var(--rose-s);
+            color: var(--rose-d);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 14px;
+            border-radius: var(--r-lg);
+            transition: var(--tr);
+            margin-bottom: 12px;
+            border: 1.5px solid var(--rose-m)
+        }
+
+        .btn-invoice:hover {
+            background: var(--rose);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--sh-rose)
         }
 
         /* ── Track ── */
@@ -2750,6 +2822,7 @@
 
         .track-input-row input {
             flex: 1;
+            min-width: 0;
             border: 1.5px solid var(--bdr);
             border-radius: var(--r);
             padding: 13px 15px;
@@ -2830,6 +2903,7 @@
             margin-bottom: 9px
         }
 
+        /* Neutral default so an unrecognised status from the sheet still reads */
         .status-chip {
             display: inline-flex;
             align-items: center;
@@ -2839,6 +2913,8 @@
             font-size: 14px;
             font-weight: 800;
             letter-spacing: .3px;
+            background: var(--mist);
+            color: var(--ink);
             animation: popIn .5s var(--e-spring) both .1s
         }
 
@@ -2996,7 +3072,8 @@
         .tr-box p {
             font-size: 12px;
             color: var(--ink);
-            line-height: 1.75
+            line-height: 1.75;
+            word-break: break-word
         }
 
         .tr-items {
@@ -3029,7 +3106,8 @@
             display: flex;
             justify-content: space-between;
             color: var(--slate);
-            margin-bottom: 6px
+            margin-bottom: 6px;
+            gap: 12px
         }
 
         .tr-totals .grand {
@@ -3040,7 +3118,8 @@
             color: var(--ink);
             padding-top: 9px;
             border-top: 1.5px dashed var(--bdr);
-            margin-top: 7px
+            margin-top: 7px;
+            gap: 12px
         }
 
         .btn-close-track {
@@ -3105,35 +3184,12 @@
             letter-spacing: 2px
         }
 
-        .inv-track {
-            background: var(--blue-l);
-            border: 1px solid #BFDBFE;
-            border-radius: var(--r);
-            padding: 13px 16px;
-            margin-bottom: 22px;
-            text-align: center
-        }
-
-        .inv-track .itl {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1.3px;
+        /* Same treatment as the emailed PDF: tracking code sits inside the
+           Order Details panel, in blue. */
+        .inv-trk {
             color: var(--blue);
             font-weight: 800;
-            margin-bottom: 5px
-        }
-
-        .inv-track .itc {
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--blue);
-            letter-spacing: 2.5px
-        }
-
-        .inv-track .its {
-            font-size: 10px;
-            color: var(--slate);
-            margin-top: 4px
+            letter-spacing: 1px
         }
 
         .inv-grid {
@@ -3162,17 +3218,8 @@
         .inv-box p {
             font-size: 11.5px;
             color: var(--ink);
-            line-height: 1.8
-        }
-
-        .inv-tbl-title {
-            text-align: center;
-            font-size: 10.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--rose);
-            margin-bottom: 12px
+            line-height: 1.8;
+            word-break: break-word
         }
 
         #inv-table {
@@ -3215,7 +3262,8 @@
             justify-content: space-between;
             font-size: 13px;
             color: var(--slate);
-            margin-bottom: 8px
+            margin-bottom: 8px;
+            gap: 12px
         }
 
         .inv-grand {
@@ -3226,7 +3274,8 @@
             border-top: 2px solid var(--rose);
             margin-top: 7px;
             display: flex;
-            justify-content: space-between
+            justify-content: space-between;
+            gap: 12px
         }
 
         .inv-thanks {
@@ -3312,7 +3361,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            max-width: calc(100vw - 32px);
+            max-width: calc(100vw - 32px)
+        }
+
+        /* The ellipsis has to live on the text node, not on the flex container */
+        #toast i {
+            flex-shrink: 0
+        }
+
+        #toast-msg {
+            min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis
         }
@@ -3629,6 +3687,7 @@
         .sp-body {
             flex: 1;
             overflow-y: auto;
+            overscroll-behavior: contain;
             padding: 24px;
             display: flex;
             flex-wrap: wrap;
@@ -3705,7 +3764,12 @@
         }
 
         .card.reveal {
-            transform: translateY(30px) scale(.97)
+            transform: translateY(30px) scale(.97);
+            /* The blanket .reveal transition used to override the card's own
+               transform timing, so hover felt sluggish after reveal. Declare the
+               full set here (the stagger is scheduled in JS, not via delay). */
+            transition: opacity .6s var(--e-silk), transform .6s var(--e-silk),
+                box-shadow .5s var(--e-silk), border-color .5s var(--e-silk)
         }
 
         .card.reveal.in {
@@ -3847,6 +3911,11 @@
                 height: 42px
             }
 
+            /* Keep the toast clear of the bottom nav bar */
+            #toast {
+                bottom: 76px
+            }
+
             .nav-main {
                 padding: 12px 16px 10px;
                 height: auto;
@@ -3861,6 +3930,7 @@
             .nav-logo {
                 font-size: 22px;
                 width: 100%;
+                max-width: 100%;
                 text-align: center
             }
 
@@ -3873,6 +3943,15 @@
             .nav-actions,
             .nav-cats {
                 display: none
+            }
+
+            /* iOS zooms the page whenever a focused field is under 16px */
+            .search-input-box input,
+            .track-input-row input,
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px
             }
 
             #hero {
@@ -3944,6 +4023,10 @@
             #checkout-box,
             #track-box {
                 padding: 26px 20px
+            }
+
+            #success-box {
+                padding: 34px 22px
             }
 
             #inv-content {
@@ -4065,6 +4148,53 @@
             .inv-actions {
                 display: none !important
             }
+
+            /* Printing the invoice used to print the whole storefront behind it */
+            @page {
+                size: A4;
+                margin: 10mm 14mm 14mm 14mm
+            }
+
+            body.printing-invoice {
+                background: #fff !important;
+                padding: 0 !important
+            }
+
+            /* Browsers strip backgrounds by default; the PDF keeps them, so
+               force colour to keep the two documents identical. */
+            body.printing-invoice #inv-veil,
+            body.printing-invoice #inv-veil * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important
+            }
+
+            body.printing-invoice::after {
+                display: none !important
+            }
+
+            body.printing-invoice>*:not(#inv-veil) {
+                display: none !important
+            }
+
+            body.printing-invoice #inv-veil {
+                position: static !important;
+                display: block !important;
+                background: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                opacity: 1 !important;
+                padding: 0 !important
+            }
+
+            body.printing-invoice #inv-box {
+                max-width: 100% !important;
+                max-height: none !important;
+                overflow: visible !important;
+                box-shadow: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                border-radius: 0 !important
+            }
         }
     </style>
 </head>
@@ -4081,16 +4211,19 @@
 
     <div id="promo-banner">
         <span id="banner-text">🌸 Welcome to SHALIK!</span>
-        <button class="banner-close" onclick="document.getElementById('promo-banner').style.display='none'"><i
+        <button class="banner-close" aria-label="Close banner"
+            onclick="document.getElementById('promo-banner').style.display='none'"><i
                 class="fa fa-xmark"></i></button>
     </div>
 
     <nav id="navbar">
         <div class="nav-main">
-            <div class="nav-logo" id="site-logo" onclick="scrollToShop()">SHALIK</div>
+            <div class="nav-logo" id="site-logo" role="button" tabindex="0" onclick="scrollToShop()"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();scrollToShop();}">SHALIK</div>
             <div class="search-wrap" id="search-wrap">
                 <div class="search-input-box">
-                    <input type="text" id="search-inp" placeholder="Search products, brands…" oninput="onSearch()" />
+                    <input type="search" id="search-inp" aria-label="Search products and brands"
+                        placeholder="Search products, brands…" oninput="onSearch()" />
                     <i class="fa fa-magnifying-glass"></i>
                 </div>
                 <button class="clear-filter-btn" id="clear-filter-btn" onclick="clearFilter()"><i
@@ -4099,12 +4232,12 @@
             <div class="nav-actions">
                 <button class="nav-track-btn" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track
                         Order</span></button>
-                <button class="nav-icon-btn" onclick="toggleCart()" title="Cart">
+                <button class="nav-icon-btn" id="cart-btn" onclick="toggleCart()" title="Cart" aria-label="Open cart">
                     <i class="fa fa-bag-shopping"></i>
                     <span class="cart-count hidden" id="cart-cnt">0</span>
                 </button>
-                <a href="https://wa.me/821027805480" id="wa-btn" target="_blank" class="nav-icon-btn" title="WhatsApp"
-                    style="color:#22C55E">
+                <a href="https://wa.me/821027805480" id="wa-btn" target="_blank" rel="noopener" class="nav-icon-btn"
+                    title="WhatsApp" aria-label="Chat on WhatsApp" style="color:#22C55E">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
             </div>
@@ -4122,15 +4255,15 @@
                 id="mbn-cart-cnt">0</span></button>
         <button class="mbn-item" id="mbn-track" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track
                 Order</span></button>
-        <a class="mbn-item" id="mbn-chat" href="https://wa.me/821027805480" target="_blank"><i
+        <a class="mbn-item" id="mbn-chat" href="https://wa.me/821027805480" target="_blank" rel="noopener"><i
                 class="fa-brands fa-whatsapp"></i><span>Chat</span></a>
     </nav>
 
     <div id="sp-veil" onclick="closeSidePanel()"></div>
-    <aside id="side-panel">
+    <aside id="side-panel" aria-label="Filters">
         <div class="sp-head">
-            <h3 id="sp-title">Brands</h3><button class="icon-btn" onclick="closeSidePanel()"><i
-                    class="fa fa-xmark"></i></button>
+            <h3 id="sp-title">Brands</h3><button class="icon-btn" aria-label="Close panel"
+                onclick="closeSidePanel()"><i class="fa fa-xmark"></i></button>
         </div>
         <div class="sp-body" id="sp-body"></div>
     </aside>
@@ -4154,13 +4287,13 @@
                 <div class="hero-stat"><strong id="s-brands" data-count>5</strong><span>Brands</span></div>
             </div>
 
-            <h2 class="price-note">
+            <div class="price-note" lang="bn">
                 পণ্যের মূল্য পরিবর্তনশীল। প্রদর্শিত মূল্য শুধুমাত্র ধারণার জন্য প্রদান করা হয়েছে; প্রকৃত মূল্য কিছুটা কম
                 বা বেশি হতে পারে। সর্বশেষ মূল্য জানতে অনুগ্রহ করে সরাসরি যোগাযোগ করুন।
                 <div class="contact-number">
                     📞 <a href="tel:+821027805480">+821027805480</a>
                 </div>
-            </h2>
+            </div>
         </div>
     </section>
 
@@ -4187,10 +4320,11 @@
         <div id="product-grid" class="hidden"></div>
     </div>
 
-    <div id="cart-veil" onclick="toggleCart()"></div>
-    <aside id="cart">
+    <div id="cart-veil" onclick="closeCart()"></div>
+    <aside id="cart" aria-label="Shopping bag">
         <div class="cart-head">
-            <h3>Shopping Bag</h3><button class="icon-btn" onclick="toggleCart()"><i class="fa fa-xmark"></i></button>
+            <h3>Shopping Bag</h3><button class="icon-btn" aria-label="Close cart" onclick="closeCart()"><i
+                    class="fa fa-xmark"></i></button>
         </div>
         <div class="cart-body" id="cart-body"></div>
         <div class="cart-foot" id="cart-foot" style="display:none">
@@ -4202,9 +4336,9 @@
     </aside>
 
     <div id="modal-veil" onclick="onModalVeilClick(event)">
-        <div id="modal">
-            <div class="modal-img"><img id="m-img" src="" alt="" /><button class="modal-x" onclick="closeModal()"><i
-                        class="fa fa-xmark"></i></button></div>
+        <div id="modal" role="dialog" aria-modal="true" aria-labelledby="m-name">
+            <div class="modal-img"><img id="m-img" src="" alt="" /><button class="modal-x" aria-label="Close"
+                    onclick="closeModal()"><i class="fa fa-xmark"></i></button></div>
             <div class="modal-info">
                 <p class="modal-brand" id="m-brand"></p>
                 <h2 class="modal-name" id="m-name"></h2>
@@ -4217,7 +4351,8 @@
                 </div>
                 <p class="modal-stock" id="m-stock"></p>
                 <div class="qty-row">
-                    <div class="qty-ctrl"><button onclick="mQty(-1)">−</button><span id="m-qty">1</span><button
+                    <div class="qty-ctrl"><button aria-label="Decrease quantity"
+                            onclick="mQty(-1)">−</button><span id="m-qty">1</span><button aria-label="Increase quantity"
                             onclick="mQty(1)">+</button></div>
                     <button class="btn-add-modal" id="m-add" onclick="addFromModal()"><i class="fa fa-bag-shopping"></i>
                         Add to Bag</button>
@@ -4227,10 +4362,11 @@
     </div>
 
     <div id="checkout-veil" onclick="onCoVeilClick(event)">
-        <div id="checkout-box">
+        <div id="checkout-box" role="dialog" aria-modal="true" aria-label="Checkout">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
                 <h2 class="co-title">Checkout</h2>
-                <button class="icon-btn" onclick="closeCheckout()"><i class="fa fa-xmark"></i></button>
+                <button class="icon-btn" aria-label="Close checkout" onclick="closeCheckout()"><i
+                        class="fa fa-xmark"></i></button>
             </div>
             <p class="co-sub">Complete your order below</p>
             <div class="order-mini">
@@ -4239,17 +4375,20 @@
                 <div class="osm-line big"><span>Total</span><span id="co-tot">৳0</span></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>First Name *</label><input type="text" id="co-fn" placeholder="Nargis" />
+                <div class="form-group"><label for="co-fn">First Name *</label><input type="text" id="co-fn"
+                        autocomplete="given-name" placeholder="Nargis" />
                 </div>
-                <div class="form-group"><label>Last Name *</label><input type="text" id="co-ln" placeholder="Akter" />
+                <div class="form-group"><label for="co-ln">Last Name *</label><input type="text" id="co-ln"
+                        autocomplete="family-name" placeholder="Akter" />
                 </div>
             </div>
-            <div class="form-group"><label>Contact Number *</label><input type="tel" id="co-phone"
-                    placeholder="01XXXXXXXXX" /></div>
-            <div class="form-group"><label>Delivery Address *</label><textarea id="co-addr" rows="2"
-                    placeholder="House No, Road, Area, City…" style="resize:none"></textarea></div>
+            <div class="form-group"><label for="co-phone">Contact Number *</label><input type="tel" id="co-phone"
+                    inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" /></div>
+            <div class="form-group"><label for="co-addr">Delivery Address *</label><textarea id="co-addr" rows="2"
+                    autocomplete="street-address" placeholder="House No, Road, Area, City…"
+                    style="resize:none"></textarea></div>
             <div class="form-group">
-                <label>Delivery Location *</label>
+                <label for="co-loc">Delivery Location *</label>
                 <select id="co-loc" onchange="onLocChange()">
                     <option value="">— Select —</option>
                     <option value="inside">Inside Dhaka (Ashkona / Uttara area)</option>
@@ -4257,7 +4396,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Payment Method *</label>
+                <label for="co-pay">Payment Method *</label>
                 <select id="co-pay" onchange="onPayChange()">
                     <option value="">— Select —</option>
                     <option value="Cash On Delivery">Cash On Delivery</option>
@@ -4271,23 +4410,24 @@
                 Then fill your account number and transaction ID below.
             </div>
             <div id="txn-wrap" class="hidden">
-                <div class="form-group"><label>Your Mobile Account No.</label><input type="text" id="co-acc"
-                        placeholder="01XXXXXXXXX" /></div>
-                <div class="form-group"><label>Transaction ID</label><input type="text" id="co-txn"
+                <div class="form-group"><label for="co-acc">Your Mobile Account No. *</label><input type="text"
+                        id="co-acc" inputmode="tel" placeholder="01XXXXXXXXX" /></div>
+                <div class="form-group"><label for="co-txn">Transaction ID *</label><input type="text" id="co-txn"
                         placeholder="TXN123456" /></div>
             </div>
-            <p class="form-err" id="co-err"></p>
+            <p class="form-err" id="co-err" role="alert"></p>
             <button class="btn-place" id="btn-place" onclick="placeOrder()"><i class="fa fa-check-circle"></i> Place
                 Order</button>
         </div>
     </div>
 
     <div id="success-veil">
-        <div id="success-box">
+        <div id="success-box" role="dialog" aria-modal="true" aria-label="Order placed">
             <div class="success-icon"><i class="fa fa-check"></i></div>
             <h2 class="success-title">Order Placed!</h2>
             <p class="success-sub">Your order has been received. Save your tracking code to check delivery status
                 anytime.</p>
+            <p class="success-note hidden" id="succ-note"></p>
             <div class="order-id-box">
                 <div class="order-id-lbl">Order ID</div>
                 <div class="order-id-val" id="succ-order-id"></div>
@@ -4299,25 +4439,27 @@
             </div>
             <button class="btn-track-order" onclick="openTrackFromSuccess()"><i class="fa fa-location-dot"></i> Track My
                 Order</button>
+            <button class="btn-invoice" onclick="openInvoiceFromSuccess()"><i class="fa fa-file-invoice"></i> View
+                Invoice</button>
             <button class="btn-done" onclick="closeSuccess()"><i class="fa fa-check"></i> Done</button>
         </div>
     </div>
 
     <div id="track-veil" onclick="onTrackVeilClick(event)">
-        <div id="track-box">
+        <div id="track-box" role="dialog" aria-modal="true" aria-label="Track your order">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
                 <h2 class="track-title">Track Your Order <i class="fa-solid fa-truck-fast"
                         style="color: var(--rose);"></i></h2>
-                <button class="icon-btn" onclick="closeTrack()"><i class="fa fa-xmark"></i></button>
+                <button class="icon-btn" aria-label="Close" onclick="closeTrack()"><i class="fa fa-xmark"></i></button>
             </div>
             <p class="track-sub">Enter your Order ID (e.g. #ORD-...) or Tracking Code (e.g. SGC-...)</p>
             <div class="track-input-row">
-                <input type="text" id="track-inp" placeholder="SGC-260319-1234 or #ORD-..."
-                    onkeydown="if(event.key==='Enter')doTrack()" />
+                <input type="text" id="track-inp" aria-label="Order ID or tracking code"
+                    placeholder="SGC-260319-1234 or #ORD-..." onkeydown="if(event.key==='Enter')doTrack()" />
                 <button class="btn-search" id="btn-search" onclick="doTrack()"><i class="fa fa-magnifying-glass"></i>
                     Search</button>
             </div>
-            <p class="track-err" id="track-err"></p>
+            <p class="track-err" id="track-err" role="alert"></p>
             <div class="track-result" id="track-result">
                 <div class="status-bar">
                     <div class="sl">Current Status</div>
@@ -4374,35 +4516,29 @@
     </div>
 
     <div id="inv-veil">
-        <div id="inv-box">
+        <div id="inv-box" role="dialog" aria-modal="true" aria-label="Invoice">
             <div id="inv-content">
                 <div class="inv-hdr">
                     <div class="inv-logo">✿ Shalik Glow Corner ✿</div>
                     <div class="inv-tagline">Your Glow, Our Pride</div>
                     <div class="inv-badge">INVOICE</div>
                 </div>
-                <div class="inv-track">
-                    <div class="itl">Tracking Code</div>
-                    <div class="itc" id="inv-tracking"></div>
-                    <div class="its">Track your order anytime on our website</div>
-                </div>
                 <div class="inv-grid">
                     <div class="inv-box">
-                        <h4>📦 Order Details</h4>
+                        <h4>Order Details</h4>
                         <p id="inv-order"></p>
                     </div>
                     <div class="inv-box">
-                        <h4>👤 Customer</h4>
+                        <h4>Customer</h4>
                         <p id="inv-cust"></p>
                     </div>
                 </div>
-                <p class="inv-tbl-title">Order Summary</p>
                 <table id="inv-table">
                     <thead>
                         <tr>
                             <th>Product</th>
                             <th style="text-align:center">Qty</th>
-                            <th style="text-align:right">Unit Price</th>
+                            <th style="text-align:right">Price</th>
                             <th style="text-align:right">Total</th>
                         </tr>
                     </thead>
@@ -4413,9 +4549,9 @@
                     <div class="inv-line"><span>Delivery</span><span id="inv-del"></span></div>
                     <div class="inv-grand"><span>Grand Total</span><span id="inv-tot"></span></div>
                 </div>
-                <p class="inv-thanks">🌸 Thank you for shopping with us!</p>
-                <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow
-                        Corner</strong><br />shalikbeauty@gmail.com &nbsp;·&nbsp; © 2026 All Rights Reserved</div>
+                <p class="inv-thanks">🌸 Thank you for shopping with Shalik Glow Corner!</p>
+                <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow Corner</strong>
+                    &nbsp;|&nbsp; shalikbeauty@gmail.com &nbsp;|&nbsp; © 2026</div>
             </div>
             <div class="inv-actions">
                 <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
@@ -4424,10 +4560,11 @@
         </div>
     </div>
 
-    <div id="toast"><i class="fa fa-check-circle" id="toast-ic"></i><span id="toast-msg"></span></div>
+    <div id="toast" role="status" aria-live="polite"><i class="fa fa-check-circle" id="toast-ic"></i><span
+            id="toast-msg"></span></div>
 
-    <button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"><i
-            class="fa fa-arrow-up"></i></button>
+    <button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"
+        aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>
 
     <footer class="site-footer">
         <div class="footer-glow"></div>
@@ -4438,12 +4575,13 @@
                     <p class="footer-about">Your trusted destination for premium skincare and beauty products in
                         Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
                     <div class="footer-socials">
-                        <a href="https://www.facebook.com/people/Shalik-Beauty/61553616282600/"
-                            class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/shalikbeauty007" class="footer-social-link"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/821027805480" class="footer-social-link"><i
-                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/people/Shalik-Beauty/61553616282600/" target="_blank"
+                            rel="noopener" aria-label="Facebook" class="footer-social-link"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shalikbeauty007" target="_blank" rel="noopener"
+                            aria-label="Instagram" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/821027805480" target="_blank" rel="noopener" aria-label="WhatsApp"
+                            id="wa-footer" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="reveal">
@@ -4451,19 +4589,19 @@
                     <ul class="footer-links">
                         <li><a href="#shop">All Products</a></li>
                         <li><a href="#" onclick="openTrack(); return false;">Track Order</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#shop" onclick="scrollToShop(); return false;">About Us</a></li>
+                        <li><a href="#" onclick="openContact(); return false;">Contact Us</a></li>
+                        <li><a href="#" onclick="openContact(); return false;">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="reveal">
                     <div class="footer-col-title">Categories</div>
                     <ul class="footer-links" id="footer-cats">
-                        <li><a href="#">Skincare</a></li>
-                        <li><a href="#">Makeup</a></li>
-                        <li><a href="#">Haircare</a></li>
-                        <li><a href="#">Body Care</a></li>
-                        <li><a href="#">Fragrance</a></li>
+                        <li><a href="#shop">Skincare</a></li>
+                        <li><a href="#shop">Makeup</a></li>
+                        <li><a href="#shop">Haircare</a></li>
+                        <li><a href="#shop">Body Care</a></li>
+                        <li><a href="#shop">Fragrance</a></li>
                     </ul>
                 </div>
                 <div class="reveal">
@@ -4502,9 +4640,28 @@
     </footer>
 
     <script>
-        var URL = "https://script.google.com/macros/s/AKfycbwCZorT-JnPZtp7uq9d3nCDt89HOOYIwmf-_Gr-8_KDVRbBVIOFl67IjwkBTSSoGdH4Kw/exec";
+        /* ==============================================================
+           Endpoint. NOTE: this used to be declared as `var URL`, which
+           overwrote the browser's global URL constructor for the whole
+           page — a landmine for any library added later.
+           ============================================================== */
+        var API_URL = "https://script.google.com/macros/s/AKfycby3p8gpVUiCGkd24Smz6Zg5XBu2sGv9FY_o4ekSejPb67dV_aHZKJQ9VyAOZUZzkZRNJQ/exec";
 
-        var ALL = [], FILTERED = [], CFG = { totalProducts: 13 }, CART = JSON.parse(localStorage.getItem("sgc_cart") || "[]"), ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, LAST_ORDER = null;
+        var ALL = [], FILTERED = [], CFG = { totalProducts: 13 },
+            ACTIVE_CAT = "All", SEARCH = "", MOD_PROD = null, MOD_QTY = 1, LAST_ORDER = null;
+
+        /* localStorage can throw (private mode, blocked storage) and a
+           corrupted value used to kill the whole script at parse time,
+           leaving a blank page. */
+        function lsGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+        function lsSet(key, val) { try { localStorage.setItem(key, val); } catch (e) { /* storage unavailable */ } }
+
+        var CART = (function () {
+            try {
+                var v = JSON.parse(lsGet("sgc_cart") || "[]");
+                return Array.isArray(v) ? v : [];
+            } catch (e) { return []; }
+        })();
 
         var LOW_STOCK_THRESHOLD = 10;
         function getStockInfo(p) {
@@ -4515,12 +4672,54 @@
 
         var IMGS = { d: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format", s: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format", c: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=500&auto=format", cl: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&auto=format", t: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=500&auto=format", sun: "https://images.unsplash.com/photo-1556228852-6d35a585d566?w=500&auto=format", bb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format" };
         function getImg(p) { if (p.imageUrl && p.imageUrl.indexOf("http") === 0) return p.imageUrl; var t = (p.title + " " + p.category).toLowerCase(); if (t.indexOf("serum") !== -1) return IMGS.s; if (t.indexOf("cream") !== -1) return IMGS.c; if (t.indexOf("cleanser") !== -1) return IMGS.cl; if (t.indexOf("toner") !== -1) return IMGS.t; if (t.indexOf("sunscreen") !== -1 || t.indexOf("sunblock") !== -1) return IMGS.sun; if (t.indexOf("bb") !== -1 || t.indexOf("boomer") !== -1) return IMGS.bb; if (t.indexOf("essence") !== -1) return IMGS.s; return IMGS.d; }
-        function fmt(n) { var sym = CFG.currencySymbol || "\u09F3"; return sym + (Number(n) || 0).toLocaleString("en-BD"); }
+        /* Grouped manually rather than via toLocaleString(), whose digits
+           follow the device locale — a phone set to Bangla rendered Bengali
+           numerals here while the emailed invoice used Latin ones. */
+        function money(n) {
+            n = Math.round(Number(n) || 0);
+            var neg = n < 0, s = String(Math.abs(n)), out = "";
+            while (s.length > 3) { out = "," + s.slice(-3) + out; s = s.slice(0, -3); }
+            return (neg ? "-" : "") + s + out;
+        }
+        function fmt(n) { var sym = CFG.currencySymbol || "\u09F3"; return sym + money(n); }
         function $(i) { return document.getElementById(i); }
         function show(i) { $(i).classList.remove("hidden"); }
         function hide(i) { $(i).classList.add("hidden"); }
 
+        /* ── Escaping ────────────────────────────────────────────────
+           Everything below is written into innerHTML. Product titles,
+           categories and — on the tracking screen — customer-entered
+           addresses all come from outside this page, so they get escaped
+           before they touch the DOM. */
+        var ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+        function esc(s) {
+            return String(s === null || s === undefined ? "" : s)
+                .replace(/[&<>"']/g, function (c) { return ESC_MAP[c]; });
+        }
+        // For values dropped inside a single-quoted JS string in an inline
+        // handler: escape for JS first, then for HTML.
+        function jsStr(s) {
+            return esc(String(s === null || s === undefined ? "" : s)
+                .replace(/\\/g, "\\\\").replace(/'/g, "\\'"));
+        }
+        function trunc(s, n) {
+            s = String(s || "");
+            return s.length > n ? s.slice(0, n).trim() + "…" : s;
+        }
+
         var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ── Background scroll lock ──────────────────────────────────
+           Without this the page scrolled behind every open drawer/modal. */
+        var LOCK_IDS = ["cart", "side-panel", "modal-veil", "checkout-veil", "success-veil", "track-veil", "inv-veil"];
+        function syncOverlayLock() {
+            var open = LOCK_IDS.some(function (id) {
+                var el = $(id);
+                return el && el.classList.contains("on");
+            });
+            document.documentElement.classList.toggle("ovl-open", open);
+            document.body.classList.toggle("ovl-open", open);
+        }
 
         /* ── Motion helpers ─────────────────────────────── */
         var _revealObs = null;
@@ -4531,7 +4730,15 @@
             }
             _revealObs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (en) {
-                    if (en.isIntersecting) { en.target.classList.add("in"); _revealObs.unobserve(en.target); }
+                    if (!en.isIntersecting) return;
+                    var el = en.target;
+                    _revealObs.unobserve(el);
+                    // The stagger is scheduled here rather than with a CSS
+                    // transition-delay, because that delay stuck around and
+                    // made card hover lag by up to 600ms afterwards.
+                    var d = parseInt(el.getAttribute("data-delay"), 10) || 0;
+                    if (d > 0) setTimeout(function () { el.classList.add("in"); }, d);
+                    else el.classList.add("in");
                 });
             }, { threshold: .12, rootMargin: "0px 0px -40px 0px" });
             document.querySelectorAll(".reveal").forEach(function (el) { _revealObs.observe(el); });
@@ -4542,6 +4749,7 @@
         }
 
         function countUp(el, target, dur) {
+            if (!el) return;
             target = Number(target) || 0;
             if (REDUCED) { el.textContent = target; return; }
             var start = 0, t0 = performance.now(); dur = dur || 1400;
@@ -4582,15 +4790,18 @@
                 });
             }
             window.addEventListener("scroll", onScroll, { passive: true });
+            window.addEventListener("resize", onScroll, { passive: true });
             onScroll();
         }
 
         function flyToCart(srcEl) {
             if (REDUCED || !srcEl) return;
-            var target = window.innerWidth <= 768 ? $("mbn-cart") : $("cart-cnt");
-            if (!target || !target.getBoundingClientRect) return;
+            // Target the cart button itself — the count badge is hidden while
+            // the bag is empty, so the very first add had no animation.
+            var target = window.innerWidth <= 768 ? $("mbn-cart") : $("cart-btn");
+            if (!target) return;
             var a = srcEl.getBoundingClientRect(), b = target.getBoundingClientRect();
-            if (!b.width) return;
+            if (!b.width || !a.width) return;
             var dot = document.createElement("div");
             dot.style.cssText = "position:fixed;left:" + (a.left + a.width / 2 - 9) + "px;top:" + (a.top + a.height / 2 - 9) + "px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#9F1239,#E11D48);z-index:999;pointer-events:none;box-shadow:0 6px 18px rgba(225,29,72,.6);transition:transform .75s cubic-bezier(.55,-.2,.35,1),opacity .75s ease";
             document.body.appendChild(dot);
@@ -4613,19 +4824,99 @@
             renderBadge(); makeSparks(); initReveal(); initScrollFx(); loadData();
             document.addEventListener("keydown", function (e) {
                 if (e.key !== "Escape") return;
-                closeModal(); closeCheckout(); closeTrack(); closeInvoice(); closeSidePanel();
-                if ($("cart").classList.contains("on")) toggleCart();
+                // Close only the topmost layer so Escape doesn't nuke everything.
+                if ($("inv-veil").classList.contains("on")) { closeInvoice(); return; }
+                if ($("track-veil").classList.contains("on")) { closeTrack(); return; }
+                if ($("success-veil").classList.contains("on")) { closeSuccess(); return; }
+                if ($("checkout-veil").classList.contains("on")) { closeCheckout(); return; }
+                if ($("modal-veil").classList.contains("on")) { closeModal(); return; }
+                if ($("side-panel").classList.contains("on")) { closeSidePanel(); return; }
+                if ($("cart").classList.contains("on")) { closeCart(); }
             });
         });
 
+        /* ── Networking ────────────────────────────────────────────── */
+        function fetchJson(url, opts, ms) {
+            opts = opts || {};
+            opts.redirect = "follow";
+            ms = ms || 25000;
+            var ctl = ("AbortController" in window) ? new AbortController() : null;
+            if (ctl) opts.signal = ctl.signal;
+            var timer = setTimeout(function () { if (ctl) ctl.abort(); }, ms);
+
+            return fetch(url, opts)
+                .then(function (r) { return r.text(); })
+                .then(function (t) {
+                    clearTimeout(timer);
+                    var d;
+                    try { d = JSON.parse(t); }
+                    catch (e) { throw new Error("The server returned an unexpected response. Please try again."); }
+                    if (d && d.error) throw new Error(d.error);
+                    return d;
+                })
+                .catch(function (e) {
+                    clearTimeout(timer);
+                    if (e && e.name === "AbortError") throw new Error("Request timed out. Please check your connection.");
+                    throw e;
+                });
+        }
+
         function loadData() {
             show("loading-state"); hide("error-state"); hide("empty-state"); hide("product-grid");
-            fetch(URL + "?action=getAll", { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { var d = JSON.parse(t); if (d.error) throw new Error(d.error); return d; }).then(function (d) {
-                ALL = d.products || [];
-                CFG = d.config || { totalProducts: 13 };
+            fetchJson(API_URL + "?action=getAll").then(function (d) {
+                ALL = (d && d.products) || [];
+                CFG = (d && d.config) || { totalProducts: 13 };
                 if (!CFG.totalProducts || CFG.totalProducts < 1) CFG.totalProducts = 13;
-                applyConfig(); buildPills(); applyFilters(); hide("loading-state");
-            }).catch(function (e) { hide("loading-state"); $("err-msg").textContent = e.message || "Connection failed."; show("error-state"); });
+                applyConfig(); buildPills(); reconcileCart(); applyFilters(); hide("loading-state");
+            }).catch(function (e) {
+                hide("loading-state");
+                $("err-msg").textContent = (e && e.message) || "Connection failed.";
+                show("error-state");
+            });
+        }
+
+        // Silent refresh so stock levels reflect a just-placed order.
+        function refreshProducts() {
+            fetchJson(API_URL + "?action=getProducts").then(function (d) {
+                if (!Array.isArray(d)) return;
+                ALL = d;
+                reconcileCart();
+                applyFilters();
+            }).catch(function () { /* non-critical */ });
+        }
+
+        /* The cart lives in localStorage, so it can hold products that were
+           deleted, repriced, or sold out since the last visit. */
+        function reconcileCart() {
+            if (!CART.length || !ALL.length) return;
+            var byId = {};
+            ALL.forEach(function (p) { byId[p.id] = p; });
+            var changed = false, removed = 0, clamped = 0;
+
+            CART = CART.filter(function (i) {
+                var p = byId[i.id];
+                if (!p || !p.inStock || p.stockQty <= 0) { removed++; changed = true; return false; }
+                var price = p.displayPrice || p.offerPrice || p.oldPrice;
+                if (i.offerPrice !== price) { i.offerPrice = price; changed = true; }
+                i.title = p.title; i.brand = p.brand; i.size = p.size; i.sku = p.sku;
+                i.oldPrice = p.oldPrice; i.hasDiscount = p.hasDiscount; i.imageUrl = getImg(p);
+                if (i.qty > p.stockQty) { i.qty = p.stockQty; clamped++; changed = true; }
+                return true;
+            });
+
+            if (!changed) return;
+            saveCart(); renderBadge();
+            if ($("cart").classList.contains("on")) renderCartUI(); else updateCartFooter();
+            if (removed || clamped) showToast("Your bag was updated to match current stock", true);
+        }
+
+        function waLink(num) {
+            var d = String(num || "").replace(/\D/g, "");
+            if (!d) return "";
+            if (d.indexOf("880") === 0) return "https://wa.me/" + d;
+            if (d.charAt(0) === "0") return "https://wa.me/88" + d;      // 01XXXXXXXXX
+            if (d.length <= 10) return "https://wa.me/88" + d;
+            return "https://wa.me/" + d;                                  // already international
         }
 
         function applyConfig() {
@@ -4635,38 +4926,73 @@
                 $("site-logo").textContent = c.siteTitle;
             }
             if (c.bannerText) $("banner-text").textContent = c.bannerText;
-            if (c.bannerActive === "No") $("promo-banner").style.display = "none";
-            if (c.whatsAppNumber) { var waHref = "https://wa.me/88" + String(c.whatsAppNumber).replace(/\D/g, ""); $("wa-btn").href = waHref; $("mbn-chat").href = waHref; }
-            var brands = {}; ALL.forEach(function (p) { brands[p.brand] = 1; });
+
+            // A checkbox in the sheet yields FALSE, not the string "No".
+            var ba = String(c.bannerActive === undefined ? "yes" : c.bannerActive).trim().toLowerCase();
+            if (ba === "no" || ba === "false" || ba === "0" || ba === "off") $("promo-banner").style.display = "none";
+
+            // The config sheet key "WhatsApp Number" camel-cases to
+            // `whatsappNumber`; the old code only read `whatsAppNumber`, so a
+            // configured number was silently ignored. Accept both.
+            var wa = c.whatsAppNumber || c.whatsappNumber;
+            var href = waLink(wa);
+            if (href) {
+                $("wa-btn").href = href;
+                $("mbn-chat").href = href;
+                var wf = $("wa-footer"); if (wf) wf.href = href;
+            }
+
+            var brands = {}; ALL.forEach(function (p) { if (p.brand) brands[p.brand] = 1; });
             countUp($("s-products"), ALL.length);
             countUp($("s-brands"), Object.keys(brands).length);
             var orders = document.querySelectorAll(".hero-stat strong[data-count]")[1];
-            if (orders) countUp(orders, 56);
+            if (orders) countUp(orders, Number(c.happyOrders) || 56);
         }
 
         function buildPills() {
             var cats = ["All"], seen = {};
             ALL.forEach(function (p) { if (p.category && !seen[p.category]) { cats.push(p.category); seen[p.category] = 1; } });
-            var h = ""; cats.forEach(function (c) { h += "<button class=\"pill" + (c === "All" ? " on" : "") + "\" data-cat=\"" + c + "\" onclick=\"setCat('" + c + "')\">" + c + "</button>"; });
+            var h = "";
+            cats.forEach(function (c) {
+                h += '<button class="pill' + (c === "All" ? " on" : "") + '" data-cat="' + esc(c) +
+                     '" onclick="setCat(\'' + jsStr(c) + '\')">' + esc(c) + '</button>';
+            });
             $("cat-pills").innerHTML = h;
-            var fh = ""; cats.slice(1, 7).forEach(function (c) { fh += "<li><a href=\"#shop\" onclick=\"selectCategory('" + c.replace(/'/g, "\\'") + "');return false;\">" + c + "</a></li>"; });
+
+            var fh = "";
+            cats.slice(1, 7).forEach(function (c) {
+                fh += '<li><a href="#shop" onclick="selectCategory(\'' + jsStr(c) + '\');return false;">' + esc(c) + '</a></li>';
+            });
             if (fh) $("footer-cats").innerHTML = fh;
         }
-        function setCat(cat) { ACTIVE_CAT = cat; document.querySelectorAll(".pill").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-cat") === cat); }); applyFilters(); updateClearFilterBtn(); }
-        function scrollToShop() { $("shop").scrollIntoView({ behavior: "smooth" }); }
 
-        function openSidePanel() { $("side-panel").classList.add("on"); $("sp-veil").classList.add("on"); }
-        function closeSidePanel() { $("side-panel").classList.remove("on"); $("sp-veil").classList.remove("on"); }
+        function setCat(cat) {
+            ACTIVE_CAT = cat;
+            document.querySelectorAll(".pill").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-cat") === cat); });
+            applyFilters(); updateClearFilterBtn();
+        }
+        function scrollToShop() { $("shop").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); }
+        function openContact() {
+            document.querySelector(".site-footer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
+        }
+
+        function openSidePanel() {
+            closeCart();                       // both drawers share z-index 301
+            $("side-panel").classList.add("on"); $("sp-veil").classList.add("on"); syncOverlayLock();
+        }
+        function closeSidePanel() { $("side-panel").classList.remove("on"); $("sp-veil").classList.remove("on"); syncOverlayLock(); }
 
         function openBrandPanel() {
             var seen = {}, brands = [];
             ALL.forEach(function (p) { if (p.brand && !seen[p.brand]) { seen[p.brand] = 1; brands.push(p.brand); } });
             brands.sort(function (a, b) { return a.localeCompare(b); });
             $("sp-title").textContent = "Brands";
-            if (!brands.length) { $("sp-body").innerHTML = "<p class=\"sp-empty\">No brands available.</p>"; }
+            if (!brands.length) { $("sp-body").innerHTML = '<p class="sp-empty">No brands available.</p>'; }
             else {
                 var h = "";
-                brands.forEach(function (b) { h += "<button class=\"sp-pill\" onclick=\"selectBrand('" + b.replace(/'/g, "\\'") + "')\">" + b + "</button>"; });
+                brands.forEach(function (b) {
+                    h += '<button class="sp-pill" onclick="selectBrand(\'' + jsStr(b) + '\')">' + esc(b) + '</button>';
+                });
                 $("sp-body").innerHTML = h;
             }
             openSidePanel();
@@ -4677,30 +5003,40 @@
             ALL.forEach(function (p) { if (p.category && !seen[p.category]) { seen[p.category] = 1; cats.push(p.category); } });
             cats.sort(function (a, b) { return a.localeCompare(b); });
             $("sp-title").textContent = "Categories";
-            if (!cats.length) { $("sp-body").innerHTML = "<p class=\"sp-empty\">No categories available.</p>"; }
+            if (!cats.length) { $("sp-body").innerHTML = '<p class="sp-empty">No categories available.</p>'; }
             else {
                 var h = "";
-                cats.forEach(function (c) { h += "<button class=\"sp-pill\" onclick=\"selectCategory('" + c.replace(/'/g, "\\'") + "')\">" + c + "</button>"; });
+                cats.forEach(function (c) {
+                    h += '<button class="sp-pill" onclick="selectCategory(\'' + jsStr(c) + '\')">' + esc(c) + '</button>';
+                });
                 $("sp-body").innerHTML = h;
             }
             openSidePanel();
         }
 
         function selectBrand(brand) {
-            SEARCH = brand.toLowerCase().trim();
+            SEARCH = String(brand).toLowerCase().trim();
             $("search-inp").value = brand;
             ACTIVE_CAT = "All";
             document.querySelectorAll(".pill").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-cat") === "All"); });
             applyFilters(); updateClearFilterBtn(); closeSidePanel(); scrollToShop();
         }
 
-        function selectCategory(cat) {
-            setCat(cat); closeSidePanel(); scrollToShop();
-        }
+        function selectCategory(cat) { setCat(cat); closeSidePanel(); scrollToShop(); }
         function onSearch() { SEARCH = $("search-inp").value.toLowerCase().trim(); applyFilters(); updateClearFilterBtn(); }
         function updateClearFilterBtn() { $("search-wrap").classList.toggle("has-filter", !!SEARCH || ACTIVE_CAT !== "All"); }
         function clearFilter() { $("search-inp").value = ""; SEARCH = ""; setCat("All"); updateClearFilterBtn(); }
-        function applyFilters() { FILTERED = ALL.filter(function (p) { var mc = ACTIVE_CAT === "All" || p.category === ACTIVE_CAT; var ms = !SEARCH || p.title.toLowerCase().indexOf(SEARCH) !== -1 || p.brand.toLowerCase().indexOf(SEARCH) !== -1; return mc && ms; }); renderGrid(); }
+
+        function applyFilters() {
+            FILTERED = ALL.filter(function (p) {
+                var mc = ACTIVE_CAT === "All" || p.category === ACTIVE_CAT;
+                if (!mc) return false;
+                if (!SEARCH) return true;
+                var hay = (p.title + " " + p.brand + " " + p.category + " " + p.sku).toLowerCase();
+                return hay.indexOf(SEARCH) !== -1;
+            });
+            renderGrid();
+        }
 
         function renderGrid() {
             $("prod-count").textContent = FILTERED.length + " product" + (FILTERED.length !== 1 ? "s" : "");
@@ -4712,59 +5048,77 @@
                 var dis = p.inStock ? "" : "disabled";
                 var si = getStockInfo(p);
                 var delay = Math.min(idx, 11) * 55;
-                h += "<div class=\"card reveal\" style=\"transition-delay:" + delay + "ms\" onclick=\"openModal(" + p.id + ")\">";
-                h += "<div class=\"card-img\"><img src=\"" + getImg(p) + "\" alt=\"" + (p.title || "").replace(/\"/g, "&quot;") + "\" loading=\"lazy\" onerror=\"this.src='" + IMGS.d + "'\"/>";
-                h += "<div class=\"card-badges\">";
-                if (p.hasDiscount) h += "<span class=\"badge badge-sale\">-" + p.discountPct + "%</span>";
-                else if (si.cls === "low") h += "<span class=\"badge badge-low\">Low Stock</span>";
-                h += "</div><button class=\"card-quick\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ",this)\" " + dis + "><i class=\"fa-solid fa-cart-plus\"></i></button></div>";
-                h += "<div class=\"card-body\"><span class=\"card-brand\">" + p.brand + "</span><p class=\"card-name\">" + p.title + "</p><p class=\"card-size\">" + p.size + "</p>";
-                h += "<div class=\"card-pricing\"><span class=\"p-new\">" + fmt(px) + "</span>";
-                if (p.hasDiscount) h += "<span class=\"p-old\">" + fmt(p.oldPrice) + "</span>";
-                h += "</div><div class=\"card-foot\"><span class=\"stock-tag " + si.cls + "\">" + si.label + "</span>";
-                h += "<button class=\"add-btn\" onclick=\"event.stopPropagation();quickAdd(" + p.id + ",this)\" " + dis + "><i class=\"fa-solid fa-cart-plus\"></i></button></div></div></div>";
+                h += '<div class="card reveal" data-delay="' + delay + '" onclick="openModal(' + p.id + ')">';
+                h += '<div class="card-img"><img src="' + esc(getImg(p)) + '" alt="' + esc(p.title) + '" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'' + IMGS.d + '\'"/>';
+                h += '<div class="card-badges">';
+                if (p.hasDiscount) h += '<span class="badge badge-sale">-' + p.discountPct + '%</span>';
+                else if (si.cls === "low") h += '<span class="badge badge-low">Low Stock</span>';
+                h += '</div><button class="card-quick" aria-label="Add to bag" onclick="event.stopPropagation();quickAdd(' + p.id + ',this)" ' + dis + '><i class="fa-solid fa-cart-plus"></i></button></div>';
+                h += '<div class="card-body"><span class="card-brand">' + esc(p.brand) + '</span><p class="card-name">' + esc(p.title) + '</p><p class="card-size">' + esc(p.size) + '</p>';
+                h += '<div class="card-pricing"><span class="p-new">' + fmt(px) + '</span>';
+                if (p.hasDiscount) h += '<span class="p-old">' + fmt(p.oldPrice) + '</span>';
+                h += '</div><div class="card-foot"><span class="stock-tag ' + si.cls + '">' + si.label + '</span>';
+                h += '<button class="add-btn" aria-label="Add to bag" onclick="event.stopPropagation();quickAdd(' + p.id + ',this)" ' + dis + '><i class="fa-solid fa-cart-plus"></i></button></div></div></div>';
             });
             $("product-grid").innerHTML = h;
             observeNew(Array.prototype.slice.call($("product-grid").querySelectorAll(".card")));
         }
 
-var _modalUnlockT;
+        function findProduct(id) {
+            for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) return ALL[i]; }
+            return null;
+        }
+        function findCartItem(id) {
+            for (var i = 0; i < CART.length; i++) { if (CART[i].id === id) return CART[i]; }
+            return null;
+        }
 
-function openModal(id) {
-    MOD_PROD = null; for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { MOD_PROD = ALL[i]; break; } }
-    if (!MOD_PROD) return; MOD_QTY = 1; var p = MOD_PROD;
-    var px = p.displayPrice || p.offerPrice || p.oldPrice;
-    $("m-img").src = getImg(p); $("m-img").alt = p.title;
-    $("m-brand").textContent = p.brand + " \xb7 " + p.category;
-    $("m-name").textContent = p.title; $("m-sku").textContent = "SKU: " + p.sku;
-    $("m-desc").innerHTML = p.size;
-    $("m-price").textContent = fmt(px); $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
-    $("m-qty").textContent = 1;
-    var db = $("m-disc"); if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); } else { db.classList.add("hidden"); }
-    var si = getStockInfo(p);
-    var st = $("m-stock");
-    st.textContent = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
-    st.className = "modal-stock " + si.cls;
-    $("m-add").disabled = !p.inStock;
+        var _modalUnlockT;
 
-    // Children animate in from translateY(26px); that transform counts toward
-    // this pane's scroll overflow and flashes a scrollbar. Clip until the
-    // stagger lands (.55s duration + .42s max delay).
-    var info = document.querySelector(".modal-info");
-    info.scrollTop = 0;
-    info.classList.add("locked");
-    clearTimeout(_modalUnlockT);
-    _modalUnlockT = setTimeout(function () { info.classList.remove("locked"); }, REDUCED ? 0 : 1000);
+        function openModal(id) {
+            MOD_PROD = findProduct(id);
+            if (!MOD_PROD) return;
+            MOD_QTY = 1;
+            var p = MOD_PROD;
+            var px = p.displayPrice || p.offerPrice || p.oldPrice;
+            $("m-img").src = getImg(p); $("m-img").alt = p.title;
+            $("m-brand").textContent = p.brand + " \xb7 " + p.category;
+            $("m-name").textContent = p.title;
+            $("m-sku").textContent = p.sku ? "SKU: " + p.sku : "";
+            $("m-desc").textContent = p.size;
+            $("m-price").textContent = fmt(px);
+            $("m-old").textContent = p.hasDiscount ? fmt(p.oldPrice) : "";
+            $("m-qty").textContent = 1;
+            var db = $("m-disc");
+            if (p.hasDiscount) { db.textContent = "-" + p.discountPct + "%"; db.classList.remove("hidden"); }
+            else { db.classList.add("hidden"); }
+            var si = getStockInfo(p);
+            var st = $("m-stock");
+            st.textContent = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
+            st.className = "modal-stock " + si.cls;
+            $("m-add").disabled = !p.inStock;
 
-    $("modal-veil").classList.add("on");
-}
+            // Children animate in from translateY(26px); that transform counts
+            // toward this pane's scroll overflow and flashes a scrollbar. Clip
+            // until the stagger lands (.55s duration + .42s max delay).
+            var info = document.querySelector(".modal-info");
+            info.scrollTop = 0;
+            info.classList.add("locked");
+            clearTimeout(_modalUnlockT);
+            _modalUnlockT = setTimeout(function () { info.classList.remove("locked"); }, REDUCED ? 0 : 1000);
 
-function closeModal() {
-    clearTimeout(_modalUnlockT);
-    document.querySelector(".modal-info").classList.remove("locked");
-    $("modal-veil").classList.remove("on");
-}
+            $("modal-veil").classList.add("on");
+            syncOverlayLock();
+        }
+
+        function closeModal() {
+            clearTimeout(_modalUnlockT);
+            document.querySelector(".modal-info").classList.remove("locked");
+            $("modal-veil").classList.remove("on");
+            syncOverlayLock();
+        }
         function onModalVeilClick(e) { if (e.target === $("modal-veil")) closeModal(); }
+
         function mQty(d) {
             if (!MOD_PROD) return;
             var prev = MOD_QTY;
@@ -4775,24 +5129,33 @@ function closeModal() {
         function addFromModal() { if (MOD_PROD) { flyToCart($("m-add")); addToCart(MOD_PROD.id, MOD_QTY); closeModal(); } }
 
         function quickAdd(id, el) { if (el) flyToCart(el); addToCart(id, 1); }
+
         function addToCart(id, qty) {
-            qty = qty || 1; var p = null; for (var i = 0; i < ALL.length; i++) { if (ALL[i].id === id) { p = ALL[i]; break; } }
+            qty = qty || 1;
+            var p = findProduct(id);
             if (!p || !p.inStock) { showToast("Out of stock!", true); return; }
-            var ex = null; for (var j = 0; j < CART.length; j++) { if (CART[j].id === id) { ex = CART[j]; break; } }
+            var ex = findCartItem(id);
             var nq = (ex ? ex.qty : 0) + qty;
             if (nq > p.stockQty) { showToast("Only " + p.stockQty + " available", true); return; }
-            if (ex) { ex.qty = nq; } else { CART.push({ id: p.id, title: p.title, brand: p.brand, offerPrice: p.displayPrice || p.offerPrice, oldPrice: p.oldPrice, hasDiscount: p.hasDiscount, imageUrl: getImg(p), sku: p.sku, size: p.size, qty: qty }); }
+            if (ex) { ex.qty = nq; }
+            else {
+                CART.push({
+                    id: p.id, title: p.title, brand: p.brand,
+                    offerPrice: p.displayPrice || p.offerPrice, oldPrice: p.oldPrice,
+                    hasDiscount: p.hasDiscount, imageUrl: getImg(p), sku: p.sku, size: p.size, qty: qty
+                });
+            }
             saveCart();
             if (ex && $("cart-body").querySelector('.ci[data-id="' + id + '"]')) { patchCartRow(id); updateCartFooter(); renderBadge(); }
             else { renderCartUI(); }
-            bumpCartIcon(); showToast(p.title.slice(0, 28) + "... added!");
+            bumpCartIcon();
+            showToast(trunc(p.title, 30) + " added!");
         }
 
         function changeQty(id, d) {
-            var item = null, prod = null;
-            for (var i = 0; i < CART.length; i++) { if (CART[i].id === id) { item = CART[i]; break; } }
-            for (var j = 0; j < ALL.length; j++) { if (ALL[j].id === id) { prod = ALL[j]; break; } }
-            if (!item) return; var nq = item.qty + d;
+            var item = findCartItem(id), prod = findProduct(id);
+            if (!item) return;
+            var nq = item.qty + d;
             if (nq <= 0) { removeItem(id); return; }
             if (prod && nq > prod.stockQty) { showToast("Not enough stock", true); return; }
             item.qty = nq; saveCart();
@@ -4804,8 +5167,7 @@ function closeModal() {
         function patchCartRow(id) {
             var row = $("cart-body").querySelector('.ci[data-id="' + id + '"]');
             if (!row) return false;
-            var item = null;
-            for (var i = 0; i < CART.length; i++) { if (CART[i].id === id) { item = CART[i]; break; } }
+            var item = findCartItem(id);
             if (!item) return false;
             var qn = row.querySelector(".q-n"), tot = row.querySelector(".ci-tot");
             if (qn) { qn.textContent = item.qty; flash(qn); }
@@ -4843,44 +5205,109 @@ function closeModal() {
                 }, 340);
             });
         }
-        function saveCart() { localStorage.setItem("sgc_cart", JSON.stringify(CART)); }
+
+        function saveCart() { lsSet("sgc_cart", JSON.stringify(CART)); }
         function getDelivery(loc) { if (!loc) return 0; return loc === "inside" ? (Number(CFG.insideDhakaCharge) || 60) : (Number(CFG.outsideDhakaCharge) || 120); }
         function getTotals(loc) { var sub = 0; CART.forEach(function (i) { sub += i.offerPrice * i.qty; }); var del = getDelivery(loc); return { sub: sub, del: del, tot: sub + del }; }
 
         function renderCartUI() {
-            renderBadge(); var body = $("cart-body"), foot = $("cart-foot");
-            if (!CART.length) { body.innerHTML = "<div class=\"cart-empty\"><i class=\"fa fa-bag-shopping\"></i><p>Your bag is empty</p><button class=\"btn-shop\" onclick=\"toggleCart()\">Continue Shopping</button></div>"; foot.style.display = "none"; return; }
+            renderBadge();
+            var body = $("cart-body"), foot = $("cart-foot");
+            if (!CART.length) {
+                body.innerHTML = '<div class="cart-empty"><i class="fa fa-bag-shopping"></i><p>Your bag is empty</p><button class="btn-shop" onclick="closeCart()">Continue Shopping</button></div>';
+                foot.style.display = "none";
+                return;
+            }
             var h = "";
             CART.forEach(function (i) {
-                h += "<div class=\"ci\" data-id=\"" + i.id + "\"><img class=\"ci-img\" src=\"" + i.imageUrl + "\" alt=\"" + i.title.replace(/\"/g, "&quot;") + "\" onerror=\"this.src='" + IMGS.d + "'\"/>";
-                h += "<div class=\"ci-info\"><p class=\"ci-name\">" + i.title + "</p><p><span class=\"ci-price\">" + fmt(i.offerPrice) + "</span>";
-                if (i.hasDiscount) h += "<span class=\"ci-price-old\">" + fmt(i.oldPrice) + "</span>";
-                h += "</p><div class=\"ci-row\"><button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",-1)\">\u2212</button><span class=\"q-n\">" + i.qty + "</span><button class=\"q-btn\" onclick=\"changeQty(" + i.id + ",1)\">+</button><button class=\"ci-rm\" onclick=\"removeItem(" + i.id + ")\">Remove</button></div></div>";
-                h += "<span class=\"ci-tot\">" + fmt(i.offerPrice * i.qty) + "</span></div>";
+                h += '<div class="ci" data-id="' + i.id + '"><img class="ci-img" src="' + esc(i.imageUrl) + '" alt="' + esc(i.title) + '" onerror="this.onerror=null;this.src=\'' + IMGS.d + '\'"/>';
+                h += '<div class="ci-info"><p class="ci-name">' + esc(i.title) + '</p><p><span class="ci-price">' + fmt(i.offerPrice) + '</span>';
+                if (i.hasDiscount) h += '<span class="ci-price-old">' + fmt(i.oldPrice) + '</span>';
+                h += '</p><div class="ci-row"><button class="q-btn" aria-label="Decrease quantity" onclick="changeQty(' + i.id + ',-1)">\u2212</button><span class="q-n">' + i.qty + '</span><button class="q-btn" aria-label="Increase quantity" onclick="changeQty(' + i.id + ',1)">+</button><button class="ci-rm" onclick="removeItem(' + i.id + ')">Remove</button></div></div>';
+                h += '<span class="ci-tot">' + fmt(i.offerPrice * i.qty) + '</span></div>';
             });
             body.innerHTML = h;
             updateCartFooter();
         }
-        function renderBadge() { var n = 0; CART.forEach(function (i) { n += i.qty; }); var b = $("cart-cnt"); b.textContent = n; if (n > 0) b.classList.remove("hidden"); else b.classList.add("hidden"); var mb = $("mbn-cart-cnt"); if (mb) { mb.textContent = n; if (n > 0) mb.classList.remove("hidden"); else mb.classList.add("hidden"); } }
-        function toggleCart() { $("cart").classList.toggle("on"); $("cart-veil").classList.toggle("on"); renderCartUI(); }
 
-        function openCheckout() { if (!CART.length) return; toggleCart(); updateCoTotals(); $("checkout-veil").classList.add("on"); }
-        function closeCheckout() { $("checkout-veil").classList.remove("on"); }
+        function renderBadge() {
+            var n = 0; CART.forEach(function (i) { n += i.qty; });
+            var b = $("cart-cnt");
+            b.textContent = n; b.classList.toggle("hidden", n <= 0);
+            var mb = $("mbn-cart-cnt");
+            if (mb) { mb.textContent = n; mb.classList.toggle("hidden", n <= 0); }
+        }
+
+        function openCart() {
+            closeSidePanel();
+            renderCartUI();
+            $("cart").classList.add("on"); $("cart-veil").classList.add("on");
+            syncOverlayLock();
+        }
+        function closeCart() {
+            $("cart").classList.remove("on"); $("cart-veil").classList.remove("on");
+            syncOverlayLock();
+        }
+        function toggleCart() { if ($("cart").classList.contains("on")) closeCart(); else openCart(); }
+
+        function openCheckout() {
+            if (!CART.length) return;
+            closeCart();
+            updateCoTotals();
+            $("checkout-veil").classList.add("on");
+            syncOverlayLock();
+        }
+        function closeCheckout() { $("checkout-veil").classList.remove("on"); syncOverlayLock(); }
         function onCoVeilClick(e) { if (e.target === $("checkout-veil")) closeCheckout(); }
         function onLocChange() { updateCoTotals(); }
-        function updateCoTotals() { var loc = $("co-loc").value; var t = getTotals(loc); $("co-sub").textContent = fmt(t.sub); $("co-del").textContent = t.del > 0 ? fmt(t.del) : "TBD"; $("co-del-lbl").textContent = loc === "outside" ? "Delivery (Outside)" : loc === "inside" ? "Delivery (Inside)" : "Delivery"; $("co-tot").textContent = fmt(t.tot); }
-        function onPayChange() { var m = $("co-pay").value; var info = $("pay-info"), txn = $("txn-wrap"); if (m === "bKash" || m === "Nagad") { $("pi-title").textContent = m + " Payment"; $("pi-num").textContent = (m === "bKash" ? (CFG.bKashAccount || CFG.bkashAccount) : (CFG.nagadAccount)) || "01XXXXXXXXX"; info.classList.remove("hidden"); txn.classList.remove("hidden"); } else { info.classList.add("hidden"); txn.classList.add("hidden"); } }
+
+        function updateCoTotals() {
+            var loc = $("co-loc").value; var t = getTotals(loc);
+            $("co-sub").textContent = fmt(t.sub);
+            $("co-del").textContent = t.del > 0 ? fmt(t.del) : "TBD";
+            $("co-del-lbl").textContent = loc === "outside" ? "Delivery (Outside)" : loc === "inside" ? "Delivery (Inside)" : "Delivery";
+            $("co-tot").textContent = fmt(t.tot);
+        }
+
+        function onPayChange() {
+            var m = $("co-pay").value;
+            var info = $("pay-info"), txn = $("txn-wrap");
+            if (m === "bKash" || m === "Nagad") {
+                $("pi-title").textContent = m + " Payment";
+                $("pi-num").textContent = (m === "bKash" ? (CFG.bKashAccount || CFG.bkashAccount) : CFG.nagadAccount) || "01XXXXXXXXX";
+                info.classList.remove("hidden"); txn.classList.remove("hidden");
+            } else {
+                info.classList.add("hidden"); txn.classList.add("hidden");
+            }
+        }
 
         function placeOrder() {
-            var fn = $("co-fn").value.trim(), ln = $("co-ln").value.trim(), ph = $("co-phone").value.trim(), addr = $("co-addr").value.trim(), loc = $("co-loc").value, pay = $("co-pay").value;
+            var fn = $("co-fn").value.trim(), ln = $("co-ln").value.trim(),
+                ph = $("co-phone").value.trim(), addr = $("co-addr").value.trim(),
+                loc = $("co-loc").value, pay = $("co-pay").value;
+            var acc = $("co-acc").value.trim(), txn = $("co-txn").value.trim();
             var errEl = $("co-err"); errEl.classList.remove("on");
-            if (!fn || !ln || !ph || !addr || !loc || !pay) { errEl.textContent = "Please fill in all required fields."; errEl.classList.add("on"); return; }
 
-            var totalProds = parseInt(CFG.totalProducts) || 13;
+            function fail(msg) { errEl.textContent = msg; errEl.classList.add("on"); }
 
-            var t = getTotals(loc); var sym = CFG.currencySymbol || "\u09F3"; var fullname = fn + " " + ln;
+            if (!CART.length) { fail("Your bag is empty."); return; }
+            if (!fn || !ln || !ph || !addr || !loc || !pay) { fail("Please fill in all required fields."); return; }
+            if (ph.replace(/\D/g, "").length < 10) { fail("Please enter a valid contact number."); return; }
+            if (addr.length < 10) { fail("Please enter a complete delivery address."); return; }
+            // Mobile-wallet orders are unverifiable without these.
+            if ((pay === "bKash" || pay === "Nagad") && (!acc || !txn)) {
+                fail("Please enter your " + pay + " account number and transaction ID.");
+                return;
+            }
+
+            var totalProds = parseInt(CFG.totalProducts, 10) || 13;
+            // Never let a stale "Total Products" value truncate the array —
+            // that silently dropped the sale for any higher-numbered product.
+            CART.forEach(function (i) { if (i.id > totalProds) totalProds = i.id; });
+
+            var t = getTotals(loc);
+            var fullname = fn + " " + ln;
             var productsArr = [], quantities = [], totalItems = 0;
-
             var qtyArr = [];
             for (var z = 0; z < totalProds; z++) { qtyArr.push(0); }
 
@@ -4894,11 +5321,8 @@ function closeModal() {
             var payload = {
                 action: "submitOrder", firstname: fn, lastname: ln, fullname: fullname,
                 contactnumber: ph, address: addr, delivery_location: loc, services: pay,
-                account_number: $("co-acc").value.trim() || "",
-                transaction_id: $("co-txn").value.trim() || "",
-                subtotal: fmt(t.sub),
-                delivery_charge: fmt(t.del),
-                total: fmt(t.tot),
+                account_number: acc, transaction_id: txn,
+                subtotal: fmt(t.sub), delivery_charge: fmt(t.del), total: fmt(t.tot),
                 subtotalNum: t.sub, deliveryNum: t.del, totalNum: t.tot, calcTotal: t.tot,
                 products: productsArr.join(", "), quantities: quantities,
                 quantitiesArray: qtyArr,
@@ -4906,21 +5330,53 @@ function closeModal() {
                 formattedData: CART.map(function (i) { return i.qty; }).join(", ")
             };
 
-            var btn = $("btn-place"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i> Placing Order...";
+            var btn = $("btn-place");
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Placing Order...';
             var snap = CART.slice();
 
-            fetch(URL, { method: "POST", body: JSON.stringify(payload), redirect: "follow" }).then(function (r) { return r.json(); }).then(function (d) {
-                if (d.error) throw new Error(d.error);
-                LAST_ORDER = { orderNumber: d.orderNumber, trackingCode: d.trackingCode, fullname: fullname, contactnumber: ph, address: addr, delivery_location: loc, services: pay, account_number: payload.account_number, transaction_id: payload.transaction_id, sub: t.sub, del: t.del, tot: t.tot, snap: snap };
+            // No Content-Type header on purpose: it keeps this a "simple"
+            // request so the browser skips the CORS preflight that Apps
+            // Script web apps cannot answer.
+            fetchJson(API_URL, { method: "POST", body: JSON.stringify(payload) }, 40000).then(function (d) {
+                LAST_ORDER = {
+                    orderNumber: d.orderNumber, trackingCode: d.trackingCode, fullname: fullname,
+                    contactnumber: ph, address: addr, delivery_location: loc, services: pay,
+                    account_number: acc, transaction_id: txn,
+                    sub: t.sub, del: t.del, tot: t.tot, snap: snap
+                };
                 closeCheckout();
-                showSuccess(d.orderNumber, d.trackingCode);
+                showSuccess(d.orderNumber, d.trackingCode, d.emailSent);
                 CART = []; saveCart(); renderCartUI();
-            }).catch(function (e) { errEl.textContent = e.message || "Could not place order. Please try again."; errEl.classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-check-circle\"></i> Place Order"; });
+                refreshProducts();
+            }).catch(function (e) {
+                fail(((e && e.message) || "Could not place order.") +
+                     " If this keeps happening, message us on WhatsApp before re-ordering so we don't duplicate it.");
+            }).then(function () {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa fa-check-circle"></i> Place Order';
+            });
         }
 
-        function showSuccess(orderNum, tracking) { $("succ-order-id").textContent = orderNum; $("succ-tracking").textContent = tracking; $("success-veil").classList.add("on"); confetti(); }
-        function closeSuccess() { $("success-veil").classList.remove("on"); }
+        function showSuccess(orderNum, tracking, emailSent) {
+            $("succ-order-id").textContent = orderNum;
+            $("succ-tracking").textContent = tracking;
+            var note = $("succ-note");
+            if (emailSent === false) {
+                note.textContent = "Your order is saved, but our confirmation email didn't go out. Please keep your tracking code and message us on WhatsApp to confirm.";
+                note.classList.remove("hidden");
+            } else {
+                note.classList.add("hidden");
+            }
+            $("success-veil").classList.add("on");
+            syncOverlayLock();
+            confetti();
+        }
+        function closeSuccess() { $("success-veil").classList.remove("on"); syncOverlayLock(); }
         function openTrackFromSuccess() { closeSuccess(); openTrack(LAST_ORDER ? LAST_ORDER.trackingCode : ""); }
+        // Invoice sits above the success card (z-index 650 vs 600), so the
+        // tracking code is still there when the customer closes it.
+        function openInvoiceFromSuccess() { if (LAST_ORDER) showInvoice(LAST_ORDER); }
 
         function confetti() {
             if (REDUCED) return;
@@ -4941,63 +5397,152 @@ function closeModal() {
             }
         }
 
+        /* ── Track ─────────────────────────────────────────────────── */
         var STATUS_ORDER = ["Processing", "Confirmed", "Packed", "Shipped", "Out for Delivery", "Delivered"];
-        function openTrack(prefill) { $("track-err").classList.remove("on"); $("track-result").classList.remove("on"); $("track-inp").value = (typeof prefill === "string" ? prefill : ""); $("track-veil").classList.add("on"); if (typeof prefill === "string" && prefill) doTrack(); }
-        function closeTrack() { $("track-veil").classList.remove("on"); }
+        function normStatus(s) { return String(s || "").trim().toLowerCase().replace(/\s+/g, ""); }
+
+        function openTrack(prefill) {
+            $("track-err").classList.remove("on");
+            $("track-result").classList.remove("on");
+            $("track-inp").value = (typeof prefill === "string" ? prefill : "");
+            $("track-veil").classList.add("on");
+            syncOverlayLock();
+            if (typeof prefill === "string" && prefill) doTrack();
+        }
+        function closeTrack() { $("track-veil").classList.remove("on"); syncOverlayLock(); }
         function onTrackVeilClick(e) { if (e.target === $("track-veil")) closeTrack(); }
 
         function doTrack() {
             var id = $("track-inp").value.trim();
             $("track-err").classList.remove("on"); $("track-result").classList.remove("on");
             if (!id) { $("track-err").textContent = "Please enter an Order ID or Tracking Code."; $("track-err").classList.add("on"); return; }
-            var btn = $("btn-search"); btn.disabled = true; btn.innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i>";
-            fetch(URL + "?action=trackOrder&id=" + encodeURIComponent(id), { redirect: "follow" }).then(function (r) { return r.text(); }).then(function (t) { return JSON.parse(t); }).then(function (d) {
-                if (d.error || !d.found) { $("track-err").textContent = d.error || "Order not found."; $("track-err").classList.add("on"); }
-                else { renderTrackResult(d); }
-            }).catch(function (e) { $("track-err").textContent = "Could not connect. Please try again."; $("track-err").classList.add("on"); }).then(function () { btn.disabled = false; btn.innerHTML = "<i class=\"fa fa-magnifying-glass\"></i> Search"; });
+            var btn = $("btn-search");
+            btn.disabled = true; btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
+            fetchJson(API_URL + "?action=trackOrder&id=" + encodeURIComponent(id)).then(function (d) {
+                if (!d.found) throw new Error(d.error || "Order not found.");
+                renderTrackResult(d);
+            }).catch(function (e) {
+                $("track-err").textContent = (e && e.message) || "Could not connect. Please try again.";
+                $("track-err").classList.add("on");
+            }).then(function () {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Search';
+            });
         }
 
         function renderTrackResult(d) {
             var status = d.shippingStatus || "Processing";
-            var statusKey = status.toLowerCase().replace(/\s+/g, "");
-            var chip = $("tr-status-chip"); chip.textContent = status; chip.className = "status-chip sc-" + statusKey;
-            var statusIdx = STATUS_ORDER.indexOf(status); if (statusIdx === -1) statusIdx = 0;
-            STATUS_ORDER.forEach(function (s, i) {
-                var key = "step-" + s.toLowerCase().replace(/\s+/g, ""); var el = $(key); if (!el) return;
-                var dot = el.querySelector(".step-dot"), lbl = el.querySelector(".step-lbl");
-                setTimeout(function () {
-                    if (i < statusIdx) { dot.className = "step-dot done"; lbl.className = "step-lbl done"; }
-                    else if (i === statusIdx) { dot.className = "step-dot active"; lbl.className = "step-lbl active"; }
-                    else { dot.className = "step-dot"; lbl.className = "step-lbl"; }
-                }, REDUCED ? 0 : i * 120);
-            });
-            $("tr-order-info").innerHTML = "<strong>" + d.orderNumber + "</strong><br/>" + d.date + "<br/>Payment: " + d.payment + (d.trackingCode ? "<br/>Tracking: <strong>" + d.trackingCode + "</strong>" : "");
-            $("tr-delivery-info").innerHTML = "<strong>" + d.fullName + "</strong><br/>" + d.contact + "<br/>" + d.address + "<br/>" + d.delivery;
-            var items = String(d.items || "").split(", "); var iHtml = ""; items.forEach(function (item) { iHtml += "\u2022 " + item + "<br/>"; }); $("tr-items-list").innerHTML = iHtml;
-            $("tr-sub").textContent = d.subtotal; $("tr-del").textContent = d.deliveryCharge; $("tr-tot").textContent = d.total;
+            var key = normStatus(status);
+            var cancelled = (key === "cancelled" || key === "canceled");
+
+            var chip = $("tr-status-chip");
+            chip.textContent = status;
+            chip.className = "status-chip sc-" + (cancelled ? "cancelled" : key);
+
+            // Status matching is now case/space insensitive, and a cancelled
+            // order no longer lights up "Processing" as if it were live.
+            var statusIdx = -1;
+            STATUS_ORDER.forEach(function (s, i) { if (normStatus(s) === key) statusIdx = i; });
+            $("tr-steps").style.display = cancelled ? "none" : "";
+            if (!cancelled) {
+                if (statusIdx === -1) statusIdx = 0;
+                STATUS_ORDER.forEach(function (s, i) {
+                    var el = $("step-" + normStatus(s));
+                    if (!el) return;
+                    var dot = el.querySelector(".step-dot"), lbl = el.querySelector(".step-lbl");
+                    setTimeout(function () {
+                        if (i < statusIdx) { dot.className = "step-dot done"; lbl.className = "step-lbl done"; }
+                        else if (i === statusIdx) { dot.className = "step-dot active"; lbl.className = "step-lbl active"; }
+                        else { dot.className = "step-dot"; lbl.className = "step-lbl"; }
+                    }, REDUCED ? 0 : i * 120);
+                });
+            }
+
+            $("tr-order-info").innerHTML = "<strong>" + esc(d.orderNumber) + "</strong><br/>" + esc(d.date) +
+                "<br/>Payment: " + esc(d.payment) +
+                (d.trackingCode ? "<br/>Tracking: <strong>" + esc(d.trackingCode) + "</strong>" : "");
+            $("tr-delivery-info").innerHTML = "<strong>" + esc(d.fullName) + "</strong><br/>" + esc(d.contact) +
+                "<br/>" + esc(d.address) + "<br/>" + esc(d.delivery);
+
+            var items = String(d.items || "").split(", ");
+            var iHtml = "";
+            items.forEach(function (item) { if (String(item).trim()) iHtml += "\u2022 " + esc(item) + "<br/>"; });
+            $("tr-items-list").innerHTML = iHtml || "\u2014";
+
+            $("tr-sub").textContent = d.subtotal;
+            $("tr-del").textContent = d.deliveryCharge;
+            $("tr-tot").textContent = d.total;
             $("track-result").classList.add("on");
         }
 
+        /* ── Invoice ───────────────────────────────────────────────── */
+        /* Mirrors generatePDF() in Code.gs field for field, so the invoice the
+           customer prints is the same document that lands in your inbox. */
         function showInvoice(o) {
+            if (!o) return;
             var sym = CFG.currencySymbol || "\u09F3";
-            var now = new Date().toLocaleDateString("en-BD", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
-            $("inv-tracking").textContent = o.trackingCode || "";
-            var oh = "<strong>" + o.orderNumber + "</strong><br/>" + now + "<br/>Payment: " + o.services;
-            if (o.account_number) oh += "<br/>Account: " + o.account_number;
-            if (o.transaction_id) oh += "<br/>Txn: " + o.transaction_id;
-            $("inv-order").innerHTML = oh;
-            $("inv-cust").innerHTML = "<strong>" + o.fullname + "</strong><br/>" + o.contactnumber + "<br/>" + o.address + "<br/>Delivery: <strong>" + (o.delivery_location === "inside" ? "Inside Dhaka" : "Outside Dhaka") + "</strong>";
-            var rows = "";
-            o.snap.forEach(function (i) { rows += "<tr><td>" + i.title + "</td><td style=\"text-align:center\">" + i.qty + "</td><td style=\"text-align:right\">" + sym + i.offerPrice.toLocaleString() + "</td><td style=\"text-align:right;font-weight:700\">" + sym + (i.offerPrice * i.qty).toLocaleString() + "</td></tr>"; });
-            $("inv-rows").innerHTML = rows;
-            $("inv-sub").textContent = sym + o.sub.toLocaleString(); $("inv-del").textContent = sym + o.del.toLocaleString(); $("inv-tot").textContent = sym + o.tot.toLocaleString();
-            $("inv-veil").classList.add("on");
-        }
-        function closeInvoice() { $("inv-veil").classList.remove("on"); }
-        function printInvoice() { window.print(); }
+            var now = new Date();
+            var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+            var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var hr = now.getHours(), ampm = hr >= 12 ? "PM" : "AM";
+            hr = hr % 12; if (hr === 0) hr = 12;
+            var date = pad(now.getDate()) + " " + MON[now.getMonth()] + " " + now.getFullYear() +
+                ", " + pad(hr) + ":" + pad(now.getMinutes()) + " " + ampm;
 
+            var oh = "<b>Order No:</b> " + esc(o.orderNumber) + "<br/>";
+            if (o.trackingCode) oh += "<b>Tracking:</b> <span class='inv-trk'>" + esc(o.trackingCode) + "</span><br/>";
+            oh += "<b>Date:</b> " + date + "<br/>";
+            oh += "<b>Payment:</b> " + esc(o.services);
+            if (o.account_number) oh += "<br/><b>Account:</b> " + esc(o.account_number);
+            if (o.transaction_id) oh += "<br/><b>Txn:</b> " + esc(o.transaction_id);
+            $("inv-order").innerHTML = oh;
+
+            $("inv-cust").innerHTML = "<b>" + esc(o.fullname) + "</b><br/>" + esc(o.contactnumber) +
+                "<br/>" + esc(o.address) + "<br/><b>Delivery:</b> " +
+                (o.delivery_location === "inside" ? "Inside Dhaka" : "Outside Dhaka");
+
+            var rows = "";
+            (o.snap || []).forEach(function (i) {
+                rows += "<tr><td>" + esc(i.title) + "</td><td style=\"text-align:center\">" + i.qty +
+                    "</td><td style=\"text-align:right\">" + sym + money(i.offerPrice) +
+                    "</td><td style=\"text-align:right;font-weight:700\">" + sym + money(i.offerPrice * i.qty) + "</td></tr>";
+            });
+            $("inv-rows").innerHTML = rows ||
+                "<tr><td colspan='4' style='text-align:center;color:var(--slate)'>No items recorded</td></tr>";
+
+            $("inv-sub").textContent = sym + money(o.sub);
+            $("inv-del").textContent = sym + money(o.del);
+            $("inv-tot").textContent = sym + money(o.tot);
+            $("inv-veil").classList.add("on");
+            syncOverlayLock();
+        }
+        function closeInvoice() { $("inv-veil").classList.remove("on"); syncOverlayLock(); }
+
+        // Print only the invoice — this used to send the entire storefront
+        // (hero, product grid and all) to the printer.
+        function printInvoice() {
+            document.body.classList.add("printing-invoice");
+            var cleanup = function () { document.body.classList.remove("printing-invoice"); };
+            window.addEventListener("afterprint", function h() {
+                window.removeEventListener("afterprint", h); cleanup();
+            });
+            setTimeout(function () {
+                window.print();
+                setTimeout(cleanup, 800);   // fallback for browsers without afterprint
+            }, 60);
+        }
+
+        /* ── Toast ─────────────────────────────────────────────────── */
         var _tt;
-        function showToast(msg, isErr) { var el = $("toast"), ic = $("toast-ic"); $("toast-msg").textContent = msg; el.style.background = isErr ? "rgba(220,38,38,.95)" : "rgba(28,25,23,.95)"; ic.className = isErr ? "fa fa-triangle-exclamation" : "fa fa-check-circle"; el.classList.add("on"); clearTimeout(_tt); _tt = setTimeout(function () { el.classList.remove("on"); }, 2800); }
+        function showToast(msg, isErr) {
+            var el = $("toast"), ic = $("toast-ic");
+            $("toast-msg").textContent = msg;
+            el.style.background = isErr ? "rgba(220,38,38,.95)" : "rgba(28,25,23,.95)";
+            ic.className = isErr ? "fa fa-triangle-exclamation" : "fa fa-check-circle";
+            el.classList.add("on");
+            clearTimeout(_tt);
+            _tt = setTimeout(function () { el.classList.remove("on"); }, 2800);
+        }
     </script>
 </body>
 
