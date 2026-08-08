@@ -1672,8 +1672,8 @@
             position: fixed;
             right: 0;
             top: 0;
-            height: 100%;
-            width: min(432px, 100vw);
+                height: 100%;
+    height: 100dvh;
             background: var(--chalk);
             z-index: 301;
             display: flex;
@@ -1724,14 +1724,27 @@
             transform: rotate(90deg)
         }
 
-        .cart-body {
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: 20px 24px;
-            display: flex;
-            flex-direction: column
-        }
+ .cart-body {
+    flex: 1 1 auto;
+    min-height: 0;                 /* the actual fix — allows scroll instead of overflow */
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;  /* stops scroll chaining to the page behind */
+    scrollbar-gutter: stable;      /* no width jump when the bar appears */
+    padding: 20px 18px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rose-m) transparent;
+}
+
+.cart-body::-webkit-scrollbar { width: 6px }
+.cart-body::-webkit-scrollbar-track { background: transparent }
+.cart-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--rose-m), var(--rose));
+    border-radius: 99px;
+}
+.cart-body::-webkit-scrollbar-thumb:hover { background: var(--rose-d) }
 
         .cart-empty {
             flex: 1;
@@ -1772,16 +1785,15 @@
             box-shadow: var(--sh-rose)
         }
 
-        .ci {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            margin-bottom: 18px;
-            max-height: 260px;
-            overflow: hidden;
-            transition: max-height .32s var(--e-silk), margin-bottom .32s var(--e-silk),
-                opacity .26s ease, transform .32s var(--e-silk)
-        }
+.ci {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    flex-shrink: 0;                /* rows keep their natural height */
+    margin-bottom: 18px;
+    transition: max-height .32s var(--e-silk), margin-bottom .32s var(--e-silk),
+        opacity .26s ease, transform .32s var(--e-silk);
+}
 
         .cart-body .ci:last-child {
             margin-bottom: 0
@@ -1792,14 +1804,15 @@
             animation: slideIn .5s var(--e-silk) both
         }
 
-        .ci.removing {
-            max-height: 0;
-            margin-bottom: 0;
-            opacity: 0;
-            transform: translateX(30px);
-            animation: none !important;
-            pointer-events: none
-        }
+.ci.removing {
+    max-height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(30px);
+    animation: none !important;
+    pointer-events: none;
+}
 
         @keyframes slideIn {
             from {
@@ -1962,11 +1975,12 @@
             flex-shrink: 0
         }
 
-        .cart-foot {
-            padding: 20px 24px 28px;
-            border-top: 1px solid var(--bdr);
-            background: rgba(255, 241, 242, .4)
-        }
+.cart-foot {
+    flex-shrink: 0;
+    padding: 20px 24px calc(28px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--bdr);
+    background: rgba(255, 241, 242, .4);
+}
 
         .cart-line {
             display: flex;
