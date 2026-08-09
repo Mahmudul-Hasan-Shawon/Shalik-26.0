@@ -4209,12 +4209,12 @@
 
     <div id="scroll-bar"></div>
 
-    <div id="promo-banner">
+    <!-- <div id="promo-banner">
         <span id="banner-text">🌸 Welcome to SHALIK!</span>
         <button class="banner-close" aria-label="Close banner"
             onclick="document.getElementById('promo-banner').style.display='none'"><i
                 class="fa fa-xmark"></i></button>
-    </div>
+    </div> -->
 
     <nav id="navbar">
         <div class="nav-main">
@@ -4634,9 +4634,14 @@
                 <div class="footer-pay-icon" style="font-size:9px;font-weight:800;color:#8B2F89;">Rocket</div>
             </div>
         </div>
-        <div class="footer-credit">
-            <span>Developed by <strong>mhshan7</strong></span>
-        </div>
+    <div class="footer-credit">
+    <span>
+        Developed by
+        <a href="https://wa.me/8801764640824" target="_blank" rel="noopener noreferrer">
+            <strong>mhshan7</strong>
+        </a>
+    </span>
+</div>
     </footer>
 
     <script>
@@ -4925,11 +4930,11 @@
                 document.title = c.siteTitle;
                 $("site-logo").textContent = c.siteTitle;
             }
-            if (c.bannerText) $("banner-text").textContent = c.bannerText;
+            // if (c.bannerText) $("banner-text").textContent = c.bannerText;
 
             // A checkbox in the sheet yields FALSE, not the string "No".
-            var ba = String(c.bannerActive === undefined ? "yes" : c.bannerActive).trim().toLowerCase();
-            if (ba === "no" || ba === "false" || ba === "0" || ba === "off") $("promo-banner").style.display = "none";
+            // var ba = String(c.bannerActive === undefined ? "yes" : c.bannerActive).trim().toLowerCase();
+            // if (ba === "no" || ba === "false" || ba === "0" || ba === "off") $("promo-banner").style.display = "none";
 
             // The config sheet key "WhatsApp Number" camel-cases to
             // `whatsappNumber`; the old code only read `whatsAppNumber`, so a
