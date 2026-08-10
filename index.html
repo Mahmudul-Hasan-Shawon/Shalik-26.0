@@ -1236,7 +1236,7 @@
             backdrop-filter: blur(14px);
             padding: 20px 24px;
             border-radius: 18px;
-            margin: 58px auto 0;
+            margin-top: 78px;
             max-width: 620px;
             text-align: left;
             animation: rise 1s var(--e-silk) both .7s
@@ -4456,8 +4456,6 @@
             </div>
             <button class="btn-track-order" onclick="openTrackFromSuccess()"><i class="fa fa-location-dot"></i> Track My
                 Order</button>
-            <button class="btn-invoice" onclick="openInvoiceFromSuccess()"><i class="fa fa-file-invoice"></i> View
-                Invoice</button>
             <button class="btn-done" onclick="closeSuccess()"><i class="fa fa-check"></i> Done</button>
         </div>
     </div>
@@ -4529,51 +4527,6 @@
                 </div>
             </div>
             <button class="btn-close-track" onclick="closeTrack()">Close</button>
-        </div>
-    </div>
-
-    <div id="inv-veil">
-        <div id="inv-box" role="dialog" aria-modal="true" aria-label="Invoice">
-            <div id="inv-content">
-                <div class="inv-hdr">
-                    <div class="inv-logo">✿ Shalik Glow Corner ✿</div>
-                    <div class="inv-tagline">Your Glow, Our Pride</div>
-                    <div class="inv-badge">INVOICE</div>
-                </div>
-                <div class="inv-grid">
-                    <div class="inv-box">
-                        <h4>Order Details</h4>
-                        <p id="inv-order"></p>
-                    </div>
-                    <div class="inv-box">
-                        <h4>Customer</h4>
-                        <p id="inv-cust"></p>
-                    </div>
-                </div>
-                <table id="inv-table">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th style="text-align:center">Qty</th>
-                            <th style="text-align:right">Price</th>
-                            <th style="text-align:right">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inv-rows"></tbody>
-                </table>
-                <div class="inv-totals">
-                    <div class="inv-line"><span>Subtotal</span><span id="inv-sub"></span></div>
-                    <div class="inv-line"><span>Delivery</span><span id="inv-del"></span></div>
-                    <div class="inv-grand"><span>Grand Total</span><span id="inv-tot"></span></div>
-                </div>
-                <p class="inv-thanks">🌸 Thank you for shopping with Shalik Glow Corner!</p>
-                <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow Corner</strong>
-                    &nbsp;|&nbsp; shalikbeauty@gmail.com &nbsp;|&nbsp; © 2026</div>
-            </div>
-            <div class="inv-actions">
-                <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
-                <button class="btn-inv btn-inv-fill" onclick="closeInvoice()"><i class="fa fa-check"></i> Done</button>
-            </div>
         </div>
     </div>
 
@@ -4733,7 +4686,7 @@
 
         /* ── Background scroll lock ──────────────────────────────────
            Without this the page scrolled behind every open drawer/modal. */
-        var LOCK_IDS = ["cart", "side-panel", "modal-veil", "checkout-veil", "success-veil", "track-veil", "inv-veil"];
+        var LOCK_IDS = ["cart", "side-panel", "modal-veil", "checkout-veil", "success-veil", "track-veil"];
         function syncOverlayLock() {
             var open = LOCK_IDS.some(function (id) {
                 var el = $(id);
@@ -4861,7 +4814,6 @@
             document.addEventListener("keydown", function (e) {
                 if (e.key !== "Escape") return;
                 // Close only the topmost layer so Escape doesn't nuke everything.
-                if ($("inv-veil").classList.contains("on")) { closeInvoice(); return; }
                 if ($("track-veil").classList.contains("on")) { closeTrack(); return; }
                 if ($("success-veil").classList.contains("on")) { closeSuccess(); return; }
                 if ($("checkout-veil").classList.contains("on")) { closeCheckout(); return; }
@@ -4903,7 +4855,7 @@
                 ALL = (d && d.products) || [];
                 CFG = (d && d.config) || { totalProducts: 13 };
                 if (!CFG.totalProducts || CFG.totalProducts < 1) CFG.totalProducts = 13;
-                applyConfig(); buildPills(); reconcileCart(); applyFilters(); hide("loading-state");
+                applyConfig(); buildPills(); syncNavbarSpacer(); reconcileCart(); applyFilters(); hide("loading-state");
             }).catch(function (e) {
                 hide("loading-state");
                 $("err-msg").textContent = (e && e.message) || "Connection failed.";
@@ -5135,7 +5087,10 @@
             else { db.classList.add("hidden"); }
             var si = getStockInfo(p);
             var st = $("m-stock");
-            st.textContent = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
+            var stockText = si.cls === "out" ? "Out of Stock" : (si.label + " (" + p.stockQty + " units)");
+            var stockIconColor = si.cls === "out" ? "var(--red)" : si.cls === "low" ? "var(--amber)" : "var(--green)";
+            var stockIconClass = si.cls === "out" ? "fa-solid fa-circle-xmark" : "fa-solid fa-circle-check";
+            st.innerHTML = '<i class="' + stockIconClass + '" style="color:' + stockIconColor + ';margin-right:6px"></i>' + esc(stockText);
             st.className = "modal-stock " + si.cls;
             $("m-add").disabled = !p.inStock;
 
@@ -5415,9 +5370,6 @@
         }
         function closeSuccess() { $("success-veil").classList.remove("on"); syncOverlayLock(); }
         function openTrackFromSuccess() { closeSuccess(); openTrack(LAST_ORDER ? LAST_ORDER.trackingCode : ""); }
-        // Invoice sits above the success card (z-index 650 vs 600), so the
-        // tracking code is still there when the customer closes it.
-        function openInvoiceFromSuccess() { if (LAST_ORDER) showInvoice(LAST_ORDER); }
 
         function confetti() {
             if (REDUCED) return;
@@ -5514,63 +5466,6 @@
             $("tr-del").textContent = d.deliveryCharge;
             $("tr-tot").textContent = d.total;
             $("track-result").classList.add("on");
-        }
-
-        /* ── Invoice ───────────────────────────────────────────────── */
-        /* Mirrors generatePDF() in Code.gs field for field, so the invoice the
-           customer prints is the same document that lands in your inbox. */
-        function showInvoice(o) {
-            if (!o) return;
-            var sym = CFG.currencySymbol || "\u09F3";
-            var now = new Date();
-            var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
-            var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var hr = now.getHours(), ampm = hr >= 12 ? "PM" : "AM";
-            hr = hr % 12; if (hr === 0) hr = 12;
-            var date = pad(now.getDate()) + " " + MON[now.getMonth()] + " " + now.getFullYear() +
-                ", " + pad(hr) + ":" + pad(now.getMinutes()) + " " + ampm;
-
-            var oh = "<b>Order No:</b> " + esc(o.orderNumber) + "<br/>";
-            if (o.trackingCode) oh += "<b>Tracking:</b> <span class='inv-trk'>" + esc(o.trackingCode) + "</span><br/>";
-            oh += "<b>Date:</b> " + date + "<br/>";
-            oh += "<b>Payment:</b> " + esc(o.services);
-            if (o.account_number) oh += "<br/><b>Account:</b> " + esc(o.account_number);
-            if (o.transaction_id) oh += "<br/><b>Txn:</b> " + esc(o.transaction_id);
-            $("inv-order").innerHTML = oh;
-
-            $("inv-cust").innerHTML = "<b>" + esc(o.fullname) + "</b><br/>" + esc(o.contactnumber) +
-                "<br/>" + esc(o.address) + "<br/><b>Delivery:</b> " +
-                (o.delivery_location === "inside" ? "Inside Dhaka" : "Outside Dhaka");
-
-            var rows = "";
-            (o.snap || []).forEach(function (i) {
-                rows += "<tr><td>" + esc(i.title) + "</td><td style=\"text-align:center\">" + i.qty +
-                    "</td><td style=\"text-align:right\">" + sym + money(i.offerPrice) +
-                    "</td><td style=\"text-align:right;font-weight:700\">" + sym + money(i.offerPrice * i.qty) + "</td></tr>";
-            });
-            $("inv-rows").innerHTML = rows ||
-                "<tr><td colspan='4' style='text-align:center;color:var(--slate)'>No items recorded</td></tr>";
-
-            $("inv-sub").textContent = sym + money(o.sub);
-            $("inv-del").textContent = sym + money(o.del);
-            $("inv-tot").textContent = sym + money(o.tot);
-            $("inv-veil").classList.add("on");
-            syncOverlayLock();
-        }
-        function closeInvoice() { $("inv-veil").classList.remove("on"); syncOverlayLock(); }
-
-        // Print only the invoice — this used to send the entire storefront
-        // (hero, product grid and all) to the printer.
-        function printInvoice() {
-            document.body.classList.add("printing-invoice");
-            var cleanup = function () { document.body.classList.remove("printing-invoice"); };
-            window.addEventListener("afterprint", function h() {
-                window.removeEventListener("afterprint", h); cleanup();
-            });
-            setTimeout(function () {
-                window.print();
-                setTimeout(cleanup, 800);   // fallback for browsers without afterprint
-            }, 60);
         }
 
         /* ── Toast ─────────────────────────────────────────────────── */
