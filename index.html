@@ -365,15 +365,27 @@
         }
 
         /* ── Navbar ── */
+        /* Replace the sticky rule */
         #navbar {
-            position: sticky;
+            position: fixed;      /* was: sticky */
             top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             z-index: 200;
             background: rgba(253, 251, 249, .72);
             backdrop-filter: blur(22px) saturate(160%);
             -webkit-backdrop-filter: blur(22px) saturate(160%);
             border-bottom: 1px solid rgba(225, 29, 72, .09);
             transition: box-shadow .4s var(--e-silk), background .4s var(--e-silk)
+        }
+
+        /* Defensive: make sure mobile never animates a height change */
+        @media (max-width: 768px) {
+            .nav-main,
+            #navbar.stuck .nav-main {
+                transition: none;
+            }
         }
 
         #navbar.stuck {
