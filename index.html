@@ -365,9 +365,13 @@
         }
 
         /* ── Navbar ── */
-        /* Replace the sticky rule */
+        /* position: fixed (not sticky) so Android/Samsung Internet address-bar
+           collapse/expand during scroll never forces a sticky re-pin — that
+           re-pin was the visible "jump" on scroll-up. A spacer element right
+           after the navbar (#navbar-spacer) reserves the layout space that
+           `fixed` no longer occupies; its height is kept in sync via JS. */
         #navbar {
-            position: fixed;      /* was: sticky */
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -4256,6 +4260,7 @@
         </div>
         <div class="nav-cats" id="cat-pills"></div>
     </nav>
+    <div id="navbar-spacer"></div>
 
     <nav id="mobile-bottom-nav">
         <button class="mbn-item" id="mbn-brand" onclick="openBrandPanel()"><i
@@ -4738,6 +4743,16 @@
             document.body.classList.toggle("ovl-open", open);
         }
 
+        /* ── Navbar spacer ──────────────────────────────────────────
+           #navbar is `position: fixed`, so it no longer reserves space in
+           normal flow. #navbar-spacer stands in for it; its height is kept
+           equal to the navbar's real rendered height (which changes with
+           .stuck on desktop and with wrapping on mobile). */
+        function syncNavbarSpacer() {
+            var nav = $("navbar"), spacer = $("navbar-spacer");
+            if (nav && spacer) spacer.style.height = nav.offsetHeight + "px";
+        }
+
         /* ── Motion helpers ─────────────────────────────── */
         var _revealObs = null;
         function initReveal() {
@@ -4802,6 +4817,7 @@
                     var max = document.documentElement.scrollHeight - window.innerHeight;
                     bar.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
                     nav.classList.toggle("stuck", y > 24);
+                    syncNavbarSpacer();
                     top.classList.toggle("on", y > 620);
                     ticking = false;
                 });
@@ -4839,6 +4855,9 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             renderBadge(); makeSparks(); initReveal(); initScrollFx(); loadData();
+            syncNavbarSpacer();
+            window.addEventListener("resize", syncNavbarSpacer, { passive: true });
+            window.addEventListener("orientationchange", syncNavbarSpacer);
             document.addEventListener("keydown", function (e) {
                 if (e.key !== "Escape") return;
                 // Close only the topmost layer so Escape doesn't nuke everything.
@@ -4964,6 +4983,11 @@
             countUp($("s-brands"), Object.keys(brands).length);
             var orders = document.querySelectorAll(".hero-stat strong[data-count]")[1];
             if (orders) countUp(orders, Number(c.happyOrders) || 56);
+
+            // A long site title can wrap to a second line on a narrow phone
+            // after this async config load, changing the navbar's real
+            // height after first paint — resync the spacer defensively.
+            syncNavbarSpacer();
         }
 
         function buildPills() {
