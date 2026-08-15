@@ -9,7 +9,8 @@
         content="Shalik Glow Corner — authentic Korean skincare and cosmetics in Bangladesh. Live prices, real stock, instant orders and order tracking." />
     <meta name="theme-color" content="#9F1239" />
     <meta property="og:title" content="Shalik Glow Corner" />
-    <meta property="og:description" content="Authentic Korean skincare &amp; cosmetics — live prices, real stock, instant orders." />
+    <meta property="og:description"
+        content="Authentic Korean skincare &amp; cosmetics — live prices, real stock, instant orders." />
     <meta property="og:type" content="website" />
     <base target="_top" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +22,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
 </head>
+
+<script src="https://unpkg.com/lenis@1.3.13/dist/lenis.min.js"></script>
+
+<script>
+const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    lerp: 0.1,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.5
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+</script>
 
 <body>
 
@@ -35,7 +55,7 @@
     <nav id="navbar">
         <div class="nav-main">
             <div class="nav-logo" id="site-logo" role="button" tabindex="0" onclick="scrollToShop()"
-                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();scrollToShop();}">SHALIK</div>
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();scrollToShop();}">shalik</div>
             <div class="search-wrap" id="search-wrap">
                 <div class="search-input-box">
                     <input type="search" id="search-inp" aria-label="Search products and brands"
@@ -50,14 +70,13 @@
                 <a href="gallery.html" class="nav-page-link">Gallery</a>
                 <a href="faq.html" class="nav-page-link">FAQ</a>
                 <a href="contact.html" class="nav-page-link">Contact</a>
-                <button class="nav-track-btn" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track
-                        Order</span></button>
+                <button class="nav-track-btn" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>TrackOrder</span></button>
                 <button class="nav-icon-btn" id="cart-btn" onclick="toggleCart()" title="Cart" aria-label="Open cart">
                     <i class="fa fa-bag-shopping"></i>
                     <span class="cart-count hidden" id="cart-cnt">0</span>
                 </button>
-                <a href="https://wa.me/qr/K32S62PEL6ZAK1" id="wa-btn" target="_blank" rel="noopener" class="nav-icon-btn"
-                    title="WhatsApp" aria-label="Chat on WhatsApp" style="color:#22C55E">
+                <a href="https://wa.me/message/OOV6ZSFN26OPP1" id="wa-btn" target="_blank" rel="noopener"
+                    class="nav-icon-btn" title="WhatsApp" aria-label="Chat on WhatsApp" style="color:#22C55E">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
             </div>
@@ -75,15 +94,15 @@
                 id="mbn-cart-cnt">0</span></button>
         <button class="mbn-item" id="mbn-track" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track
                 Order</span></button>
-        <a class="mbn-item" id="mbn-chat" href="https://wa.me/qr/K32S62PEL6ZAK1" target="_blank" rel="noopener"><i
+        <a class="mbn-item" id="mbn-chat" href="https://wa.me/message/OOV6ZSFN26OPP1" target="_blank" rel="noopener"><i
                 class="fa-brands fa-whatsapp"></i><span>Chat</span></a>
     </nav>
 
     <div id="sp-veil" onclick="closeSidePanel()"></div>
     <aside id="side-panel" aria-label="Filters">
         <div class="sp-head">
-            <h3 id="sp-title">Brands</h3><button class="icon-btn" aria-label="Close panel"
-                onclick="closeSidePanel()"><i class="fa fa-xmark"></i></button>
+            <h3 id="sp-title">Brands</h3><button class="icon-btn" aria-label="Close panel" onclick="closeSidePanel()"><i
+                    class="fa fa-xmark"></i></button>
         </div>
         <div class="sp-body" id="sp-body"></div>
     </aside>
@@ -95,81 +114,189 @@
         <div id="sparks"></div>
         <div class="hero-inner">
             <div class="hero-copy">
-                <div class="hero-eyebrow"><i class="fa fa-star"></i> Authentic Korean Beauty</div>
+                <div class="hero-eyebrow"><i class="fa fa-star"></i> Authentic Korean Products</div>
                 <h1 class="hero-title">Discover Your<br /><em>Radiant Glow</em></h1>
-                <p class="hero-sub">Curated Korean skincare and cosmetics, sourced with care — for the routines worth investing in, and the glow worth showing off.
+                <p class="hero-sub">Curated Korean skincare and cosmetics, sourced with care — for the routines worth
+                    investing in, and the glow worth showing off.
                 </p>
                 <div class="hero-btn-row">
-                    <a href="#shop" class="hero-btn"><i class="fa fa-arrow-down"></i> <span>Explore the Collection</span></a>
-                    <a href="tel:+821027805480" class="hero-btn-ghost"><i class="fa-solid fa-phone"></i> <span>Call to Order</span></a>
+                    <a href="#shop" class="hero-btn"><i class="fa fa-arrow-down"></i> <span>Explore the
+                            Collection</span></a>
+                    <a href="tel:+821027805480" class="hero-btn-ghost"><i class="fa-solid fa-phone"></i> <span>Call to
+                            Order</span></a>
                 </div>
             </div>
             <div class="hero-stats hero-stats--slider">
-            <div class="hero-slider-track">
-                <img class="hero-slide-img" src="https://cdn.bdstall.com/product-image/450008_800X800.webp" alt="Skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/9ca50e7cae1ccd8e284cf1dbe1dde138.jpg" alt="Skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://au.thefaceshop.com/cdn/shop/files/RICE_CERAMIDECream.jpg?v=1753704558&width=1440" alt="The Face Shop Rice Ceramide Cream" loading="lazy" />
-                <img class="hero-slide-img" src="https://aubeautybazaar.com/cdn/shop/files/beauty-of-joseon-relief-sun-10ml-3896945.png?v=1771417989" alt="Beauty of Joseon Relief Sun" loading="lazy" />
-                <img class="hero-slide-img" src="https://poripati.net/wp-content/uploads/2026/04/Beauty-Of-Joseon-Relief-Sun-Aqua-Fresh-Rice-B5-SPF50-PA.jpg" alt="Beauty of Joseon Relief Sun Aqua Fresh" loading="lazy" />
-                <img class="hero-slide-img" src="https://cdn-image.oliveyoung.com/prdtImg/1835/27c3e0cd-b1e5-4db0-93a0-355b30c988a3.jpg?RS=1500x1500&AR=0&QT=80" alt="Korean skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://glowberry.gr/cdn/shop/files/71kTiwQf_dL._SL1500.jpg?v=1765898684&width=1946" alt="Korean skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.lamourlife.com/cdn/shop/files/BeautyofJoseonGroundRiceandHoneyGlowMask150ml_01.png?v=1762980856&width=1024" alt="Beauty of Joseon Ground Rice and Honey Glow Mask" loading="lazy" />
-                <img class="hero-slide-img" src="https://kcbazar.com/wp-content/uploads/2025/03/SKIN1004-Madagascar-Centella-Hyalu-Cica-Water-Fit-Sun-Serum-Spf-50-PA-50-ml-2-1.jpg" alt="SKIN1004 Madagascar Centella Hyalu-Cica Sun Serum" loading="lazy" />
-                <img class="hero-slide-img" src="https://skin1004india.com/cdn/shop/files/skin1004-cleanser-centella-light-cleansing-oil-38409133490422.jpg?v=1771411449&width=2048" alt="SKIN1004 Centella Light Cleansing Oil" loading="lazy" />
-                <img class="hero-slide-img" src="https://cosibella-wholesale.com/hpeciai/4d173c1e71becb2db87937996e984369/eng_pl_SKIN1004-Madagascar-Centella-Tone-Brightening-Capsule-Ampoule-Brightening-Ampoule-with-Asian-Centella-30ml-13943_1.webp" alt="SKIN1004 Tone Brightening Capsule Ampoule" loading="lazy" />
-                <img class="hero-slide-img" src="https://cdn-image.oliveyoung.com/prdtImg/1646/95aa899d-d54c-4bbe-a45c-81e65c038248.jpg?RS=1500x1500&AR=0&SF=webp&QT=80" alt="Korean skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.koreanbeautykr.com/cdn/shop/files/skin1004-017977kn-1_1024x1024_b803f71c-753e-4477-82f0-246c5bed6c1b.webp?v=1743413802&width=1200" alt="SKIN1004 skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://lavishta.com/wp-content/uploads/2024/12/Skin1004_Madagascar_Centella_Poremizing_Fresh_Ampoule_30ml_image_6__30111.jpg" alt="SKIN1004 Madagascar Centella Poremizing Fresh Ampoule" loading="lazy" />
-                <img class="hero-slide-img" src="https://unnieandco.fr/cdn/shop/files/221121_ReliefAmpoule.jpg?v=1736612787" alt="Beauty of Joseon Relief Ampoule" loading="lazy" />
-                <img class="hero-slide-img" src="https://finelook.com/cdn/shop/files/51AQLkArUDL.jpg?v=1747820707" alt="Korean skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://m.media-amazon.com/images/I/612NxRjAoCL._AC_UF1000,1000_QL80_.jpg" alt="Skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/5429918527edbea7550021f81fb3fb2a.jpg" alt="Skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://kiokii.com/cdn/shop/files/axis-y-dark-spot-correcting-glow-serum-mini-5mlaxis-ykiokii-and-2353019.webp?v=1757433614" alt="AXIS-Y Dark Spot Correcting Glow Serum" loading="lazy" />
-                <img class="hero-slide-img" src="https://i5.walmartimages.com/seo/AXIS-Y-Dark-Spot-Correcting-Glow-Toner_7682190d-3685-42f9-92ba-e9322e197d0d.e2fce9944959b380b6d0a1dd03eae9ab.jpeg" alt="AXIS-Y Dark Spot Correcting Glow Toner" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.axis-y.com/cdn/shop/files/DarkSpotCorrectingGlowCream_1.png?crop=center&height=1500&v=1758523830&width=1200" alt="AXIS-Y Dark Spot Correcting Glow Cream" loading="lazy" />
-                <img class="hero-slide-img" src="https://glamournupur.com/wp-content/uploads/2025/11/Beaute-Glutathione-Brightening-Tone-Up-Cream-45ml.jpg" alt="Glutathione Brightening Tone-Up Cream" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/e14b57cb84a259b8b6906cf29e236419.jpg" alt="Skincare product" loading="lazy" />
-                <img class="hero-slide-img" src="https://fairskincarebd.com/wp-content/uploads/2020/01/Missha-Soft-Finish-Sun-Milk-SPF50_2.jpg" alt="Missha Soft Finish Sun Milk SPF50" loading="lazy" />
-                <img class="hero-slide-img" src="https://s3.ap-southeast-1.amazonaws.com/robyy.digital/dabosnail-cleanser1.jpg" alt="Dabo Snail Cleanser" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.ogerio.com/wp-content/uploads/2025/05/Dabo-All-in-One-Black-Snail-Repair-Cream-50-ml-5.jpg" alt="Dabo All-in-One Black Snail Repair Cream" loading="lazy" />
-                <img class="hero-slide-img" src="https://tekka.com.bd/uploads/all/WWAxg1c9eGLIsKWkQlC9RtqZ0qSN2sGyb7nodQku.webp" alt="Skincare product" loading="lazy" />
+                <div class="hero-slider-track">
+                    <img class="hero-slide-img" src="https://cdn.bdstall.com/product-image/450008_800X800.webp"
+                        alt="Skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/9ca50e7cae1ccd8e284cf1dbe1dde138.jpg"
+                        alt="Skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://au.thefaceshop.com/cdn/shop/files/RICE_CERAMIDECream.jpg?v=1753704558&width=1440"
+                        alt="The Face Shop Rice Ceramide Cream" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://aubeautybazaar.com/cdn/shop/files/beauty-of-joseon-relief-sun-10ml-3896945.png?v=1771417989"
+                        alt="Beauty of Joseon Relief Sun" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://poripati.net/wp-content/uploads/2026/04/Beauty-Of-Joseon-Relief-Sun-Aqua-Fresh-Rice-B5-SPF50-PA.jpg"
+                        alt="Beauty of Joseon Relief Sun Aqua Fresh" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cdn-image.oliveyoung.com/prdtImg/1835/27c3e0cd-b1e5-4db0-93a0-355b30c988a3.jpg?RS=1500x1500&AR=0&QT=80"
+                        alt="Korean skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://glowberry.gr/cdn/shop/files/71kTiwQf_dL._SL1500.jpg?v=1765898684&width=1946"
+                        alt="Korean skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.lamourlife.com/cdn/shop/files/BeautyofJoseonGroundRiceandHoneyGlowMask150ml_01.png?v=1762980856&width=1024"
+                        alt="Beauty of Joseon Ground Rice and Honey Glow Mask" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://kcbazar.com/wp-content/uploads/2025/03/SKIN1004-Madagascar-Centella-Hyalu-Cica-Water-Fit-Sun-Serum-Spf-50-PA-50-ml-2-1.jpg"
+                        alt="SKIN1004 Madagascar Centella Hyalu-Cica Sun Serum" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://skin1004india.com/cdn/shop/files/skin1004-cleanser-centella-light-cleansing-oil-38409133490422.jpg?v=1771411449&width=2048"
+                        alt="SKIN1004 Centella Light Cleansing Oil" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cosibella-wholesale.com/hpeciai/4d173c1e71becb2db87937996e984369/eng_pl_SKIN1004-Madagascar-Centella-Tone-Brightening-Capsule-Ampoule-Brightening-Ampoule-with-Asian-Centella-30ml-13943_1.webp"
+                        alt="SKIN1004 Tone Brightening Capsule Ampoule" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cdn-image.oliveyoung.com/prdtImg/1646/95aa899d-d54c-4bbe-a45c-81e65c038248.jpg?RS=1500x1500&AR=0&SF=webp&QT=80"
+                        alt="Korean skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.koreanbeautykr.com/cdn/shop/files/skin1004-017977kn-1_1024x1024_b803f71c-753e-4477-82f0-246c5bed6c1b.webp?v=1743413802&width=1200"
+                        alt="SKIN1004 skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://lavishta.com/wp-content/uploads/2024/12/Skin1004_Madagascar_Centella_Poremizing_Fresh_Ampoule_30ml_image_6__30111.jpg"
+                        alt="SKIN1004 Madagascar Centella Poremizing Fresh Ampoule" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://unnieandco.fr/cdn/shop/files/221121_ReliefAmpoule.jpg?v=1736612787"
+                        alt="Beauty of Joseon Relief Ampoule" loading="lazy" />
+                    <img class="hero-slide-img" src="https://finelook.com/cdn/shop/files/51AQLkArUDL.jpg?v=1747820707"
+                        alt="Korean skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://m.media-amazon.com/images/I/612NxRjAoCL._AC_UF1000,1000_QL80_.jpg"
+                        alt="Skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/5429918527edbea7550021f81fb3fb2a.jpg"
+                        alt="Skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://kiokii.com/cdn/shop/files/axis-y-dark-spot-correcting-glow-serum-mini-5mlaxis-ykiokii-and-2353019.webp?v=1757433614"
+                        alt="AXIS-Y Dark Spot Correcting Glow Serum" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://i5.walmartimages.com/seo/AXIS-Y-Dark-Spot-Correcting-Glow-Toner_7682190d-3685-42f9-92ba-e9322e197d0d.e2fce9944959b380b6d0a1dd03eae9ab.jpeg"
+                        alt="AXIS-Y Dark Spot Correcting Glow Toner" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.axis-y.com/cdn/shop/files/DarkSpotCorrectingGlowCream_1.png?crop=center&height=1500&v=1758523830&width=1200"
+                        alt="AXIS-Y Dark Spot Correcting Glow Cream" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://glamournupur.com/wp-content/uploads/2025/11/Beaute-Glutathione-Brightening-Tone-Up-Cream-45ml.jpg"
+                        alt="Glutathione Brightening Tone-Up Cream" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/e14b57cb84a259b8b6906cf29e236419.jpg"
+                        alt="Skincare product" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://fairskincarebd.com/wp-content/uploads/2020/01/Missha-Soft-Finish-Sun-Milk-SPF50_2.jpg"
+                        alt="Missha Soft Finish Sun Milk SPF50" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://s3.ap-southeast-1.amazonaws.com/robyy.digital/dabosnail-cleanser1.jpg"
+                        alt="Dabo Snail Cleanser" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.ogerio.com/wp-content/uploads/2025/05/Dabo-All-in-One-Black-Snail-Repair-Cream-50-ml-5.jpg"
+                        alt="Dabo All-in-One Black Snail Repair Cream" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://tekka.com.bd/uploads/all/WWAxg1c9eGLIsKWkQlC9RtqZ0qSN2sGyb7nodQku.webp"
+                        alt="Skincare product" loading="lazy" />
 
-                <!-- duplicate set for a seamless loop -->
-                <img class="hero-slide-img" src="https://cdn.bdstall.com/product-image/450008_800X800.webp" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/9ca50e7cae1ccd8e284cf1dbe1dde138.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://au.thefaceshop.com/cdn/shop/files/RICE_CERAMIDECream.jpg?v=1753704558&width=1440" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://aubeautybazaar.com/cdn/shop/files/beauty-of-joseon-relief-sun-10ml-3896945.png?v=1771417989" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://poripati.net/wp-content/uploads/2026/04/Beauty-Of-Joseon-Relief-Sun-Aqua-Fresh-Rice-B5-SPF50-PA.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://cdn-image.oliveyoung.com/prdtImg/1835/27c3e0cd-b1e5-4db0-93a0-355b30c988a3.jpg?RS=1500x1500&AR=0&QT=80" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://glowberry.gr/cdn/shop/files/71kTiwQf_dL._SL1500.jpg?v=1765898684&width=1946" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.lamourlife.com/cdn/shop/files/BeautyofJoseonGroundRiceandHoneyGlowMask150ml_01.png?v=1762980856&width=1024" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://kcbazar.com/wp-content/uploads/2025/03/SKIN1004-Madagascar-Centella-Hyalu-Cica-Water-Fit-Sun-Serum-Spf-50-PA-50-ml-2-1.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://skin1004india.com/cdn/shop/files/skin1004-cleanser-centella-light-cleansing-oil-38409133490422.jpg?v=1771411449&width=2048" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://cosibella-wholesale.com/hpeciai/4d173c1e71becb2db87937996e984369/eng_pl_SKIN1004-Madagascar-Centella-Tone-Brightening-Capsule-Ampoule-Brightening-Ampoule-with-Asian-Centella-30ml-13943_1.webp" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://cdn-image.oliveyoung.com/prdtImg/1646/95aa899d-d54c-4bbe-a45c-81e65c038248.jpg?RS=1500x1500&AR=0&SF=webp&QT=80" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.koreanbeautykr.com/cdn/shop/files/skin1004-017977kn-1_1024x1024_b803f71c-753e-4477-82f0-246c5bed6c1b.webp?v=1743413802&width=1200" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://lavishta.com/wp-content/uploads/2024/12/Skin1004_Madagascar_Centella_Poremizing_Fresh_Ampoule_30ml_image_6__30111.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://unnieandco.fr/cdn/shop/files/221121_ReliefAmpoule.jpg?v=1736612787" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://finelook.com/cdn/shop/files/51AQLkArUDL.jpg?v=1747820707" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://m.media-amazon.com/images/I/612NxRjAoCL._AC_UF1000,1000_QL80_.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/5429918527edbea7550021f81fb3fb2a.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://kiokii.com/cdn/shop/files/axis-y-dark-spot-correcting-glow-serum-mini-5mlaxis-ykiokii-and-2353019.webp?v=1757433614" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://i5.walmartimages.com/seo/AXIS-Y-Dark-Spot-Correcting-Glow-Toner_7682190d-3685-42f9-92ba-e9322e197d0d.e2fce9944959b380b6d0a1dd03eae9ab.jpeg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.axis-y.com/cdn/shop/files/DarkSpotCorrectingGlowCream_1.png?crop=center&height=1500&v=1758523830&width=1200" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://glamournupur.com/wp-content/uploads/2025/11/Beaute-Glutathione-Brightening-Tone-Up-Cream-45ml.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://static-01.daraz.com.bd/p/e14b57cb84a259b8b6906cf29e236419.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://fairskincarebd.com/wp-content/uploads/2020/01/Missha-Soft-Finish-Sun-Milk-SPF50_2.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://s3.ap-southeast-1.amazonaws.com/robyy.digital/dabosnail-cleanser1.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://www.ogerio.com/wp-content/uploads/2025/05/Dabo-All-in-One-Black-Snail-Repair-Cream-50-ml-5.jpg" alt="" aria-hidden="true" loading="lazy" />
-                <img class="hero-slide-img" src="https://tekka.com.bd/uploads/all/WWAxg1c9eGLIsKWkQlC9RtqZ0qSN2sGyb7nodQku.webp" alt="" aria-hidden="true" loading="lazy" />
-            </div>
+                    <!-- duplicate set for a seamless loop -->
+                    <img class="hero-slide-img" src="https://cdn.bdstall.com/product-image/450008_800X800.webp" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/9ca50e7cae1ccd8e284cf1dbe1dde138.jpg" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://au.thefaceshop.com/cdn/shop/files/RICE_CERAMIDECream.jpg?v=1753704558&width=1440"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://aubeautybazaar.com/cdn/shop/files/beauty-of-joseon-relief-sun-10ml-3896945.png?v=1771417989"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://poripati.net/wp-content/uploads/2026/04/Beauty-Of-Joseon-Relief-Sun-Aqua-Fresh-Rice-B5-SPF50-PA.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cdn-image.oliveyoung.com/prdtImg/1835/27c3e0cd-b1e5-4db0-93a0-355b30c988a3.jpg?RS=1500x1500&AR=0&QT=80"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://glowberry.gr/cdn/shop/files/71kTiwQf_dL._SL1500.jpg?v=1765898684&width=1946" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.lamourlife.com/cdn/shop/files/BeautyofJoseonGroundRiceandHoneyGlowMask150ml_01.png?v=1762980856&width=1024"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://kcbazar.com/wp-content/uploads/2025/03/SKIN1004-Madagascar-Centella-Hyalu-Cica-Water-Fit-Sun-Serum-Spf-50-PA-50-ml-2-1.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://skin1004india.com/cdn/shop/files/skin1004-cleanser-centella-light-cleansing-oil-38409133490422.jpg?v=1771411449&width=2048"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cosibella-wholesale.com/hpeciai/4d173c1e71becb2db87937996e984369/eng_pl_SKIN1004-Madagascar-Centella-Tone-Brightening-Capsule-Ampoule-Brightening-Ampoule-with-Asian-Centella-30ml-13943_1.webp"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://cdn-image.oliveyoung.com/prdtImg/1646/95aa899d-d54c-4bbe-a45c-81e65c038248.jpg?RS=1500x1500&AR=0&SF=webp&QT=80"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.koreanbeautykr.com/cdn/shop/files/skin1004-017977kn-1_1024x1024_b803f71c-753e-4477-82f0-246c5bed6c1b.webp?v=1743413802&width=1200"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://lavishta.com/wp-content/uploads/2024/12/Skin1004_Madagascar_Centella_Poremizing_Fresh_Ampoule_30ml_image_6__30111.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://unnieandco.fr/cdn/shop/files/221121_ReliefAmpoule.jpg?v=1736612787" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img" src="https://finelook.com/cdn/shop/files/51AQLkArUDL.jpg?v=1747820707"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://m.media-amazon.com/images/I/612NxRjAoCL._AC_UF1000,1000_QL80_.jpg" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/5429918527edbea7550021f81fb3fb2a.jpg" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://kiokii.com/cdn/shop/files/axis-y-dark-spot-correcting-glow-serum-mini-5mlaxis-ykiokii-and-2353019.webp?v=1757433614"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://i5.walmartimages.com/seo/AXIS-Y-Dark-Spot-Correcting-Glow-Toner_7682190d-3685-42f9-92ba-e9322e197d0d.e2fce9944959b380b6d0a1dd03eae9ab.jpeg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.axis-y.com/cdn/shop/files/DarkSpotCorrectingGlowCream_1.png?crop=center&height=1500&v=1758523830&width=1200"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://glamournupur.com/wp-content/uploads/2025/11/Beaute-Glutathione-Brightening-Tone-Up-Cream-45ml.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://static-01.daraz.com.bd/p/e14b57cb84a259b8b6906cf29e236419.jpg" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://fairskincarebd.com/wp-content/uploads/2020/01/Missha-Soft-Finish-Sun-Milk-SPF50_2.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://s3.ap-southeast-1.amazonaws.com/robyy.digital/dabosnail-cleanser1.jpg" alt=""
+                        aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://www.ogerio.com/wp-content/uploads/2025/05/Dabo-All-in-One-Black-Snail-Repair-Cream-50-ml-5.jpg"
+                        alt="" aria-hidden="true" loading="lazy" />
+                    <img class="hero-slide-img"
+                        src="https://tekka.com.bd/uploads/all/WWAxg1c9eGLIsKWkQlC9RtqZ0qSN2sGyb7nodQku.webp" alt=""
+                        aria-hidden="true" loading="lazy" />
+                </div>
 
             </div>
 
             <div class="price-note" lang="bn">
-                পণ্যের মূল্য পরিবর্তনশীল। প্রদর্শিত মূল্য শুধুমাত্র ধারণার জন্য প্রদান করা হয়েছে; প্রকৃত মূল্য কিছুটা কম বা বেশি হতে পারে। সর্বশেষ মূল্য জানতে অনুগ্রহ করে সরাসরি যোগাযোগ করুন।
+                পণ্যের মূল্য পরিবর্তনশীল। প্রদর্শিত মূল্য শুধুমাত্র ধারণার জন্য প্রদান করা হয়েছে; প্রকৃত মূল্য কিছুটা
+                কম বা বেশি হতে পারে। সর্বশেষ মূল্য জানতে অনুগ্রহ করে সরাসরি যোগাযোগ করুন।
                 <div class="contact-number">
-                    <i class="fa-solid fa-phone" style="color: #fff;"></i> <a href="tel:+821027805480">+821027805480</a>
+                    <a href="tel:+821027805480">+821027805480</a>
                 </div>
             </div>
         </div>
@@ -229,9 +356,8 @@
                 </div>
                 <p class="modal-stock" id="m-stock"></p>
                 <div class="qty-row">
-                    <div class="qty-ctrl"><button aria-label="Decrease quantity"
-                            onclick="mQty(-1)">−</button><span id="m-qty">1</span><button aria-label="Increase quantity"
-                            onclick="mQty(1)">+</button></div>
+                    <div class="qty-ctrl"><button aria-label="Decrease quantity" onclick="mQty(-1)">−</button><span
+                            id="m-qty">1</span><button aria-label="Increase quantity" onclick="mQty(1)">+</button></div>
                     <button class="btn-add-modal" id="m-add" onclick="addFromModal()"><i class="fa fa-bag-shopping"></i>
                         Add to Bag</button>
                 </div>
@@ -449,15 +575,28 @@
         <div class="footer-main">
             <div class="footer-grid">
                 <div class="reveal">
-                    <div class="footer-brand-name"> <span class="brand-logo-text">Shalik</span> Glow Corner</div>
-                    <p class="footer-about">Your trusted destination for premium skincare and beauty products in Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
+                    <div class="footer-brand-name" style="display: flex; align-items: center; gap: 12px;">
+                        <img src="./assets/logo/shalik_1.svg" alt="shalik" style="width: 100px; height: auto;">
+
+                        <div style="display: flex; flex-direction: column;">
+                            <div style="color:#fb7185; font-size: 30px; font-weight: 700; letter-spacing: 22px;">
+                                SHALIK
+                            </div>
+
+                            <div style="color:#ffc1ca;font-family:manrope;font-size: 8px; font-weight: 400; letter-spacing: 2px; margin-top: 3px; white-space: nowrap;">
+                                WHERE EXCELLENCE MEETS EXPERIENCE
+                            </div>
+                        </div>
+                    </div>
+                    <p class="footer-about">Your trusted destination for premium skincare and beauty products in
+                        Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
                     <div class="footer-socials">
-                        <a href="https://www.facebook.com/people/Shalik-Beauty/61553616282600/" target="_blank"
+                        <a href="https://www.facebook.com/people/shalik-Beauty/61553616282600/" target="_blank"
                             rel="noopener" aria-label="Facebook" class="footer-social-link"><i
                                 class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/shalikbeauty007" target="_blank" rel="noopener"
                             aria-label="Instagram" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/qr/K32S62PEL6ZAK1" target="_blank" rel="noopener" aria-label="WhatsApp"
+                        <a href="https://wa.me/message/OOV6ZSFN26OPP1" target="_blank" rel="noopener" aria-label="WhatsApp"
                             id="wa-footer" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -501,7 +640,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-clock"></i>
-                        <p>Sat–Thu: 10AM – 10PM</p>
+                        <p>Sat–Thu: 10AM – 8PM</p>
                     </div>
                 </div>
             </div>
@@ -509,20 +648,20 @@
         <div class="footer-bottom">
             <div class="footer-copy">© 2026 <strong>Shalik Glow Corner.</strong> All rights reserved.</div>
             <div class="footer-payments">
-                <div class="footer-pay-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <!-- <div class="footer-pay-icon"><i class="fas fa-money-bill-wave"></i></div> -->
                 <div class="footer-pay-icon" style="font-size:11px;font-weight:800;color:#E2136E;">bKash</div>
                 <div class="footer-pay-icon" style="font-size:10px;font-weight:800;color:#F6921E;">Nagad</div>
                 <div class="footer-pay-icon" style="font-size:9px;font-weight:800;color:#8B2F89;">Rocket</div>
             </div>
         </div>
-    <div class="footer-credit">
-    <span>
-        Developed by
-        <a href="https://wa.me/8801764640824" target="_blank" rel="noopener noreferrer">
-            <strong>mhshan7</strong>
-        </a>
-    </span>
-</div>
+        <div class="footer-credit">
+            <span>
+                Developed by
+                <a href="https://wa.me/88+821027805480" target="_blank" rel="noopener noreferrer">
+                    <strong>mhshan7</strong>
+                </a>
+            </span>
+        </div>
     </footer>
 
     <script src="./assets/site.js"></script>

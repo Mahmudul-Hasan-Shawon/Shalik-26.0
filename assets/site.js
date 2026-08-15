@@ -46,6 +46,11 @@ function getStockInfo(p) {
     };
 }
 
+
+
+
+
+
 var IMGS = { d: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format", s: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format", c: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=500&auto=format", cl: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&auto=format", t: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=500&auto=format", sun: "https://images.unsplash.com/photo-1556228852-6d35a585d566?w=500&auto=format", bb: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format" };
 function getImg(p) { if (p.imageUrl && p.imageUrl.indexOf("http") === 0) return p.imageUrl; var t = (p.title + " " + p.category).toLowerCase(); if (t.indexOf("serum") !== -1) return IMGS.s; if (t.indexOf("cream") !== -1) return IMGS.c; if (t.indexOf("cleanser") !== -1) return IMGS.cl; if (t.indexOf("toner") !== -1) return IMGS.t; if (t.indexOf("sunscreen") !== -1 || t.indexOf("sunblock") !== -1) return IMGS.sun; if (t.indexOf("bb") !== -1 || t.indexOf("boomer") !== -1) return IMGS.bb; if (t.indexOf("essence") !== -1) return IMGS.s; return IMGS.d; }
 /* Grouped manually rather than via toLocaleString(), whose digits
@@ -348,10 +353,20 @@ function openContact() {
 }
 
 function openSidePanel() {
-    closeCart();                       // both drawers share z-index 301
-    $("side-panel").classList.add("on"); $("sp-veil").classList.add("on"); syncOverlayLock();
+    closeCart();
+    var sp = $("side-panel");
+    var spv = $("sp-veil");
+    if (sp) sp.classList.add("on");
+    if (spv) spv.classList.add("on");
+    syncOverlayLock();
 }
-function closeSidePanel() { $("side-panel").classList.remove("on"); $("sp-veil").classList.remove("on"); syncOverlayLock(); }
+function closeSidePanel() {
+    var sp = $("side-panel");
+    var spv = $("sp-veil");
+    if (sp) sp.classList.remove("on");
+    if (spv) spv.classList.remove("on");
+    syncOverlayLock();
+}
 
 function openBrandPanel() {
     var seen = {}, brands = [];
@@ -588,11 +603,12 @@ function getTotals(loc) { var sub = 0; CART.forEach(function (i) { sub += i.offe
 
 function renderCartUI() {
     renderBadge();
-    var body = $("cart-body"), foot = $("cart-foot");
+    var body = $("cart-body");
     if (!body) return;
+    var foot = $("cart-foot");
     if (!CART.length) {
         body.innerHTML = '<div class="cart-empty"><i class="fa fa-bag-shopping"></i><p>Your bag is empty</p><button class="btn-shop" onclick="closeCart()">Continue Shopping</button></div>';
-        foot.style.display = "none";
+        if (foot) foot.style.display = "none";
         return;
     }
     var h = "";
@@ -616,16 +632,34 @@ function renderBadge() {
 }
 
 function openCart() {
-    closeSidePanel();
+    // Only close side panel if it exists and is open
+    var sp = $("side-panel");
+    var spv = $("sp-veil");
+    if (sp && sp.classList.contains("on")) {
+        sp.classList.remove("on");
+        if (spv) spv.classList.remove("on");
+        syncOverlayLock();
+    }
     renderCartUI();
-    $("cart").classList.add("on"); $("cart-veil").classList.add("on");
+    var cart = $("cart");
+    var veil = $("cart-veil");
+    if (cart) cart.classList.add("on");
+    if (veil) veil.classList.add("on");
     syncOverlayLock();
 }
 function closeCart() {
-    $("cart").classList.remove("on"); $("cart-veil").classList.remove("on");
+    var cart = $("cart");
+    var veil = $("cart-veil");
+    if (cart) cart.classList.remove("on");
+    if (veil) veil.classList.remove("on");
     syncOverlayLock();
 }
-function toggleCart() { if ($("cart").classList.contains("on")) closeCart(); else openCart(); }
+function toggleCart() {
+    var cart = $("cart");
+    if (!cart) return;
+    if (cart.classList.contains("on")) closeCart();
+    else openCart();
+}
 
 function openCheckout() {
     if (!CART.length) return;

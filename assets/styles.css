@@ -107,6 +107,27 @@ html {
     overflow-x: clip;
 }
 
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
 body {
     font-family: var(--ff-sans);
     background: #FBEFF3;
@@ -1045,7 +1066,15 @@ a:focus-visible,
 }
 
 .hero-btn:hover i {
-    animation: bob 1s ease-in-out infinite
+    animation: bob 1s ease-in-out infinite;
+}
+
+.hero-btn:hover {
+    color: #fff !important;
+}
+
+.hero-btn:hover span {
+    color: #fff !important;
 }
 
 .hero-btn-ghost {
@@ -1245,6 +1274,7 @@ a:focus-visible,
 }
 
 .contact-number a {
+    font-family: "Manrope", sans-serif;
     color: #FFE3B0;
     transition: var(--tr);
     display: inline-block
@@ -1606,7 +1636,7 @@ a:focus-visible,
 }
 
 .p-old {
-    font-size: 12.5px;
+    font-size: 16px;
     color: #B0A69F;
     text-decoration: line-through
 }
@@ -3453,7 +3483,7 @@ a:focus-visible,
 .brand-logo-text {
     font-family: var(--ff-logo);
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 12px;
     text-transform: uppercase;
     background: linear-gradient(100deg, var(--rose-m), var(--gold), var(--rose-m));
     background-size: 200% auto;
@@ -3468,7 +3498,7 @@ a:focus-visible,
     color: rgba(255, 255, 255, .45);
     line-height: 1.85;
     margin-bottom: 26px;
-    max-width: 310px
+    max-width: 410px
 }
 
 .footer-socials {

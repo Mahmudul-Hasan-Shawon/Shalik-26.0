@@ -18,6 +18,25 @@
     <link rel="stylesheet" href="assets/styles.css" />
 </head>
 
+<script src="https://unpkg.com/lenis@1.3.13/dist/lenis.min.js"></script>
+
+<script>
+const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    lerp: 0.1,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.5
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+</script>
+
 <body>
 
     <div id="aura">
@@ -30,20 +49,19 @@
 
     <nav id="navbar">
         <div class="nav-main">
-            <a href="index.html" class="nav-logo" id="site-logo">SHALIK</a>
+            <a href="index.html" class="nav-logo" id="site-logo">Shalik</a>
             <div class="nav-actions" style="margin-left:auto">
                 <a href="index.html" class="nav-page-link">Home</a>
                 <a href="about.html" class="nav-page-link">About</a>
                 <a href="gallery.html" class="nav-page-link">Gallery</a>
                 <a href="faq.html" class="nav-page-link" style="color:var(--rose-d);background:var(--rose-s)">FAQ</a>
                 <a href="contact.html" class="nav-page-link">Contact</a>
-                <button class="nav-track-btn" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track
-                        Order</span></button>
+                <button class="nav-track-btn" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track Order</span></button>
                 <button class="nav-icon-btn" id="cart-btn" onclick="toggleCart()" title="Cart" aria-label="Open cart">
                     <i class="fa fa-bag-shopping"></i>
                     <span class="cart-count hidden" id="cart-cnt">0</span>
                 </button>
-                <a href="https://wa.me/qr/K32S62PEL6ZAK1" id="wa-btn" target="_blank" rel="noopener" class="nav-icon-btn"
+                <a href="https://wa.me/message/OOV6ZSFN26OPP1" id="wa-btn" target="_blank" rel="noopener" class="nav-icon-btn"
                     title="WhatsApp" aria-label="Chat on WhatsApp" style="color:#22C55E">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
@@ -57,7 +75,7 @@
                 class="fa fa-bag-shopping"></i><span>Cart</span><span class="mbn-badge hidden"
                 id="mbn-cart-cnt">0</span></button>
         <button class="mbn-item" id="mbn-track" onclick="openTrack()"><i class="fa-solid fa-truck-fast"></i><span>Track</span></button>
-        <a class="mbn-item" id="mbn-chat" href="https://wa.me/qr/K32S62PEL6ZAK1" target="_blank" rel="noopener"><i
+        <a class="mbn-item" id="mbn-chat" href="https://wa.me/message/OOV6ZSFN26OPP1" target="_blank" rel="noopener"><i
                 class="fa-brands fa-whatsapp"></i><span>Chat</span></a>
     </nav>
 
@@ -116,6 +134,7 @@
     <button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"
         aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>
 
+    <!-- CART DRAWER -->
     <div id="cart-veil" onclick="closeCart()"></div>
     <aside id="cart" aria-label="Shopping bag">
         <div class="cart-head">
@@ -127,10 +146,11 @@
             <div class="cart-line"><span>Subtotal</span><span id="cf-sub">৳0</span></div>
             <div class="cart-line"><span>Delivery</span><span id="cf-del">Calculated at checkout</span></div>
             <div class="cart-line big"><span>Total</span><span id="cf-tot">৳0</span></div>
-            <button class="btn-checkout" onclick="window.location.href='index.html#shop'"><i class="fa fa-lock"></i> Go to Checkout</button>
+            <button class="btn-checkout" onclick="openCheckout()"><i class="fa fa-lock"></i> Secure Checkout</button>
         </div>
     </aside>
 
+    <!-- TRACK MODAL -->
     <div id="track-veil" onclick="onTrackVeilClick(event)">
         <div id="track-box" role="dialog" aria-modal="true" aria-label="Track your order">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
@@ -201,6 +221,125 @@
         </div>
     </div>
 
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-veil" onclick="onCoVeilClick(event)">
+        <div id="checkout-box" role="dialog" aria-modal="true" aria-label="Checkout">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                <h2 class="co-title">Checkout</h2>
+                <button class="icon-btn" aria-label="Close checkout" onclick="closeCheckout()"><i class="fa fa-xmark"></i></button>
+            </div>
+            <p class="co-sub">Complete your order below</p>
+            <div class="order-mini">
+                <div class="osm-line"><span>Subtotal</span><span id="co-sub">৳0</span></div>
+                <div class="osm-line"><span id="co-del-lbl">Delivery</span><span id="co-del">৳0</span></div>
+                <div class="osm-line big"><span>Total</span><span id="co-tot">৳0</span></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="co-fn">First Name *</label><input type="text" id="co-fn" autocomplete="given-name" placeholder="Nusrat" /></div>
+                <div class="form-group"><label for="co-ln">Last Name *</label><input type="text" id="co-ln" autocomplete="family-name" placeholder="Jahan" /></div>
+            </div>
+            <div class="form-group"><label for="co-phone">Contact Number *</label><input type="tel" id="co-phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" /></div>
+            <div class="form-group"><label for="co-addr">Delivery Address *</label><textarea id="co-addr" rows="2" autocomplete="street-address" placeholder="House No, Road, Area, City…" style="resize:none"></textarea></div>
+            <div class="form-group">
+                <label for="co-loc">Delivery Location *</label>
+                <select id="co-loc" onchange="onLocChange()">
+                    <option value="">— Select —</option>
+                    <option value="inside">Inside Dhaka (Ashkona / Uttara area)</option>
+                    <option value="outside">Outside Dhaka</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="co-pay">Payment Method *</label>
+                <select id="co-pay" onchange="onPayChange()">
+                    <option value="">— Select —</option>
+                    <option value="Cash On Delivery">Cash On Delivery</option>
+                    <option value="bKash">bKash</option>
+                    <option value="Nagad">Nagad</option>
+                </select>
+            </div>
+            <div class="pay-info hidden" id="pay-info">
+                <strong id="pi-title">bKash Payment</strong>
+                Send to: <strong id="pi-num">01XXXXXXXXX</strong><br />
+                Then fill your account number and transaction ID below.
+            </div>
+            <div id="txn-wrap" class="hidden">
+                <div class="form-group"><label for="co-acc">Your Mobile Account No. *</label><input type="text" id="co-acc" inputmode="tel" placeholder="01XXXXXXXXX" /></div>
+                <div class="form-group"><label for="co-txn">Transaction ID *</label><input type="text" id="co-txn" placeholder="TXN123456" /></div>
+            </div>
+            <p class="form-err" id="co-err" role="alert"></p>
+            <button class="btn-place" id="btn-place" onclick="placeOrder()"><i class="fa fa-check-circle"></i> Place Order</button>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-veil">
+        <div id="success-box" role="dialog" aria-modal="true" aria-label="Order placed">
+            <div class="success-icon"><i class="fa fa-check"></i></div>
+            <h2 class="success-title">Order Placed!</h2>
+            <p class="success-sub">Your order has been received. Save your tracking code to check delivery status
+                anytime.</p>
+            <p class="success-note hidden" id="succ-note"></p>
+            <div class="order-id-box">
+                <div class="order-id-lbl">Order ID</div>
+                <div class="order-id-val" id="succ-order-id"></div>
+            </div>
+            <div class="tracking-box">
+                <div class="tracking-lbl">Your Tracking Code</div>
+                <div class="tracking-val" id="succ-tracking"></div>
+                <div class="tracking-hint">Use this code to track your shipment</div>
+            </div>
+            <button class="btn-track-order" onclick="openTrackFromSuccess()"><i class="fa fa-location-dot"></i> Track My
+                Order</button>
+            <button class="btn-done" onclick="closeSuccess()"><i class="fa fa-check"></i> Done</button>
+        </div>
+    </div>
+
+    <!-- INVOICE MODAL -->
+    <div id="inv-veil">
+        <div id="inv-box" role="dialog" aria-modal="true" aria-label="Invoice">
+            <div id="inv-content">
+                <div class="inv-hdr">
+                    <div class="inv-logo">✿ Shalik Glow Corner ✿</div>
+                    <div class="inv-tagline">Your Glow, Our Pride</div>
+                    <div class="inv-badge">INVOICE</div>
+                </div>
+                <div class="inv-grid">
+                    <div class="inv-box">
+                        <h4>Order Details</h4>
+                        <p id="inv-order"></p>
+                    </div>
+                    <div class="inv-box">
+                        <h4>Customer</h4>
+                        <p id="inv-cust"></p>
+                    </div>
+                </div>
+                <table id="inv-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th style="text-align:center">Qty</th>
+                            <th style="text-align:right">Price</th>
+                            <th style="text-align:right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inv-rows"></tbody>
+                </table>
+                <div class="inv-totals">
+                    <div class="inv-line"><span>Subtotal</span><span id="inv-sub"></span></div>
+                    <div class="inv-line"><span>Delivery</span><span id="inv-del"></span></div>
+                    <div class="inv-grand"><span>Grand Total</span><span id="inv-tot"></span></div>
+                </div>
+                <p class="inv-thanks">🌸 Thank you for shopping with Shalik Glow Corner!</p>
+                <div class="inv-footer"><strong style="color:var(--rose-d)">Shalik Glow Corner</strong>
+                    &nbsp;|&nbsp; shalikbeauty@gmail.com &nbsp;|&nbsp; © 2026</div>
+            </div>
+            <div class="inv-actions">
+                <button class="btn-inv btn-inv-out" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
+                <button class="btn-inv btn-inv-fill" onclick="closeInvoice()"><i class="fa fa-check"></i> Done</button>
+            </div>
+        </div>
+    </div>
+
     <div id="toast" role="status" aria-live="polite"><i class="fa fa-check-circle" id="toast-ic"></i><span
             id="toast-msg"></span></div>
 
@@ -209,15 +348,28 @@
         <div class="footer-main">
             <div class="footer-grid">
                 <div class="reveal">
-                    <div class="footer-brand-name"> <span class="brand-logo-text">Shalik</span> Glow Corner</div>
-                    <p class="footer-about">Your trusted destination for premium skincare and beauty products in Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
+                    <div class="footer-brand-name" style="display: flex; align-items: center; gap: 12px;">
+                        <img src="./assets/logo/shalik_1.svg" alt="shalik" style="width: 100px; height: auto;">
+
+                        <div style="display: flex; flex-direction: column;">
+                            <div style="color:#fb7185; font-size: 30px; font-weight: 700; letter-spacing: 20px;">
+                                SHALIK
+                            </div>
+
+                            <div style="color:#ffc1ca;font-family:manrope;font-size: 8px; font-weight: 400; letter-spacing: 2px; margin-top: 3px; white-space: nowrap;">
+                                WHERE EXCELLENCE MEETS EXPERIENCE
+                            </div>
+                        </div>
+                    </div>
+                    <p class="footer-about">Your trusted destination for premium skincare and beauty products in
+                        Bangladesh. We bring you authentic products from world-renowned brands at the best prices.</p>
                     <div class="footer-socials">
-                        <a href="https://www.facebook.com/people/Shalik-Beauty/61553616282600/" target="_blank"
+                        <a href="https://www.facebook.com/people/shalik-Beauty/61553616282600/" target="_blank"
                             rel="noopener" aria-label="Facebook" class="footer-social-link"><i
                                 class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/shalikbeauty007" target="_blank" rel="noopener"
                             aria-label="Instagram" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/qr/K32S62PEL6ZAK1" target="_blank" rel="noopener" aria-label="WhatsApp"
+                        <a href="https://wa.me/message/OOV6ZSFN26OPP1" target="_blank" rel="noopener" aria-label="WhatsApp"
                             id="wa-footer" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -233,7 +385,7 @@
                 </div>
                 <div class="reveal">
                     <div class="footer-col-title">Categories</div>
-                    <ul class="footer-links">
+                    <ul class="footer-links" id="footer-cats">
                         <li><a href="index.html#shop">Skincare</a></li>
                         <li><a href="index.html#shop">Makeup</a></li>
                         <li><a href="index.html#shop">Haircare</a></li>
@@ -243,6 +395,10 @@
                 </div>
                 <div class="reveal">
                     <div class="footer-col-title">Contact</div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-location-dot"></i>
+                        <p>Chungcheongbuk-do, South Korea</p>
+                    </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-location-dot"></i>
                         <p>Dhaka, Bangladesh</p>
@@ -257,7 +413,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-clock"></i>
-                        <p>Sat–Thu: 10AM – 10PM</p>
+                        <p>Sat–Thu: 10AM – 8PM</p>
                     </div>
                 </div>
             </div>
@@ -265,7 +421,7 @@
         <div class="footer-bottom">
             <div class="footer-copy">© 2026 <strong>Shalik Glow Corner.</strong> All rights reserved.</div>
             <div class="footer-payments">
-                <div class="footer-pay-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <!-- <div class="footer-pay-icon"><i class="fas fa-money-bill-wave"></i></div> -->
                 <div class="footer-pay-icon" style="font-size:11px;font-weight:800;color:#E2136E;">bKash</div>
                 <div class="footer-pay-icon" style="font-size:10px;font-weight:800;color:#F6921E;">Nagad</div>
                 <div class="footer-pay-icon" style="font-size:9px;font-weight:800;color:#8B2F89;">Rocket</div>
@@ -274,14 +430,14 @@
         <div class="footer-credit">
             <span>
                 Developed by
-                <a href="https://wa.me/8801764640824" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/88+821027805480" target="_blank" rel="noopener noreferrer">
                     <strong>mhshan7</strong>
                 </a>
             </span>
         </div>
     </footer>
 
-    <script src="assets/site.js"></script>
+    <script src="./assets/site.js"></script>
 </body>
 
 </html>
